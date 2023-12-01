@@ -15,8 +15,8 @@ public abstract class Person extends File {
     public abstract String getEmail();
     public abstract int getId();
 
-    /*
-        this won't be an abstract method i'll implement it later
-    public abstract void login();
-    */
+
+    //this won't be an abstract method i'll implement it later
+    //public abstract void login();
+
 }
