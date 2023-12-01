@@ -1,7 +1,6 @@
 package com.example.project_pl2;
 
 
-
 public abstract class Person extends File {
 
     protected String name;
