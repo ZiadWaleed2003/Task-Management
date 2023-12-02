@@ -23,6 +23,27 @@ public class Admin extends Person{
     }
 
     @Override
+    public void setName(String name){
+        this.name = name;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+
+    @Override
     public void update() {
 
     }

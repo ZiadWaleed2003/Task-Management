@@ -13,6 +13,10 @@ public abstract class Person extends File {
     public abstract String getPassword();
     public abstract String getEmail();
     public abstract int getId();
+    public abstract void setName(String name);
+    public abstract void setId(int id);
+    public abstract void setPassword(String password);
+    public abstract void setEmail(String email);
 
 
     //this won't be an abstract method i'll implement it later
