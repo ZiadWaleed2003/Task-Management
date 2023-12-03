@@ -1,7 +1,7 @@
 package com.example.project_pl2;
 
 
-public abstract class Person extends File {
+public abstract class Person implements CRUD {
 
     protected String name;
     protected String email;
