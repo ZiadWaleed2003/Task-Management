@@ -1,7 +1,7 @@
 package com.example.project_pl2;
 import java.util.Date;
 public class Task {
-    protected final int id;
+    protected int id;
 
     protected String name;
     protected String description;
@@ -18,7 +18,9 @@ public class Task {
         public enum Priority {
             Low, Medium, High
         }
+        public Task(){
 
+        }
         public Task(int id, String name, String description, Status status, int assignedTo, int project, Priority priority, Date startDate, Date dueDate) {
             this.id = id;
             this.name = name;
