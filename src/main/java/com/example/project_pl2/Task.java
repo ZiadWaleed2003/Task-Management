@@ -1,7 +1,7 @@
 package com.example.project_pl2;
 import java.util.Date;
 public class Task {
-    protected final int id;
+    protected int id;
 
     protected String name;
     protected String description;
