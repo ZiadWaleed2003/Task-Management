@@ -19,9 +19,7 @@ public class Task {
             Low, Medium, High
         }
 
-        public Task(int id, String name, String description,
-                    Status status, int assignedTo, int project,
-                    Priority priority, Date startDate, Date dueDate) {
+        public Task(int id, String name, String description, Status status, int assignedTo, int project, Priority priority, Date startDate, Date dueDate) {
             this.id = id;
             this.name = name;
             this.description = description;

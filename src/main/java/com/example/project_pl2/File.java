@@ -1,19 +1,11 @@
 package com.example.project_pl2;
 
+public interface File {
+     void update();
 
-public abstract class File {
+      void delete();
 
-    protected String file_name;
-    protected String file_path;
-    protected String operation_type;
+      String read();
 
-
-
-    public abstract void update();
-
-    public abstract void delete();
-
-    public abstract String read();
-
-    public abstract void write(String content);
+      void write(String content);
 }
