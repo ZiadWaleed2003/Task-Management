@@ -73,4 +73,7 @@ public class Admin extends Person{
     public void CreateProject (){
 
     }
+    public void print(){
+
+    }
 }
