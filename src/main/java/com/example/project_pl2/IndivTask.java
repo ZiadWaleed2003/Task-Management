@@ -1,36 +1,37 @@
 package com.example.project_pl2;
+
 import java.util.Date;
-public class Task {
+public class IndivTask {
     protected int id;
 
     protected String name;
     protected String description;
     protected Status status;
-    protected int assignedTo;
+    protected int assigned_to;
     protected int project;
     protected Priority priority;
-    protected Date startDate;
-    protected Date dueDate;
+    protected Date start_date;
+    protected Date due_date;
 
         public enum Status {
-            Pending, InProgress, Completed, Canceled
+            PENDING, INPROGRESS, COMPLETED, CANCELED
         }
         public enum Priority {
-            Low, Medium, High
+            LOW, MEDIUM, HIGH
         }
-        public Task(){
+        public IndivTask(){
 
         }
-        public Task(int id, String name, String description, Status status, int assignedTo, int project, Priority priority, Date startDate, Date dueDate) {
+        public IndivTask(int id, String name, String description, Status status, int assigned_to, int project, Priority priority, Date start_date, Date due_date) {
             this.id = id;
             this.name = name;
             this.description = description;
             this.status = status;
-            this.assignedTo = assignedTo;
+            this.assigned_to = assigned_to;
             this.project = project;
             this.priority = priority;
-            this.startDate = startDate;
-            this.dueDate = dueDate;
+            this.start_date = start_date;
+            this.due_date = due_date;
         }
 
         public int getId() {
@@ -62,11 +63,11 @@ public class Task {
         }
 
         public int getAssignedTo() {
-            return assignedTo;
+            return assigned_to;
         }
 
-        public void setAssignedTo(int assignedTo) {
-            this.assignedTo = assignedTo;
+        public void setAssignedTo(int assigned_to) {
+            this.assigned_to = assigned_to;
         }
 
         public int getProject() {
@@ -86,21 +87,21 @@ public class Task {
         }
 
         public Date getStartDate() {
-            return startDate;
+            return start_date;
         }
 
-        public void setStartDate(Date startDate) {
-            this.startDate = startDate;
+        public void setStartDate(Date start_date) {
+            this.start_date = start_date;
         }
 
         public Date getDueDate() {
-            return dueDate;
+            return due_date;
         }
 
-        public void setDueDate(Date dueDate) {
-            this.dueDate = dueDate;
+        public void setDueDate(Date due_date) {
+            this.due_date = due_date;
         }
         // after getter and setter
-        // TODo (i need to know the main function that related to Task )
+        // TODo (i need to know the main function that related to IndivTask )
     }
 
