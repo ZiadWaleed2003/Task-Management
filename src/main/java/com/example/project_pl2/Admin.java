@@ -96,7 +96,7 @@ public class Admin extends Person implements File{
     }
 
     @Override
-    public void write(int id,String name,String email) throws IOException{
+    public void write(int id,String name,String email,String password) throws IOException{
         String filepath = "D:/ADMIN_DATA.TXT";
         java.io.File file = new java.io.File(filepath);
         if (!file.exists())
@@ -105,6 +105,7 @@ public class Admin extends Person implements File{
         fwrite.write(id +"\n");
         fwrite.write(name+"\n");
         fwrite.write(email+"\n");
+        fwrite.write(password+"\n");
 
         fwrite.close();
 

@@ -9,5 +9,5 @@ public interface File {
 
       String read();
 
-      void write(int id,String content,String email)throws IOException;
+      void write(int id,String content,String email,String password)throws IOException;
 }
