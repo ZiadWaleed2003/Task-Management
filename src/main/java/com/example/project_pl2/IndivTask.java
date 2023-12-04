@@ -1,7 +1,7 @@
 package com.example.project_pl2;
 
 import java.util.Date;
-public class Task {
+public class IndivTask {
     protected int id;
 
     protected String name;
@@ -19,10 +19,10 @@ public class Task {
         public enum Priority {
             LOW, MEDIUM, HIGH
         }
-        public Task(){
+        public IndivTask(){
 
         }
-        public Task(int id, String name, String description, Status status, int assigned_to, int project, Priority priority, Date start_date, Date due_date) {
+        public IndivTask(int id, String name, String description, Status status, int assigned_to, int project, Priority priority, Date start_date, Date due_date) {
             this.id = id;
             this.name = name;
             this.description = description;
@@ -102,6 +102,6 @@ public class Task {
             this.due_date = due_date;
         }
         // after getter and setter
-        // TODo (i need to know the main function that related to Task )
+        // TODo (i need to know the main function that related to IndivTask )
     }
 

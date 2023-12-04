@@ -6,16 +6,19 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
+
 public class Project {
+
     protected enum CompletionStatus {
         PENDING, INPROGRESS, COMPLETED, CANCELED
-    } //TODO: figure out whether to keep this, lump it in a general util interface, or straight up discard it,
+    }
+    //TODO: figure out whether to keep this, lump it in a general util interface, or straight up discard it,
     //IDs:
     protected final int project_id;
     protected final int team_id;
     //Progress
     protected CompletionStatus current_status;
-    protected ArrayList<Task> internal_tasks; //TODO: add setter.
+    protected ArrayList<IndivTask> internal_tasks; //TODO: add setter.
     protected int current_progress;
 
     //Desc:
@@ -59,13 +62,12 @@ public class Project {
 
     private static int generateID(int seed){
         Random rand = new Random();
-        //TODO: add trailing zero logic
         return seed * 100 + rand.nextInt(100);
     }
     private int calculateProgress(){
         int comp_tsks = 0;
-        for (Task tsk: this.internal_tasks) {
-            if (tsk.getCurrentStatus() == CompletionStatus.COMPLETED){
+        for (IndivTask tsk: this.internal_tasks) {
+            if (tsk.getStatus() == Status.COMPLETED){
                 comp_tsks++;
             }
         }
