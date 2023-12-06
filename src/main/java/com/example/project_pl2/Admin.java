@@ -70,6 +70,8 @@ public class Admin extends Person implements File{
         return false;
     }
 
+    public ResultSet readDbDynamic(String query, String[] args){return null;};
+
     @Override
     public boolean insertDb(String Query) {
         return false;

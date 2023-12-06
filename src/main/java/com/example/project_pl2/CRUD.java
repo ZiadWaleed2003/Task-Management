@@ -4,8 +4,9 @@ import java.sql.ResultSet;
 
 public interface CRUD {
 
-    boolean updateDb(String Query);
-    boolean insertDb(String Query);
-    ResultSet readDb(String Query);
-    boolean deleteDb(String Query);
+    boolean updateDb(String query);
+    boolean insertDb(String query);
+    ResultSet readDb(String query);
+    ResultSet readDbDynamic(String query, String[] args);
+    boolean deleteDb(String query);
 }
