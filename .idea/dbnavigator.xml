@@ -13,11 +13,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="d83c7348-baeb-4210-9231-5a55901a9fed">
-      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[select
-    t.`Department`,
-    t.`Team_Id`
-from
-    team t;]]></console>
+      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[select * from employee;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -47,9 +43,9 @@ from
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
           <database-version value="8.0" />
-          <driver-source value="EXTERNAL" />
+          <driver-source value="BUNDLED" />
           <driver-library value="D:\Project_pl2\lib\mysql-connector-j-8.2.0.jar" />
-          <driver value="com.mysql.cj.jdbc.Driver" />
+          <driver value="" />
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />

@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.*;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class App extends Application {
     @Override
@@ -23,7 +23,6 @@ public class App extends Application {
     public static void main(String[] args) throws SQLException {
 
         Employee emp = new Employee();
-
         boolean x = emp.login("ZiadWaleed@gmail.com","2003");
     }
 }
