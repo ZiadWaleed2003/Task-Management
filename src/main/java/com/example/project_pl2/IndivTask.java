@@ -6,23 +6,20 @@ public class IndivTask {
 
     protected String name;
     protected String description;
-    protected Status status;
+    protected Utility.CompletionStatus status;
     protected int assigned_to;
     protected int project;
     protected Priority priority;
     protected Date start_date;
     protected Date due_date;
 
-        public enum Status {
-            PENDING, INPROGRESS, COMPLETED, CANCELED
-        }
         public enum Priority {
             LOW, MEDIUM, HIGH
         }
         public IndivTask(){
 
         }
-        public IndivTask(int id, String name, String description, Status status, int assigned_to, int project, Priority priority, Date start_date, Date due_date) {
+        public IndivTask(int id, String name, String description, Utility.CompletionStatus status, int assigned_to, int project, Priority priority, Date start_date, Date due_date) {
             this.id = id;
             this.name = name;
             this.description = description;
@@ -54,11 +51,11 @@ public class IndivTask {
             this.description = description;
         }
 
-        public Status getStatus() {
+        public Utility.CompletionStatus getStatus() {
             return status;
         }
 
-        public void setStatus(Status status) {
+        public void setStatus(Utility.CompletionStatus status) {
             this.status = status;
         }
 

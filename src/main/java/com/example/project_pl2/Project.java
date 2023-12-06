@@ -8,16 +8,12 @@ import java.util.Random;
 
 
 public class Project {
-
-    protected enum CompletionStatus {
-        PENDING, INPROGRESS, COMPLETED, CANCELED
-    }
     //TODO: figure out whether to keep this, lump it in a general util interface, or straight up discard it,
     //IDs:
     protected final int project_id;
     protected final int team_id;
     //Progress
-    protected CompletionStatus current_status;
+    protected Utility.CompletionStatus current_status;
     protected ArrayList<IndivTask> internal_tasks; //TODO: add setter.
     protected int current_progress;
 
@@ -27,10 +23,10 @@ public class Project {
 
     Project(int team_id, String project_title){
         this.team_id = team_id;
-        this.project_id = generateID(team_id);
+        this.project_id = Utility.generateID(team_id);
         this.project_title = project_title;
         this.project_description.append("To be set.");
-        this.current_status = CompletionStatus.PENDING;
+        this.current_status = Utility.CompletionStatus.PENDING;
         this.current_progress = calculateProgress();
     } //TODO: add full constructor.
 
@@ -46,7 +42,7 @@ public class Project {
         return this.project_id;
     }
 
-    public CompletionStatus getCompletionStatus(){
+    public Utility.CompletionStatus getCompletionStatus(){
         return this.current_status;
     }
 
@@ -60,19 +56,14 @@ public class Project {
         return this.project_description.toString();
     }
 
-    private static int generateID(int seed){
-        Random rand = new Random();
-        return seed * 100 + rand.nextInt(100);
-    }
     private int calculateProgress(){
-//        int comp_tsks = 0;
-//        for (IndivTask tsk: this.internal_tasks) {
-//            if (tsk.getStatus() == Status.COMPLETED){
-//                comp_tsks++;
-//            }
-//        }
-//        return  (comp_tsks/this.internal_tasks.size())*10;
+        int comp_tsks = 0;
+        for (IndivTask tsk: this.internal_tasks) {
+            if (tsk.getStatus() == Utility.CompletionStatus.COMPLETED){
+                comp_tsks++;
+            }
+        }
+        return  (comp_tsks/this.internal_tasks.size())*10;
 
-        return 0;
     }
 }
