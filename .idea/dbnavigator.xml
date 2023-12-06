@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -13,7 +13,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="d83c7348-baeb-4210-9231-5a55901a9fed">
-      <console name="MySQL Connection" type="STANDARD" schema="a7a" session="Main" />
+      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[select * from employee;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -21,6 +21,14 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.team" active-filter-id="" />
+    <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.employee" active-filter-id="" />
+    <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.task" active-filter-id="" />
+  </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -36,12 +44,12 @@
           <config-type value="BASIC" />
           <database-version value="8.0" />
           <driver-source value="BUNDLED" />
-          <driver-library value="" />
+          <driver-library value="D:\Project_pl2\lib\mysql-connector-j-8.2.0.jar" />
           <driver value="" />
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />
-          <database value="a7a" />
+          <database value="PlProject" />
           <tns-folder value="" />
           <tns-profile value="" />
           <type value="USER_PASSWORD" />
@@ -521,7 +529,15 @@
     </general-settings>
   </component>
   <component name="DBNavigator.Project.StatementExecutionManager">
-    <execution-variables />
-    <execution-variable-types />
+    <execution-variables>
+      <file file-url="db://d83c7348-baeb-4210-9231-5a55901a9fed/consoles/MySQL Connection">
+        <variable name="2" data-type="LITERAL" />
+        <variable name="it" data-type="LITERAL" />
+      </file>
+    </execution-variables>
+    <execution-variable-types>
+      <variable connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" name="2" data-type="LITERAL" />
+      <variable connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" name="it" data-type="LITERAL" />
+    </execution-variable-types>
   </component>
 </project>

@@ -1,5 +1,6 @@
 package com.example.project_pl2;
 import java.io.*;
+import java.sql.ResultSet;
 import java.util.*;
 
 public class Admin extends Person implements File{
@@ -44,7 +45,10 @@ public class Admin extends Person implements File{
         this.email = email;
     }
 
-
+    @Override
+    public boolean login(String email, String password) {
+        return false;
+    }
 
 
     public void showProjectProgress (){
@@ -72,7 +76,8 @@ public class Admin extends Person implements File{
     }
 
     @Override
-    public void readDb(String Query) {
+    public ResultSet readDb(String Query) {
+        return null;
     }
 
     @Override
@@ -94,6 +99,9 @@ public class Admin extends Person implements File{
     public String read() {
         return null;
     }
+
+
+
 
     @Override
     public void write(int id,String name,String email,String password) throws IOException{

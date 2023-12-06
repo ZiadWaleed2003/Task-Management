@@ -5,12 +5,15 @@ import java.sql.*;
 
 
 public class DbConnection {
-    private final String db_host     = "localhost:3306";
+    private final String db_host     = "jdbc:mysql://localhost:3306/Plproject";
     private final String db_password = "mssqlsucks123";
     private final String db_user     = "root";
 
-    public Connection getConnection()throws SQLException{
+    public DbConnection(){}
 
-        return DriverManager.getConnection(db_host,db_user,db_password) ;
+    public Connection getConnection() throws SQLException, ClassNotFoundException {
+        DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+
+        return DriverManager.getConnection(db_host,db_user,db_password);
     }
 }

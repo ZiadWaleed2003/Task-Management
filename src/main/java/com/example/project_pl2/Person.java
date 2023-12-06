@@ -1,6 +1,8 @@
 package com.example.project_pl2;
 
 
+import java.sql.SQLException;
+
 public abstract class Person implements CRUD {
 
     protected String name;
@@ -18,8 +20,6 @@ public abstract class Person implements CRUD {
     public abstract void setPassword(String password);
     public abstract void setEmail(String email);
 
-
-    //this won't be an abstract method i'll implement it later
-    //public abstract void login();
+    public abstract boolean login(String email , String password) throws SQLException;
 
 }
