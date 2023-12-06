@@ -4,6 +4,7 @@ import DataBase.DbConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -30,20 +31,22 @@ public class Employee extends Person{
 
 
     @Override
-    public boolean login(String email, String password) {
+    public boolean login(String email, String password) throws SQLException {
 
         String Query = "SELECT Emp_Email , Emp_Password FROM Employee WHERE Emp_Password = '`password`' AND Emp_Email = '`email`' ";
 
-        DbConnection connection = new DbConnection();
+        ResultSet result = readDb(Query);
 
+        if(result.isBeforeFirst()){
+            this.email    = result.getNString("Emp_Email");
+            this.password = result.getNString("Emp_Password");
 
-        try {
-             Connection connection1      = connection.getConnection();
-             PreparedStatement statement = connection1.prepareStatement(Query);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Email : " + this.email + "\nPassword is : " + this.password);
+        }else{
+            return  false;
         }
+
+
 
 
 
@@ -62,8 +65,24 @@ public class Employee extends Person{
     }
 
     @Override
-    public void readDb(String Query) {
+    public ResultSet readDb(String Query)  {
+        DbConnection connection = new DbConnection();
 
+
+        try {
+
+            Connection connection1      = connection.getConnection();
+            PreparedStatement statement = connection1.prepareStatement(Query);
+
+
+            // Execute the statement and get the results
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            return resultSet;
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

@@ -17,15 +17,7 @@
     t.`Department`,
     t.`Team_Id`
 from
-    team t;
-
-insert into team (
-    `Team_Id`,
-    `Department`)
-values (
-    104,
-    'Marketing')
-;]]></console>
+    team t;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -36,6 +28,7 @@ values (
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.team" active-filter-id="" />
+    <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.employee" active-filter-id="" />
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.task" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
@@ -54,9 +47,9 @@ values (
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
           <database-version value="8.0" />
-          <driver-source value="BUNDLED" />
-          <driver-library value="" />
-          <driver value="" />
+          <driver-source value="EXTERNAL" />
+          <driver-library value="D:\Project_pl2\lib\mysql-connector-j-8.2.0.jar" />
+          <driver value="com.mysql.cj.jdbc.Driver" />
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />
