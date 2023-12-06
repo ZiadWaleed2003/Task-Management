@@ -8,13 +8,13 @@ import java.util.Random;
 
 
 public class Project {
-    //TODO: figure out whether to keep this, lump it in a general util interface, or straight up discard it,
     //IDs:
     protected final int project_id;
     protected final int team_id;
     //Progress
     protected Utility.CompletionStatus current_status;
-    protected ArrayList<IndivTask> internal_tasks; //TODO: add setter.
+    protected int internal_task_count;
+    protected ArrayList<IndivTask> internal_tasks;
     protected int current_progress;
 
     //Desc:
@@ -27,6 +27,7 @@ public class Project {
         this.project_title = project_title;
         this.project_description.append("To be set.");
         this.current_status = Utility.CompletionStatus.PENDING;
+        this.internal_task_count =0;
         this.current_progress = calculateProgress();
     } //TODO: add full constructor.
 
@@ -40,6 +41,10 @@ public class Project {
     }
     public int getProjectID(){
         return this.project_id;
+    }
+
+    public boolean addTaskObject(IndivTask task){
+        return this.internal_tasks.add(task);
     }
 
     public Utility.CompletionStatus getCompletionStatus(){
