@@ -67,7 +67,7 @@ public class Project {
     private int calculateProgress(){
         int comp_tsks = 0;
         for (IndivTask tsk: this.internal_tasks) {
-            if (tsk.getStatus() == Status.COMPLETED){
+            if (tsk.getStatus() == CompletionStatus.COMPLETED){
                 comp_tsks++;
             }
         }
