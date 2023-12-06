@@ -65,12 +65,14 @@ public class Project {
         return seed * 100 + rand.nextInt(100);
     }
     private int calculateProgress(){
-        int comp_tsks = 0;
-        for (IndivTask tsk: this.internal_tasks) {
-            if (tsk.getStatus() == CompletionStatus.COMPLETED){
-                comp_tsks++;
-            }
-        }
-        return  (comp_tsks/this.internal_tasks.size())*10;
+//        int comp_tsks = 0;
+//        for (IndivTask tsk: this.internal_tasks) {
+//            if (tsk.getStatus() == Status.COMPLETED){
+//                comp_tsks++;
+//            }
+//        }
+//        return  (comp_tsks/this.internal_tasks.size())*10;
+
+        return 0;
     }
 }

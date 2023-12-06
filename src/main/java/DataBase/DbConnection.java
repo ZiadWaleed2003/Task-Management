@@ -9,8 +9,9 @@ public class DbConnection {
     private final String db_password = "mssqlsucks123";
     private final String db_user     = "root";
 
-    public Connection getConnection()throws SQLException{
+    public Connection getConnection() throws SQLException, ClassNotFoundException {
+        DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 
-        return DriverManager.getConnection(db_host,db_user,db_password) ;
+        return DriverManager.getConnection(db_host,db_user,db_password);
     }
 }

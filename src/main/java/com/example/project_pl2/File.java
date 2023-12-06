@@ -1,5 +1,7 @@
 package com.example.project_pl2;
 
+import java.io.*;
+
 public interface File {
      void update();
 
@@ -7,5 +9,5 @@ public interface File {
 
       String read();
 
-      void write(String content);
+      void write(int id,String content,String email,String password)throws IOException;
 }
