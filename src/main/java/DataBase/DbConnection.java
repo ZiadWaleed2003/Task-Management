@@ -5,7 +5,7 @@ import java.sql.*;
 
 
 public class DbConnection {
-    private final String db_host     = "localhost:3306";
+    private final String db_host     = "jdbc:mysql://localhost:3306/plproject";
     private final String db_password = "mssqlsucks123";
     private final String db_user     = "root";
 

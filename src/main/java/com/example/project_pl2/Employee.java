@@ -33,9 +33,10 @@ public class Employee extends Person{
     @Override
     public boolean login(String email, String password) throws SQLException {
 
-        String Query = "SELECT Emp_Email , Emp_Password FROM Employee WHERE Emp_Password = '`password`' AND Emp_Email = '`email`' ";
+        String Query = "SELECT Emp_Email , Emp_Password FROM Employee WHERE Emp_Email = ? AND Emp_Password = ? ";
 
         ResultSet result = readDb(Query);
+        result.next();
 
         if(result.isBeforeFirst()){
             this.email    = result.getNString("Emp_Email");
@@ -74,10 +75,11 @@ public class Employee extends Person{
             Connection connection1      = connection.getConnection();
             PreparedStatement statement = connection1.prepareStatement(Query);
 
+            statement.setObject(1,"ZiadWaleed@gmail.com");
+            statement.setObject(2,"2003");
 
             // Execute the statement and get the results
             ResultSet resultSet = statement.executeQuery();
-            resultSet.next();
             return resultSet;
 
         } catch (SQLException | ClassNotFoundException e) {
