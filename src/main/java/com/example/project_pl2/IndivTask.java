@@ -8,7 +8,7 @@ public class IndivTask {
     protected String description;
     protected Utility.CompletionStatus status;
     protected int assigned_to;
-    protected int project;
+    protected int parent_project_id;
     protected Priority priority;
     protected Date start_date;
     protected Date due_date;
@@ -19,13 +19,13 @@ public class IndivTask {
         public IndivTask(){
 
         }
-        public IndivTask(int id, String name, String description, Utility.CompletionStatus status, int assigned_to, int project, Priority priority, Date start_date, Date due_date) {
+        public IndivTask(int id, String name, String description, Utility.CompletionStatus status, int assigned_to, int parent_project_id, Priority priority, Date start_date, Date due_date) {
             this.id = id;
             this.name = name;
             this.description = description;
             this.status = status;
             this.assigned_to = assigned_to;
-            this.project = project;
+            this.parent_project_id = parent_project_id;
             this.priority = priority;
             this.start_date = start_date;
             this.due_date = due_date;
@@ -68,11 +68,11 @@ public class IndivTask {
         }
 
         public int getProject() {
-            return project;
+            return parent_project_id;
         }
 
-        public void setProject(int project) {
-            this.project = project;
+        public void setProject(int parent_project_id) {
+            this.parent_project_id = parent_project_id;
         }
 
         public Priority getPriority() {
