@@ -23,13 +23,14 @@ public class Project {
 
     Project(int team_id, String project_title){
         this.team_id = team_id;
-        this.project_id = Utility.generateID(team_id);
+        this.project_id = Utility.generateID(team_id); //read id from db after push project
         this.project_title = project_title;
         this.project_description.append("To be set.");
         this.current_status = Utility.CompletionStatus.PENDING;
         this.internal_task_count =0;
         this.current_progress = calculateProgress();
-    } //TODO: add full constructor.
+
+    }
 
     public void setProjectDesc(String desc){
         this.project_description.delete(0, this.project_description.length()-1);
@@ -69,6 +70,10 @@ public class Project {
             }
         }
         return  (comp_tsks/this.internal_tasks.size())*10;
-
     }
 }
+
+    //method generate return query data required for db
+    //make result set construct to return query
+
+
