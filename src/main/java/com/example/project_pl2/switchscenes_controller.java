@@ -21,6 +21,12 @@ public class switchscenes_controller {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+//        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Admin.fxml"));
+//        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+//        stage.setScene(scene);
+//        stage.setResizable(false);
+//        stage.show();
     }
 
     public void switchToEmployee(ActionEvent event) throws IOException {
@@ -29,5 +35,11 @@ public class switchscenes_controller {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+//        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Employee.fxml"));
+//        Scene scene = new Scene(fxmlLoader.load());
+//        stage.setScene(scene);
+//        stage.setResizable(false);
+//        stage.show();
     }
 }

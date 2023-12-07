@@ -3,7 +3,7 @@ package com.example.project_pl2;
 
 import java.sql.SQLException;
 
-public abstract class Person implements CRUD {
+public abstract class Person extends CRUD2 {
 
     protected String name;
     protected String email;
