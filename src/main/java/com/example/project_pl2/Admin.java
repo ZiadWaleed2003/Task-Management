@@ -65,10 +65,7 @@ public class Admin extends Person implements File{
 
     }
 
-    @Override
-    public boolean updateDb(String Query) {
-        return false;
-    }
+
 
     public ResultSet readDbDynamic(String query, String[] args){return null;};
 
@@ -77,7 +74,7 @@ public class Admin extends Person implements File{
         return false;
     }
 
-    @Override
+
     public ResultSet readDb(String Query) {
         return null;
     }
