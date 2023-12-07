@@ -4,6 +4,10 @@ import javafx.concurrent.Task;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 
@@ -70,6 +74,36 @@ public class Project {
             }
         }
         return  (comp_tsks/this.internal_tasks.size())*10;
+    }
+    public String generateQueryStatement(String conditionColumn) {
+        // Constructing SQL query statement for demonstration purposes
+        String query = "SELECT Project_Id,Project_Title,Project_desc,Project_status FROM project WHERE " + conditionColumn + " = ?";
+
+        return query;
+    }
+    public String resultSet(Connection connection, String query) {
+        String result = "";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            /* Process the ResultSet */
+            if (resultSet.next()) {
+                int project_id = resultSet.getInt("Project_Id");
+                String project_Title = resultSet.getString("Project_Title");
+
+                result = "Project ID: " + project_id + ", Project Name: " + project_Title;
+            } else {
+                result = "No project found with the given parameters.";
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle exceptions
+        }
+        return result;
     }
 }
 
