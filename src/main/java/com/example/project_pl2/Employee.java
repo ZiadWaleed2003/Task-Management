@@ -7,7 +7,7 @@ import java.util.*;
 public class Employee extends Person{
 
 
-    private enum EmpType {
+    public enum EmpType {
         LEADER , MEMBER
     }
 
@@ -25,7 +25,20 @@ public class Employee extends Person{
 
     private String role;
 
+    public Employee(){}
 
+    public Employee(String name, String email, String password, int id, EmpType emp_type, int team_id,
+                    String department, String role) {
+        super(name, email, password, id);
+        this.emp_type = emp_type;
+        this.team_id = team_id;
+        this.department = department;
+        this.role = role;
+    }
+
+    public Employee(ResultSet set) throws SQLException{
+
+    }
 
     public static boolean login(String email, String password) throws SQLException {
 
