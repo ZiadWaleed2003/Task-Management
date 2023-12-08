@@ -1,6 +1,7 @@
 package com.example.project_pl2;
 import java.io.*;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 
 public class Admin extends Person implements File{
@@ -54,7 +55,17 @@ public class Admin extends Person implements File{
     public void showProjectProgress (){
 
     }
-    public void reviewRequest (){
+    public void reviewRequests () throws SQLException {
+
+        String query = "SELECT * from Request";
+
+        ResultSet result = CRUD2.readDbDynamic(query);
+
+        if(result.isBeforeFirst()){
+
+        }else{
+            System.out.print("No Requests available to review");
+        }
 
     }
 
