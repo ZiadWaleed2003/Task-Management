@@ -1,8 +1,10 @@
 package com.example.project_pl2;
 
 import javafx.concurrent.Task;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -81,10 +83,16 @@ public class Project {
     }
 
     public boolean deleteProject(int project_id) {
-        String query="Delete from project where project_id = "+project_id;
-        CRUD2 delete=new CRUD2();
-        boolean check=delete.deleteDb(query);
-        return check;
+        String query = "Delete from project where project_id = ?";
+
+        Integer Project_Id = project_id;
+
+        Integer[] args = {Project_Id};
+
+
+        Pair<Boolean,Integer> check = CRUD2.updateDbDynamic(query,args);
+
+        return check.getKey();
 
     }
     private int calculateProgress(){
