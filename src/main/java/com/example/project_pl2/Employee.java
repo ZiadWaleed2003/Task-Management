@@ -1,7 +1,8 @@
 package com.example.project_pl2;
 
 import java.sql.*;
-import java.util.List;
+import java.util.*;
+
 
 public class Employee extends Person{
 
@@ -25,20 +26,23 @@ public class Employee extends Person{
     private String role;
 
 
-    @Override
-    public boolean login(String email, String password) throws SQLException {
+
+    public static boolean login(String email, String password) throws SQLException {
 
         String query = "SELECT Emp_Email , Emp_Password FROM Employee WHERE Emp_Email = ? AND Emp_Password = ?";
 
         String[] arguments = {email, password};
-        ResultSet result = CRUD2.queryDbDynamic(query , arguments);
+
+        ResultSet result = CRUD2.readDbDynamic(query,arguments);
 
         if(result.isBeforeFirst()){
             result.next();
-            this.email    = result.getNString("Emp_Email");
-            this.password = result.getNString("Emp_Password");
 
-            System.out.println("Email : " + this.email + "\nPassword is : " + this.password);
+           //TODO : singleton instance to be inserted here !
+
+
+
+//            System.out.println("Email : " + this.email + "\nPassword is : " + this.password);
         }else{
             System.out.println("Error");
             return false;
@@ -46,6 +50,8 @@ public class Employee extends Person{
 
         return false;
     }
+
+
 
     @Override
     public String getName() {

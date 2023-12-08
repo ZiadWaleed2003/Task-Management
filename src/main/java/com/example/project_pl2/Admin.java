@@ -45,8 +45,8 @@ public class Admin extends Person implements File{
         this.email = email;
     }
 
-    @Override
-    public boolean login(String email, String password) {
+
+    public static boolean login(String email, String password) {
         return false;
     }
 

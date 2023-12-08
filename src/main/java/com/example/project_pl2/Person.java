@@ -20,6 +20,8 @@ public abstract class Person extends CRUD2 {
     public abstract void setPassword(String password);
     public abstract void setEmail(String email);
 
-    public abstract boolean login(String email , String password) throws SQLException;
+    public static boolean login(String email , String password) throws SQLException{
+        return false;
+    };
 
 }

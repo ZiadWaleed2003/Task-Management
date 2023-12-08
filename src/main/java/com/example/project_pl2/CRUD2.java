@@ -9,7 +9,7 @@ public abstract class CRUD2 {
 
 
     // Pair allows us to get the id of the affected row when the query is valid on the spot
-    public static Pair<Boolean, Integer> updateDb(String query){
+    public static Pair<Boolean, Integer> updateDbDynamic(String query){
 
         DbConnection db_conn = new DbConnection();
 
@@ -37,6 +37,9 @@ public abstract class CRUD2 {
         }
         return new Pair<Boolean, Integer>(false, null);
     }
+
+
+
     public static Pair<Boolean, Integer> updateDbDynamic(String query ,Object[] args ){
 
         DbConnection db_conn = new DbConnection();
@@ -67,7 +70,11 @@ public abstract class CRUD2 {
         return new Pair<Boolean, Integer>(false, null);
     }
 
-    public static ResultSet queryDb(String query){
+
+
+
+
+    public static ResultSet readDbDynamic(String query){
         DbConnection db_conn = new DbConnection();
         try {
             Connection conn_obj = db_conn.getConnection();
@@ -79,7 +86,11 @@ public abstract class CRUD2 {
             throw new RuntimeException(e);
         }
     }
-    public static ResultSet queryDbDynamic(String query, Object[] args){
+
+
+
+
+    public static ResultSet readDbDynamic(String query, Object[] args){
         DbConnection db_conn = new DbConnection();
         try {
             Connection conn_obj = db_conn.getConnection();
