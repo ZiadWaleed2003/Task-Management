@@ -236,3 +236,19 @@
 2023-12-07T15:35:06.354761Z 0 [ERROR] [MY-010257] [Server] Do you already have another mysqld server running on port: 3306 ?
 2023-12-07T15:35:06.355164Z 0 [ERROR] [MY-010119] [Server] Aborting
 2023-12-07T15:35:07.585779Z 0 [System] [MY-010910] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe: Shutdown complete (mysqld 8.0.35)  MySQL Community Server - GPL.
+2023-12-08T12:46:31.690010Z 0 [System] [MY-010116] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe (mysqld 8.0.35) starting as process 6300
+2023-12-08T12:46:31.751283Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2023-12-08T12:46:32.108456Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2023-12-08T12:46:32.591599Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2023-12-08T12:46:32.591945Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2023-12-08T12:46:32.598108Z 0 [ERROR] [MY-010262] [Server] Can't start server: Bind on TCP/IP port: Only one usage of each socket address (protocol/network address/port) is normally permitted. 
+2023-12-08T12:46:32.598598Z 0 [ERROR] [MY-010257] [Server] Do you already have another mysqld server running on port: 3306 ?
+2023-12-08T12:46:32.599012Z 0 [ERROR] [MY-010119] [Server] Aborting
+2023-12-08T12:46:33.835516Z 0 [System] [MY-010910] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe: Shutdown complete (mysqld 8.0.35)  MySQL Community Server - GPL.
+2023-12-08T15:50:55.126524Z 0 [System] [MY-010116] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe (mysqld 8.0.35) starting as process 7172
+2023-12-08T15:50:55.186344Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2023-12-08T15:50:55.429874Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2023-12-08T15:50:55.727803Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2023-12-08T15:50:55.728041Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2023-12-08T15:50:55.774100Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
+2023-12-08T15:50:55.774123Z 0 [System] [MY-010931] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe: ready for connections. Version: '8.0.35'  socket: ''  port: 3306  MySQL Community Server - GPL.
