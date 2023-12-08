@@ -13,21 +13,20 @@ import java.sql.SQLException;
 
 public class Project {
     //IDs:
-    protected final int project_id;
-    protected final int team_id;
+    protected int project_id;
+    protected int team_id;
     //Progress
     protected Utility.CompletionStatus current_status;
     protected int internal_task_count;
     protected ArrayList<IndivTask> internal_tasks;
     protected int current_progress;
-
     //Desc:
-    protected final String project_title;
+    protected String project_title;
     protected StringBuilder project_description = new StringBuilder(); //NOTE: probably doing this wrong
 
     Project(int team_id, String project_title){
         this.team_id = team_id;
-        this.project_id = Utility.generateID(team_id); //read id from db after push project
+        this.project_id =project_id;
         this.project_title = project_title;
         this.project_description.append("To be set.");
         this.current_status = Utility.CompletionStatus.PENDING;
@@ -66,6 +65,28 @@ public class Project {
         return this.project_description.toString();
     }
 
+    public void createProject(int team_id, String project_title,String project_desc) {
+        this.team_id = team_id;
+        // need to connect project_id from db id counter
+        this.project_id =project_id;
+        this.project_title = project_title;
+        this.project_description= new StringBuilder(project_desc);
+        this.current_status = Utility.CompletionStatus.PENDING;
+        this.internal_task_count =0;
+        this.current_progress = calculateProgress();
+    }
+
+    public void updateProjectData(String desc) {
+        setProjectDesc(desc);
+    }
+
+    public boolean deleteProject(int project_id) {
+        String query="Delete from project where project_id = "+project_id;
+        CRUD2 delete=new CRUD2();
+        boolean check=delete.deleteDb(query);
+        return check;
+
+    }
     private int calculateProgress(){
         int comp_tsks = 0;
         for (IndivTask tsk: this.internal_tasks) {
@@ -75,10 +96,10 @@ public class Project {
         }
         return  (comp_tsks/this.internal_tasks.size())*10;
     }
-    public String generateQueryStatement(String conditionColumn) {
-        // Constructing SQL query statement for demonstration purposes
-        String query = "SELECT Project_Id,Project_Title,Project_desc,Project_status FROM project WHERE " + conditionColumn + " = ?";
 
+    public String generateQueryStatement(int project_id) {
+        // Constructing SQL query statement for demonstration purposes
+        String query = "SELECT Project_Id,Project_Title,Project_desc,Project_status FROM project WHERE project_id" + project_id;
         return query;
     }
     public String resultSet(Connection connection, String query) {
