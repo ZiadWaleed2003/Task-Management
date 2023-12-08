@@ -26,6 +26,16 @@
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.team" active-filter-id="" />
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.employee" active-filter-id="" />
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.task" active-filter-id="" />
+    <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.project" active-filter-id="e3ac8fda-2ab5-4fe8-95e6-2fabbd042ecd">
+      <filter id="e3ac8fda-2ab5-4fe8-95e6-2fabbd042ecd" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="Project_Id" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
+    <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.request" active-filter-id="4f9cbf79-990d-45c9-9caf-b86c6c17a5e9">
+      <filter id="4f9cbf79-990d-45c9-9caf-b86c6c17a5e9" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="Request_Id" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
@@ -531,8 +541,8 @@
   <component name="DBNavigator.Project.StatementExecutionManager">
     <execution-variables>
       <file file-url="db://d83c7348-baeb-4210-9231-5a55901a9fed/consoles/MySQL Connection">
-        <variable name="it" data-type="LITERAL" />
         <variable name="2" data-type="LITERAL" />
+        <variable name="it" data-type="LITERAL" />
       </file>
     </execution-variables>
     <execution-variable-types>
