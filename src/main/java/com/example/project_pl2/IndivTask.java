@@ -99,6 +99,8 @@ public class IndivTask {
             this.due_date = due_date;
         }
         // after getter and setter
-        // TODo (i need to know the main function that related to IndivTask )
+        // TODO (i need to know the main function that related to IndivTask)
+        // TODO (DO time Card to calculate from the first time login until to logout (Triplet<Int, Date, Date> triplet = new Triplet<Int, Date, Date>(imp_id, start, end))
+        // TODO (to delete task Set as canceled in progess
     }
 
