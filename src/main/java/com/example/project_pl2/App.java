@@ -45,7 +45,7 @@ public class App extends Application{
     public static void main(String[] args) {
         //launch();
         Object[] arrgs = {5, "Test query for dynamic DML func", "Something"};
-        Pair<Boolean, Integer> res = CRUD2.updateDb("INSERT INTO request (Request_Id, Request_Desc," +
+        Pair<Boolean, Integer> res = CRUD2.updateDbDynamic("INSERT INTO request (Request_Id, Request_Desc," +
                 "Request_type) VALUES (?, ?, ?)",arrgs);
     }
 

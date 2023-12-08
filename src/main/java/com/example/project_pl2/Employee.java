@@ -33,7 +33,7 @@ public class Employee extends Person{
 
         String[] arguments = {email, password};
 
-        ResultSet result = CRUD2.readDb(query, arguments);
+        ResultSet result = CRUD2.readDbDynamic(query,arguments);
 
         if(result.isBeforeFirst()){
             result.next();
