@@ -1,18 +1,16 @@
 package com.example.project_pl2;
 
-import DataBase.DbConnection;
-
 import java.sql.*;
 import java.util.List;
 
 public class Employee extends Person{
 
 
-    private enum emp_type {
-        TeamLeader , TeamMember
+    private enum EmpType {
+        LEADER , MEMBER
     }
 
-    private emp_type Emp_type;
+    private EmpType emp_type;
 
     private List<String> task_id;
 
@@ -32,10 +30,8 @@ public class Employee extends Person{
 
         String query = "SELECT Emp_Email , Emp_Password FROM Employee WHERE Emp_Email = ? AND Emp_Password = ?";
 
-        CRUD2 crud = new CRUD2();
-
         String[] arguments = {email, password};
-        ResultSet result = crud.readDbDynamic(query , arguments);
+        ResultSet result = CRUD2.queryDbDynamic(query , arguments);
 
         if(result.isBeforeFirst()){
             result.next();
@@ -140,12 +136,12 @@ public class Employee extends Person{
     }
 
 
-    public void setEmp_type(String Emp_Type){
+    public void setEmptype(String e_type){
 
-        if(Emp_Type.equals("TeamLeader")){
-            this.Emp_type = emp_type.TeamLeader;
+        if(e_type.equals("TeamLeader")){
+            this.emp_type = EmpType.LEADER;
         }else{
-            this.Emp_type = emp_type.TeamMember;
+            this.emp_type = EmpType.MEMBER;
         }
     }
 }

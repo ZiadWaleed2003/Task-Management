@@ -14,6 +14,7 @@ import java.io.*;
 import java.sql.*;
 
 import  javafx.fxml.FXMLLoader.*;
+import javafx.util.Pair;
 //>>>>>>> main
 
 public class App extends Application{
@@ -42,7 +43,10 @@ public class App extends Application{
 
 //<<<<<<< HEAD
     public static void main(String[] args) {
-        launch();
+        //launch();
+        Object[] arrgs = {5, "Test query for dynamic DML func", "Something"};
+        Pair<Boolean, Integer> res = CRUD2.updateDbDynamic("INSERT INTO request (Request_Id, Request_Desc," +
+                "Request_type) VALUES (?, ?, ?)",arrgs);
     }
 
 //=======

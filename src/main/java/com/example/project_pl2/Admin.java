@@ -65,25 +65,6 @@ public class Admin extends Person implements File{
 
     }
 
-
-
-    public ResultSet readDbDynamic(String query, String[] args){return null;};
-
-    @Override
-    public boolean insertDb(String Query) {
-        return false;
-    }
-
-
-    public ResultSet readDb(String Query) {
-        return null;
-    }
-
-    @Override
-    public boolean deleteDb(String Query) {
-        return false;
-    }
-
     @Override
     public void update() {
 
