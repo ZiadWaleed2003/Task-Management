@@ -531,8 +531,8 @@
   <component name="DBNavigator.Project.StatementExecutionManager">
     <execution-variables>
       <file file-url="db://d83c7348-baeb-4210-9231-5a55901a9fed/consoles/MySQL Connection">
-        <variable name="2" data-type="LITERAL" />
         <variable name="it" data-type="LITERAL" />
+        <variable name="2" data-type="LITERAL" />
       </file>
     </execution-variables>
     <execution-variable-types>

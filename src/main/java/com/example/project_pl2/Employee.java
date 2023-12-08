@@ -31,8 +31,11 @@ public class Employee extends Person{
     public boolean login(String email, String password) throws SQLException {
 
         String query = "SELECT Emp_Email , Emp_Password FROM Employee WHERE Emp_Email = ? AND Emp_Password = ?";
+
+        CRUD2 crud = new CRUD2();
+
         String[] arguments = {email, password};
-        ResultSet result = readDbDynamic(query, arguments);
+        ResultSet result = crud.readDbDynamic(query , arguments);
 
         if(result.isBeforeFirst()){
             result.next();
@@ -45,54 +48,6 @@ public class Employee extends Person{
             return false;
         }
 
-        return false;
-    }
-
-    @Override
-    public boolean updateDb(String query) {
-        return false;
-    }
-
-    @Override
-    public boolean insertDb(String query) {
-        return false;
-    }
-
-    @Override
-    public ResultSet readDb(String query)  {
-        DbConnection conn = new DbConnection();
-        try {
-            Connection connection = conn.getConnection();
-            Statement statement = connection.createStatement();
-
-            // Execute the statement and get the results
-            return statement.executeQuery(query);
-
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    @Override
-    public ResultSet readDbDynamic(String query, String[] args)  {
-        DbConnection conn = new DbConnection();
-        try {
-            Connection connection = conn.getConnection();
-            PreparedStatement statement = connection.prepareStatement(query);
-            int i = 1;
-            for (String arg: args) {
-                statement.setObject(i++, arg);
-            }
-
-            // Execute the statement and get the results
-            return statement.executeQuery();
-
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public boolean deleteDb(String query) {
         return false;
     }
 
