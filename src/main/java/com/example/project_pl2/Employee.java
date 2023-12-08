@@ -37,7 +37,7 @@ public class Employee extends Person{
         if (set.isBeforeFirst()){
             set.next();
             for (int i = 0; i<9; i++){
-                res[i] = set.getNString(i);
+                res[i] = set.getObject(i);
             }
         }
         super.name = (String) res[2];
