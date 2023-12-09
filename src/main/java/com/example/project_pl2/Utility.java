@@ -10,7 +10,8 @@ public interface Utility {
     }
     public class UserSingle{
          private static UserSingle instance = null;
-         public Employee data = null;
+         public Employee emp = null;
+         public Admin admin = null;
          private UserSingle(){}
          public static UserSingle getInstance(){
              if (instance == null){
