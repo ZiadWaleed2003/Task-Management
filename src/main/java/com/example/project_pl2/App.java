@@ -30,6 +30,8 @@ public class App extends Application{
         stage.setScene(scene);
         stage.show();
 
+
+
 //        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("MainPage.fxml"));
 //        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 //        stage.setTitle("WELCOME TO ELZOZAT TASK MANAGER");
@@ -40,13 +42,12 @@ public class App extends Application{
 
 
     }
-
 //<<<<<<< HEAD
     public static void main(String[] args) {
-        //launch();
-        Object[] arrgs = {5, "Test query for dynamic DML func", "Something"};
-        Pair<Boolean, Integer> res = CRUD2.updateDbDynamic("INSERT INTO request (Request_Id, Request_Desc," +
-                "Request_type) VALUES (?, ?, ?)",arrgs);
+        launch();
+//        Object[] arrgs = {5, "Test query for dynamic DML func", "Something"};
+//        Pair<Boolean, Integer> res = CRUD2.updateDbDynamic("INSERT INTO request (Request_Id, Request_Desc," +
+//                "Request_type) VALUES (?, ?, ?)",arrgs);
     }
 
 //=======

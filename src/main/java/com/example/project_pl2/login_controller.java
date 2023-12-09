@@ -3,19 +3,33 @@ package com.example.project_pl2;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 
 
 public class login_controller {
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
     @FXML
     private Label err_message_label;
     @FXML
     private TextField emailtextfield;
     @FXML
     private PasswordField passwordtextfield;
+
+    Employee MyEmployee = new Employee();
+    private boolean Success;
+
 
     @FXML
     public void LoginButtonAction(ActionEvent event) throws IOException {
@@ -26,7 +40,8 @@ public class login_controller {
             err_message_label.setVisible(true);
             return;
         }
-        if (login(email, password)) {
+        if ((login(email, password))) {
+            switchToAdmin(event);
             //login successfull
             //TODO implement if login successful after checking DB
         } else {
@@ -37,6 +52,17 @@ public class login_controller {
 
     private boolean login(String email, String password) {
         //TODO implement logic to check if username and pass exist in DB
+        email = "Zyad";
+        password = "123d";
         return true;
+    }
+
+    public void switchToAdmin(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("Admin_Dashboard.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
     }
 }
