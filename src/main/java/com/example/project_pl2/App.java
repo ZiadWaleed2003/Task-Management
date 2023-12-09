@@ -44,10 +44,22 @@ public class App extends Application{
     }
 //<<<<<<< HEAD
     public static void main(String[] args) {
+<<<<<<< HEAD
         launch();
 //        Object[] arrgs = {5, "Test query for dynamic DML func", "Something"};
 //        Pair<Boolean, Integer> res = CRUD2.updateDbDynamic("INSERT INTO request (Request_Id, Request_Desc," +
 //                "Request_type) VALUES (?, ?, ?)",arrgs);
+=======
+        //launch();
+        Object[] arrgs = {12, "Test query for dynamic DML func", "Something"};
+        Pair<Boolean, Integer> res = CRUD2.updateDbDynamic("INSERT INTO request (Request_Id, Request_Desc," +
+                "Request_type) VALUES (?, ?, ?)",arrgs);
+        if(res.getKey())
+            System.out.print("result is : ");
+        else
+            System.out.print("Fasle");
+
+>>>>>>> 3f37d5115c500ccc11d60f14ea85078edfc981f8
     }
 
 //=======
