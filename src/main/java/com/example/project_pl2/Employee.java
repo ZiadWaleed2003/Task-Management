@@ -1,18 +1,17 @@
 package com.example.project_pl2;
 
-import DataBase.DbConnection;
-
 import java.sql.*;
-import java.util.List;
+import java.util.*;
+
 
 public class Employee extends Person{
 
 
-    private enum emp_type {
-        TeamLeader , TeamMember
+    public enum EmpType {
+        LEADER , MEMBER
     }
 
-    private emp_type Emp_type;
+    private EmpType emp_type;
 
     private List<String> task_id;
 
@@ -20,25 +19,53 @@ public class Employee extends Person{
 
     private double time_card;
 
-    private List<String> request_id;
-
-    private String department;
+    private int request_id;
 
     private String role;
 
+    public Employee(){}
 
-    @Override
-    public boolean login(String email, String password) throws SQLException {
+    public Employee(String name, String email, String password, int id, EmpType emp_type, int team_id, String role) {
+        super(name, email, password, id);
+        this.emp_type = emp_type;
+        this.team_id = team_id;
+        this.role = role;
+    }
 
-        String Query = "SELECT Emp_Email , Emp_Password FROM Employee ";
-        ResultSet result = readDb(Query);
+    public Employee(ResultSet set) throws SQLException{
+        Object[] res = new Object[9];
+        if (set.isBeforeFirst()){
+            set.next();
+            for (int i = 0; i<9; i++){
+                res[i] = set.getObject(i);
+            }
+        }
+        super.name = (String) res[2];
+        super.email = (String) res[1];
+        super.password = (String) res[3];
+        super.id = (int) res[0];
+        this.emp_type = (EmpType) res[6];
+        this.team_id = (int) res[8];
+        this.time_card = (double) res[9];
+        this.request_id = (int) res[7];
+        this.role = (String) res[5];
+
+        }
+
+    public static boolean login(String email, String password) throws SQLException {
+
+        String query = "SELECT * FROM Employee WHERE Emp_Email = ? AND Emp_Password = ?";
+
+        String[] arguments = {email, password};
+
+        ResultSet result = CRUD2.readDbDynamic(query,arguments);
 
         if(result.isBeforeFirst()){
             result.next();
-            this.email    = result.getNString("Emp_Email");
-            this.password = result.getNString("Emp_Password");
-
-            System.out.println("Email : " + this.email + "\nPassword is : " + this.password);
+            Employee emp = new Employee(result);
+            Utility.UserSingle CurrentUser = Utility.UserSingle.getInstance();
+            CurrentUser.emp = emp;
+//          System.out.println("Email : " + this.email + "\nPassword is : " + this.password);
         }else{
             System.out.println("Error");
             return false;
@@ -47,35 +74,7 @@ public class Employee extends Person{
         return false;
     }
 
-    @Override
-    public boolean updateDb(String Query) {
-        return false;
-    }
 
-    @Override
-    public boolean insertDb(String Query) {
-        return false;
-    }
-
-    @Override
-    public ResultSet readDb(String Query)  {
-        DbConnection conn = new DbConnection();
-        try {
-            Connection connection = conn.getConnection();
-            Statement statement = connection.createStatement();
-
-            // Execute the statement and get the results
-            return statement.executeQuery(Query);
-
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public boolean deleteDb(String Query) {
-        return false;
-    }
 
     @Override
     public String getName() {
@@ -116,15 +115,6 @@ public class Employee extends Person{
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public String getDepartment() {
-        return this.department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
     public String getRole() {
         return role;
     }
@@ -157,21 +147,21 @@ public class Employee extends Person{
         this.task_id = task_id;
     }
 
-    public List<String> getRequest_id() {
+    public int getRequest_id() {
         return request_id;
     }
 
-    public void setRequest_id(List<String> request_id) {
+    public void setRequest_id(int request_id) {
         this.request_id = request_id;
     }
 
 
-    public void setEmp_type(String Emp_Type){
+    public void setEmptype(String e_type){
 
-        if(Emp_Type.equals("TeamLeader")){
-            this.Emp_type = emp_type.TeamLeader;
+        if(e_type.equals("TeamLeader")){
+            this.emp_type = EmpType.LEADER;
         }else{
-            this.Emp_type = emp_type.TeamMember;
+            this.emp_type = EmpType.MEMBER;
         }
     }
 }

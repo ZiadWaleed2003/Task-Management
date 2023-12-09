@@ -1,0 +1,24 @@
+
+.button {
+    -fx-background-color: #19017D;
+    -fx-border-color: #212121;
+}
+
+#LoginAsAdmin:hover {
+    -fx-background-color: #d2a1ef;
+}
+#LoginAsAdmin:hover{
+    -fx-background-color: #ff0000;
+
+}
+/* A PROBLEM WITH THE HOVERING THINGY NB2A NSHOFHA B3DEN 34AN ETF23T*/
+
+
+/* Style the error message label */
+.error-label {
+    -fx-text-fill: red;
+    -fx-font-weight: bold;
+}
+
+
+
