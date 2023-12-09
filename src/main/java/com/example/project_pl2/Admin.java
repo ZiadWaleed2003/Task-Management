@@ -1,6 +1,10 @@
 package com.example.project_pl2;
+import javafx.util.Pair;
+
 import java.io.*;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 
 public class Admin extends Person implements File{
@@ -54,13 +58,45 @@ public class Admin extends Person implements File{
     public void showProjectProgress (){
 
     }
-    public void reviewRequest (){
+
+    public void reviewRequests () throws SQLException {
+    //TODO : change the return Type of this function into Request
+
+        String query = "SELECT * from Request";
+
+        ResultSet result = CRUD2.readDbDynamic(query);
+
+//        Request request = new Request ();
+
+        if(result.isBeforeFirst()){
+
+            while(result.next()){
+
+                String x = result.getNString(1);
+            }
+
+        }else{
+            System.out.print("No Requests available to review");
+        }
 
     }
 
-    public void CreateProject (){
+    public boolean CreateProject (int proj_id , int team_id ,Utility.CompletionStatus status,String proj_desc , String proj_Title ){
+
+        String query = "INSERT INTO your_table (Project_id , Assigned_To , Progress_status " +
+                ", Project_desc , Project_Title) VALUES ('proj_id','team_id','status','proj_desc','proj_Title')";
+
+//        Objects [] args = {proj_id,team_id,status,proj_Title,proj_desc};
+
+        Pair <Boolean , Integer> res = CRUD2.updateDbDynamic(query);
+
+        if(res.getKey())
+            return true;
+
+        return false;
 
     }
+
     public void print(){
 
     }

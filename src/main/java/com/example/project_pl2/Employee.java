@@ -7,7 +7,7 @@ import java.util.*;
 public class Employee extends Person{
 
 
-    private enum EmpType {
+    public enum EmpType {
         LEADER , MEMBER
     }
 
@@ -19,17 +19,42 @@ public class Employee extends Person{
 
     private double time_card;
 
-    private List<String> request_id;
-
-    private String department;
+    private int request_id;
 
     private String role;
 
+    public Employee(){}
 
+    public Employee(String name, String email, String password, int id, EmpType emp_type, int team_id, String role) {
+        super(name, email, password, id);
+        this.emp_type = emp_type;
+        this.team_id = team_id;
+        this.role = role;
+    }
+
+    public Employee(ResultSet set) throws SQLException{
+        Object[] res = new Object[9];
+        if (set.isBeforeFirst()){
+            set.next();
+            for (int i = 0; i<9; i++){
+                res[i] = set.getObject(i);
+            }
+        }
+        super.name = (String) res[2];
+        super.email = (String) res[1];
+        super.password = (String) res[3];
+        super.id = (int) res[0];
+        this.emp_type = (EmpType) res[6];
+        this.team_id = (int) res[8];
+        this.time_card = (double) res[9];
+        this.request_id = (int) res[7];
+        this.role = (String) res[5];
+
+        }
 
     public static boolean login(String email, String password) throws SQLException {
 
-        String query = "SELECT Emp_Email , Emp_Password FROM Employee WHERE Emp_Email = ? AND Emp_Password = ?";
+        String query = "SELECT * FROM Employee WHERE Emp_Email = ? AND Emp_Password = ?";
 
         String[] arguments = {email, password};
 
@@ -37,12 +62,10 @@ public class Employee extends Person{
 
         if(result.isBeforeFirst()){
             result.next();
-
-           //TODO : singleton instance to be inserted here !
-
-
-
-//            System.out.println("Email : " + this.email + "\nPassword is : " + this.password);
+            Employee emp = new Employee(result);
+            Utility.UserSingle CurrentUser = Utility.UserSingle.getInstance();
+            CurrentUser.emp = emp;
+//          System.out.println("Email : " + this.email + "\nPassword is : " + this.password);
         }else{
             System.out.println("Error");
             return false;
@@ -92,15 +115,6 @@ public class Employee extends Person{
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public String getDepartment() {
-        return this.department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
     public String getRole() {
         return role;
     }
@@ -133,11 +147,11 @@ public class Employee extends Person{
         this.task_id = task_id;
     }
 
-    public List<String> getRequest_id() {
+    public int getRequest_id() {
         return request_id;
     }
 
-    public void setRequest_id(List<String> request_id) {
+    public void setRequest_id(int request_id) {
         this.request_id = request_id;
     }
 

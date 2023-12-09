@@ -3,13 +3,20 @@ package com.example.project_pl2;
 
 import java.sql.SQLException;
 
-public abstract class Person extends CRUD2 {
+public abstract class Person {
 
     protected String name;
     protected String email;
     protected String password;
     protected int id;
 
+    public Person(){}
+    public Person(String name, String email, String password, int id) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.id = id;
+    }
 
     public abstract String getName();
     public abstract String getPassword();
