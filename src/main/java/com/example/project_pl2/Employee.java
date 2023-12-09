@@ -63,7 +63,8 @@ public class Employee extends Person{
         if(result.isBeforeFirst()){
             result.next();
 
-           //TODO : singleton instance to be inserted here !
+             //TODO : singleton instance to be inserted here !
+            // Probably will modify in bassel's work in emp parametrized construct
 
 
 
