@@ -69,18 +69,14 @@ public class Admin extends Person implements File{
 
         List<Request> Request_list = null;
 
-        /* the next block of code might seem crazy,
-        but it's easy if the query returned a result
-        then assign every row's values to an object
-        and then keep that object in the list of objects called Requst_list
-         */
+
 
         if(result.isBeforeFirst()){
             int i = 0 ;
 
             while(result.next()){
 
-                Request request = new Request();
+                Request request = new Request(result);
                 Request_list.set(i,request);
 
                 i++;
