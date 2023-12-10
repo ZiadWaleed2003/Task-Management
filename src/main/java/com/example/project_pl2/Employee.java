@@ -47,7 +47,7 @@ public class Employee extends Person{
 
     public static boolean login(String email, String password) throws SQLException {
 
-        String query = "SELECT Emp_Email , Emp_Password FROM Employee WHERE Emp_Email = ? AND Emp_Password = ?";
+        String query = "SELECT * FROM Employee WHERE Emp_Email = ? AND Emp_Password = ?";
 
         String[] arguments = {email, password};
 
@@ -55,12 +55,10 @@ public class Employee extends Person{
 
         if(result.isBeforeFirst()){
             result.next();
-
-           //TODO : singleton instance to be inserted here !
-
-
-
-//            System.out.println("Email : " + this.email + "\nPassword is : " + this.password);
+            Employee emp = new Employee(result);
+            Utility.UserSingle CurrentUser = Utility.UserSingle.getInstance();
+            CurrentUser.emp = emp;
+//          System.out.println("Email : " + this.email + "\nPassword is : " + this.password);
         }else{
             System.out.println("Error");
             return false;

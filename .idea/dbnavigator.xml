@@ -13,7 +13,15 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="d83c7348-baeb-4210-9231-5a55901a9fed">
-      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[select * from employee;]]></console>
+      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[insert into request (
+    `Request_Desc`,
+    `Request_Status`,
+    `Request_Type`)
+values (
+    'Ay Haga',
+    false,
+    '3ayez_amshy')
+;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -532,8 +540,8 @@
   <component name="DBNavigator.Project.StatementExecutionManager">
     <execution-variables>
       <file file-url="db://d83c7348-baeb-4210-9231-5a55901a9fed/consoles/MySQL Connection">
-        <variable name="it" data-type="LITERAL" />
         <variable name="2" data-type="LITERAL" />
+        <variable name="it" data-type="LITERAL" />
       </file>
     </execution-variables>
     <execution-variable-types>
