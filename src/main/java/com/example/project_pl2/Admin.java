@@ -59,38 +59,57 @@ public class Admin extends Person implements File{
 
     }
 
-    public void reviewRequests () throws SQLException {
-    //TODO : change the return Type of this function into Request
+    public List<Request> reviewRequests () throws SQLException {
+
 
         String query = "SELECT * from Request";
 
         ResultSet result = CRUD2.readDbDynamic(query);
 
-//        Request request = new Request ();
+        List<Request> Request_list = null;
+
+        /* the next block of code might seem crazy,
+        but it's easy if the query returned a result
+        then assign every row's values to an object
+        and then keep that object in the list of objects called Requst_list
+         */
 
         if(result.isBeforeFirst()){
+            int i = 0 ;
 
             while(result.next()){
 
-                String x = result.getNString(1);
+                Request request = new Request();
+
+                request.set_id(result.getInt("Request_Id"));
+                request.set_description(result.getNString("Request_Desc"));
+                request.set_status(result.getBoolean("Request_Status"));
+                request.set_type(result.getNString("Request_Type"));
+
+                Request_list.set(i,request);
+
+                i++;
+
             }
 
         }else{
             System.out.print("No Requests available to review");
         }
-
+        return Request_list;
     }
+
+
 
     public boolean CreateProject (int proj_id , int team_id ,Utility.CompletionStatus status,String proj_desc , String proj_Title ){
 
-        String query = "INSERT INTO your_table (Project_id , Assigned_To , Progress_status " +
-                ", Project_desc , Project_Title) VALUES ('proj_id','team_id','status','proj_desc','proj_Title')";
+        String query = "INSERT INTO Project (Project_Id , Assigned_To , Progress_status , Project_desc , Project_Title) " +
+                "VALUES" + "(" + proj_id + "," + team_id + "," + status + "," + proj_desc + "," + proj_Title + ")";
 
 //        Objects [] args = {proj_id,team_id,status,proj_Title,proj_desc};
 
-        Pair <Boolean , Integer> res = CRUD2.updateDbDynamic(query);
+        Pair <Boolean , Integer> result = CRUD2.updateDbDynamic(query);
 
-        if(res.getKey())
+        if(result.getKey())
             return true;
 
         return false;
