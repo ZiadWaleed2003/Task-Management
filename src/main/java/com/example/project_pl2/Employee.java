@@ -86,22 +86,22 @@ public class Employee extends Person{
         }
         return result;
     }
-    public Request retrieveAllRequests() throws SQLException{
-        String query = "SELECT * FROM plproject.request WHERE Requested_Id = ?";
+    public ArrayList<Request> retrieveAllRequests() throws SQLException{
+        ArrayList<Request> result =  new ArrayList<Request>();
+        String query = "SELECT * FROM plproject.request WHERE Request_by = ?";
         Integer[] args = {this.id};
         try {
             ResultSet res = CRUD2.readDbDynamic(query, args);
             if (res.isBeforeFirst()) {
-                res.next();
-                return new Request(res);
+                while(res.next()){
+                    result.add(new Request(res));
+                }
             }
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
-        return null;
+        return result;
     }
-
-
     @Override
     public String getName() {
         return this.name;
