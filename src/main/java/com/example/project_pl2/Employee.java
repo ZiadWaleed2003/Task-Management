@@ -13,7 +13,7 @@ public class Employee extends Person{
 
     private EmpType emp_type;
 
-    private List<String> task_id;
+    private List<IndivTask> tasks_list;
 
     private int team_id;
 
@@ -75,6 +75,25 @@ public class Employee extends Person{
 
         return false;
     }
+
+    public ArrayList<IndivTask> constructTasksList() throws SQLException{
+        ArrayList<IndivTask> result =  new ArrayList<IndivTask>();
+        String query = "SELECT * FROM plproject.task WHERE Assigned_To = ?";
+        Integer[] args = {this.id};
+        try {
+            ResultSet res = CRUD2.readDbDynamic(query, args);
+            if (res.isBeforeFirst()) {
+                while(res.next()){
+                    result.add(IndivTask(res));
+                }
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
+
+
 
 
 
@@ -141,13 +160,13 @@ public class Employee extends Person{
         this.team_id = team_id;
     }
 
-    public List<String> getTask_id() {
+ /*   public List<String> getTask_id() {
         return task_id;
     }
-
-    public void setTask_id(List<String> task_id) {
+*/
+/*    public void setTask_id(List<String> task_id) {
         this.task_id = task_id;
-    }
+    }*/
 
     public int getRequest_id() {
         return request_id;
