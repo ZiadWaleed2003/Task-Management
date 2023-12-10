@@ -1,7 +1,9 @@
+.background{
+    -fx-background-color: linear-gradient(to left, #262C4E, #21092D);
+}
+.AdminButtons {
+    -fx-background-color: #d2a1ef;
 
-.button {
-    -fx-background-color: #19017D;
-    -fx-border-color: #212121;
 }
 
 #LoginAsAdmin:hover {

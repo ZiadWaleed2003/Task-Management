@@ -13,7 +13,7 @@
     <children>
         <ImageView fitHeight="738.0" fitWidth="929.0" layoutX="-5.0">
             <image>
-                <Image url="@login_background.jpg" />
+                <Image url="@Images/login_background.jpg" />
             </image>
         </ImageView>
         <AnchorPane layoutX="402.0" layoutY="255.0" prefHeight="11.0" prefWidth="114.0" style="-fx-background-color: #F4A773;" />
