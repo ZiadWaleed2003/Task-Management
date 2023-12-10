@@ -14,14 +14,16 @@
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="d83c7348-baeb-4210-9231-5a55901a9fed">
       <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[ALTER TABLE request
-DROP Request_By;]]></console>
+ADD Request_By int(10) AFTER Request_Id;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" object-ref="consoles/MySQL Connection" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.team" active-filter-id="" />
