@@ -56,6 +56,22 @@ public class AfterLoginAdminController
 //    }
 //
 
+            public void switchToRequests(ActionEvent event) throws IOException {
+                root = FXMLLoader.load(getClass().getResource("Requests.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+
+            }
+            public void switchToEmployees(ActionEvent event) throws IOException {
+                root = FXMLLoader.load(getClass().getResource("EmployeesView.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+
+            }
     public void switchToProjects(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Projects.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

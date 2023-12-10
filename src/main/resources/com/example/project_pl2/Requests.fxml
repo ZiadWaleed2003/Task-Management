@@ -14,12 +14,12 @@
          <children>
             <Pane layoutY="46.0" prefHeight="276.0" prefWidth="223.0" styleClass="button1">
                <children>
-                  <Button layoutX="14.0" layoutY="49.0" mnemonicParsing="false" onAction="#switchToProjects" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #F1E5E5;" styleClass="AdminButtons" stylesheets="@st.css" text="Employees">
+                  <Button layoutX="14.0" layoutY="49.0" mnemonicParsing="false" onAction="#switchToProjects" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #F1E5E5;" styleClass="AdminButtons" stylesheets="@st.css" text="Projects">
                      <font>
                         <Font name="Arial Black" size="23.0" />
                      </font>
                   </Button>
-                  <Button layoutX="14.0" layoutY="197.0" mnemonicParsing="false" onAction="#switchToRequests" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #F1E5E5;" styleClass="AdminButtons" stylesheets="@st.css" text="Requests">
+                  <Button layoutX="14.0" layoutY="197.0" mnemonicParsing="false" onAction="#switchToRequests" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #F1E5E5;" styleClass="AdminButtons" stylesheets="@st.css" text="Employees">
                      <font>
                         <Font name="Arial Black" size="23.0" />
                      </font>
@@ -41,7 +41,7 @@
       </Pane>
       <Pane layoutX="245.0" layoutY="-2.0" prefHeight="45.0" prefWidth="1037.0" styleClass="header">
          <children>
-            <Label layoutX="14.0" layoutY="23.0" prefHeight="46.0" prefWidth="305.0" text="Projects Table">
+            <Label layoutX="14.0" layoutY="23.0" prefHeight="46.0" prefWidth="305.0" text="Requests Table">
                <font>
                   <Font name="Tahoma Bold" size="32.0" />
                </font>
@@ -51,10 +51,9 @@
       <TableView layoutX="252.0" layoutY="140.0" prefHeight="426.0" prefWidth="678.0" style="-fx-background-color: #FFFCFC;" stylesheets="@st.css">
          <columns>
             <TableColumn prefWidth="36.79998779296875" style="-fx-background-color: #4B5085;" text="ID" />
-            <TableColumn prefWidth="132.79998779296875" style="-fx-background-color: #6699EE;" text="Title" />
-            <TableColumn prefWidth="96.79998779296875" style="-fx-background-color: #4B5085;" text="Status" />
-            <TableColumn prefWidth="280.0" style="-fx-background-color: #6699EE;" text="Descreption" />
-            <TableColumn prefWidth="131.199951171875" style="-fx-background-color: #4B5085;" text="Assigned To" />
+            <TableColumn prefWidth="107.2000732421875" style="-fx-background-color: #6699EE;" text="Type" />
+            <TableColumn prefWidth="394.39990234375" style="-fx-background-color: #4B5085;" text="Description" />
+            <TableColumn prefWidth="139.20001220703125" style="-fx-background-color: #6699EE;" text="Status" />
          </columns>
       </TableView>
    </children>
