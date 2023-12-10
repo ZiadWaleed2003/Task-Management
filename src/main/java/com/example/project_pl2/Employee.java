@@ -13,7 +13,10 @@ public class Employee extends Person{
 
     private EmpType emp_type;
 
-    private List<String> task_id;
+    private ArrayList<IndivTask> tasks_list;
+
+    private ArrayList<Request> requests_list;
+
 
     private int team_id;
 
@@ -33,22 +36,15 @@ public class Employee extends Person{
     }
 
     public Employee(ResultSet set) throws SQLException{
-        Object[] res = new Object[9];
-        if (set.isBeforeFirst()){
-            set.next();
-            for (int i = 0; i<9; i++){
-                res[i] = set.getObject(i);
-            }
-        }
-        super.name = (String) res[2];
-        super.email = (String) res[1];
-        super.password = (String) res[3];
-        super.id = (int) res[0];
-        this.emp_type = (EmpType) res[6];
-        this.team_id = (int) res[8];
-        this.time_card = (double) res[9];
-        this.request_id = (int) res[7];
-        this.role = (String) res[5];
+        super.name = set.getNString(2);
+        super.email = set.getNString(1);
+        super.password = set.getNString(3);
+        super.id = set.getInt(0);
+        this.emp_type = EmpType.values()[set.getInt(6)]; //TODO: object -> enum conversion
+        this.team_id = set.getInt(8);
+        this.time_card = set.getDouble(9);
+        this.request_id = set.getInt(7);
+        this.role = set.getNString(5);
 
         }
 
@@ -74,6 +70,36 @@ public class Employee extends Person{
         return false;
     }
 
+    public ArrayList<IndivTask> constructTasksList() throws SQLException{
+        ArrayList<IndivTask> result =  new ArrayList<IndivTask>();
+        String query = "SELECT * FROM plproject.task WHERE Assigned_To = ?";
+        Integer[] args = {this.id};
+        try {
+            ResultSet res = CRUD2.readDbDynamic(query, args);
+            if (res.isBeforeFirst()) {
+                while(res.next()){
+                    result.add(new IndivTask(res));
+                }
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
+    public Request retrieveAllRequests() throws SQLException{
+        String query = "SELECT * FROM plproject.request WHERE Requested_Id = ?";
+        Integer[] args = {this.id};
+        try {
+            ResultSet res = CRUD2.readDbDynamic(query, args);
+            if (res.isBeforeFirst()) {
+                res.next();
+                return new Request(res);
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
 
 
     @Override
@@ -139,13 +165,13 @@ public class Employee extends Person{
         this.team_id = team_id;
     }
 
-    public List<String> getTask_id() {
+ /*   public List<String> getTask_id() {
         return task_id;
     }
-
-    public void setTask_id(List<String> task_id) {
+*/
+/*    public void setTask_id(List<String> task_id) {
         this.task_id = task_id;
-    }
+    }*/
 
     public int getRequest_id() {
         return request_id;

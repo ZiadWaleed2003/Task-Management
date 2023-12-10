@@ -1,8 +1,5 @@
 package com.example.project_pl2;
-
-import com.mysql.cj.conf.ConnectionUrlParser;
 import javafx.util.Pair;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -10,6 +7,7 @@ public class Request {
     private String request_type;
     private String request_description;
     private int request_id;
+    private int requested_by;
     private boolean request_status;
 
     public Request(){
@@ -18,18 +16,21 @@ public class Request {
     public Request(ResultSet resultSet) throws SQLException {
 
         this.request_id = resultSet.getInt("Request_Id");
+        this.requested_by = resultSet.getInt("Request_By");
         this.request_description = resultSet.getNString("Request_Desc");
         this.request_status = resultSet.getBoolean("Request_Status");
-        this.request_type        = resultSet.getNString("Request_Type");
+        this.request_type = resultSet.getNString("Request_Type");
 
     }
 
-    public Request(int request_id, String request_description, String request_type) {
-        this.request_id          = request_id;
+/*
+    public Request(int request_by, String request_description, String request_type) {
+        this.requested_by =
         this.request_description = request_description;
         this.request_type        = request_type;
         this.request_status      = false;
     }
+*/
 
     public void set_id(int request_id){
         this.request_id = request_id;
@@ -75,13 +76,9 @@ public class Request {
     }
 
     public Pair<Boolean , Integer> SendRequest(String request_description, String request_type ) {
-
-        this.request_description = request_description;
-        this.request_type        = request_type;
-        this.request_status      = false;
-
-        String query = "insert into request (Request_Type,Request_Desc,Request_Status) " +
-                "values(" + request_type + "," + request_description + "," + false + ")";
+        String query = "insert into request (Request_By, Request_Desc, Request_Status, Request_Type,) " +
+                "values(?, ?, ?, ?)";
+        Object[] args = {Utility.UserSingle.getInstance().emp,request_description, request_type,false};
 
         Pair<Boolean , Integer> check_insert = CRUD2.updateDbDynamic(query);
 
