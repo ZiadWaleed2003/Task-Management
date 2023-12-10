@@ -160,11 +160,9 @@ public class IndivTask {
 
     public ResultSet readTask(){
 
-        int emp_id = 20;
+        int emp_id = Utility.UserSingle.getInstance().emp.id;
 
         String query = "SELECT * FROM plproject.task WHERE Assigned_To = " + emp_id;
-
-        Object [] args = {emp_id};
 
         ResultSet result = CRUD2.readDbDynamic(query);
 
