@@ -19,7 +19,7 @@ public class Request {
         this.requset_status=false;
     }
 
-    public void set_id(int requset_id){
+    public void set_id(int request_id){
         this.requset_id=requset_id;
     }
 

@@ -112,6 +112,10 @@ public class IndivTask {
     // TODo (i need to know the main function that related to IndivTask )
     // TODO make (ADD, UPDATE, DELETE) to task
 
+
+
+
+    //TODO: use overloaded updatedbdynamic w/ args for better code readability
     public boolean addTask(){
         String addTaskQuery = String.format("INSERT INTO task (Task_Id, Assigned_To, Due_date, Priority, Project_Id, Start_Date, Task_Desc, Task_Name, Task_Status) " +
                         "VALUES (%d, %d, '%s', '%s', %d, '%s', '%s', '%s', '%s');",

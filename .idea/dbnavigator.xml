@@ -14,7 +14,7 @@
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="d83c7348-baeb-4210-9231-5a55901a9fed">
       <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[ALTER TABLE request
-ADD Request_By int(10) AFTER Request_Id;]]></console>
+DROP Request_By;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
