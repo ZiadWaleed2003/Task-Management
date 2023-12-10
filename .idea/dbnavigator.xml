@@ -13,14 +13,26 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="d83c7348-baeb-4210-9231-5a55901a9fed">
-      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[insert into request (
-    `Request_Desc`,
-    `Request_Status`,
-    `Request_Type`)
+      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[insert into employee (
+    `Emp_Id`,
+    `Emp_Email`,
+    `Emp_Name`,
+    `Emp_Password`,
+    `Emp_Role`,
+    `Emp_Type`,
+    `Request_Id`,
+    `Team_Id`,
+    `Time_Card`)
 values (
-    'Ay Haga',
-    false,
-    '3ayez_amshy')
+    :Emp_Id,
+    :Emp_Email,
+    :Emp_Name,
+    :Emp_Password,
+    :Emp_Role,
+    :Emp_Type,
+    :Request_Id,
+    :Team_Id,
+    :Time_Card)
 ;]]></console>
     </connection>
   </component>
@@ -28,7 +40,9 @@ values (
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" object-ref="consoles/MySQL Connection" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.team" active-filter-id="" />
@@ -540,8 +554,8 @@ values (
   <component name="DBNavigator.Project.StatementExecutionManager">
     <execution-variables>
       <file file-url="db://d83c7348-baeb-4210-9231-5a55901a9fed/consoles/MySQL Connection">
-        <variable name="2" data-type="LITERAL" />
         <variable name="it" data-type="LITERAL" />
+        <variable name="2" data-type="LITERAL" />
       </file>
     </execution-variables>
     <execution-variable-types>
