@@ -4,53 +4,62 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Request {
-    private String requset_type;
-    private String requset_description;
-    private int requset_id;
-    private boolean requset_status;
+    private String request_type;
+    private String request_description;
+    private int request_id;
+    private boolean request_status;
 
     public Request(){
     }
 
-    public Request(int requset_id,String requset_description,String requset_type) {
-        this.requset_id=requset_id;
-        this.requset_description=requset_description;
-        this.requset_type=requset_type;
-        this.requset_status=false;
+    public Request(ResultSet resultSet) throws SQLException {
+
+        this.request_id = resultSet.getInt("Request_Id");
+        this.request_description = resultSet.getNString("Request_Desc");
+        this.request_status = resultSet.getBoolean("Request_Status");
+        this.request_type        = resultSet.getNString("Request_Type");
+
     }
 
-    public void set_id(int requset_id){
-        this.requset_id=requset_id;
+    public Request(int request_id, String request_description, String request_type) {
+        this.request_id          = request_id;
+        this.request_description = request_description;
+        this.request_type        = request_type;
+        this.request_status      = false;
+    }
+
+    public void set_id(int request_id){
+        this.request_id = request_id;
     }
 
     public int get_id(){
-        return requset_id;
+        return request_id;
     }
 
-    public void set_description(String requset_description){
-        this.requset_description=requset_description;
+    public void set_description(String request_description){
+        this.request_description = request_description;
     }
 
     public String get_description(){
-        return requset_description;
+        return request_description;
     }
 
-    public void set_type(String requset_type){
-        this.requset_type=requset_type;
+    public void set_type(String request_type){
+        this.request_type = request_type;
     }
 
     public String get_type() {
-        return requset_type;
+        return request_type;
     }
 
-    public void set_status(boolean requset_status){
-        this.requset_status=requset_status;
+    public void set_status(boolean request_status){
+        this.request_status = request_status;
     }
 
     public boolean get_status() throws SQLException {
-        String query= "SELECT Requset_Status from requset where Requset_Id = ? ";
+        String query= "SELECT Request_Status from request where Request_Id = ? ";
 
-        Object [] args = {this.requset_id};
+        Object [] args = {this.request_id};
 
         ResultSet result = CRUD2.readDbDynamic(query , args);
 
@@ -62,25 +71,21 @@ public class Request {
             return false;
     }
 
-    public boolean SendRequset( int requset_id , String requset_description, String requset_type ) {
-        this.requset_id = requset_id;
-        this.requset_description = requset_description;
-        this.requset_type = requset_type;
-        this.requset_status=false;
+    public boolean SendRequest( int request_id , String request_description, String request_type ) {
+        this.request_id          = request_id;
+        this.request_description = request_description;
+        this.request_type        = request_type;
+        this.request_status      = false;
 
-        boolean checkinsert = CRUD2.updateDbDynamic("insert into requset (Requset_Type,Requset_Desc,Requset_Status ) " +
-                "values( "+ requset_type + "," + requset_description+","+requset_status+")" ).getKey();
+        String query = "insert into request (Request_Type,Request_Desc,Request_Status) " +
+                "values(" + request_type + "," + request_description + "," + false + ")";
 
-        return checkinsert;
+        boolean check_insert = CRUD2.updateDbDynamic(query).getKey();
+
+        return check_insert;
     }
-    public boolean checkRequset(int requset_id) throws SQLException {
-        if(get_status())
-        {
-            return true;
-        }
-        else {
-            return false;
-        }
+    public boolean checkRequest(int request_id) throws SQLException {
+       return get_status();
     }
 
 }
