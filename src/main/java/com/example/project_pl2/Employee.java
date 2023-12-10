@@ -78,7 +78,7 @@ public class Employee extends Person{
             ResultSet res = CRUD2.readDbDynamic(query, args);
             if (res.isBeforeFirst()) {
                 while(res.next()){
-                    result.add(new IndivTask(res));
+//                    result.add(new IndivTask(res));
                 }
             }
         }catch (SQLException e){
@@ -111,7 +111,7 @@ public class Employee extends Person{
                 ResultSet res = CRUD2.readDbDynamic(query, args);
                 if (res.isBeforeFirst()) {
                     while (res.next()) {
-                        result.add(new Project(res));
+//                        result.add(new Project(res));
                     }
                 }
             } catch (SQLException e) {

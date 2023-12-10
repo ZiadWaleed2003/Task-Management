@@ -13,8 +13,27 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="d83c7348-baeb-4210-9231-5a55901a9fed">
-      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[ALTER TABLE request
-ADD Request_By int(10) AFTER Request_Id;]]></console>
+      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[insert into employee (
+    `Emp_Id`,
+    `Emp_Email`,
+    `Emp_Name`,
+    `Emp_Password`,
+    `Emp_Role`,
+    `Emp_Type`,
+    `Request_Id`,
+    `Team_Id`,
+    `Time_Card`)
+values (
+    :Emp_Id,
+    :Emp_Email,
+    :Emp_Name,
+    :Emp_Password,
+    :Emp_Role,
+    :Emp_Type,
+    :Request_Id,
+    :Team_Id,
+    :Time_Card)
+;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -535,8 +554,8 @@ ADD Request_By int(10) AFTER Request_Id;]]></console>
   <component name="DBNavigator.Project.StatementExecutionManager">
     <execution-variables>
       <file file-url="db://d83c7348-baeb-4210-9231-5a55901a9fed/consoles/MySQL Connection">
-        <variable name="2" data-type="LITERAL" />
         <variable name="it" data-type="LITERAL" />
+        <variable name="2" data-type="LITERAL" />
       </file>
     </execution-variables>
     <execution-variable-types>

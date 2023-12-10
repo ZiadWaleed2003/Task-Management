@@ -1,4 +1,5 @@
 package com.example.project_pl2;
+import javafx.scene.layout.Border;
 import javafx.util.Pair;
 
 import java.io.*;
@@ -94,20 +95,29 @@ public class Admin extends Person implements File{
 
 
 
-    public boolean CreateProject (int proj_id , int team_id ,Utility.CompletionStatus status,String proj_desc , String proj_Title ){
+    public boolean createProject (int proj_id , int team_id ,Utility.CompletionStatus status,String proj_desc , String proj_Title ){
 
         String query = "INSERT INTO Project (Project_Id , Assigned_To , Progress_status , Project_desc , Project_Title) " +
-                "VALUES" + "(" + proj_id + "," + team_id + "," + status + "," + proj_desc + "," + proj_Title + ")";
+                "VALUES (?,?,?,?,?)";
 
-//        Objects [] args = {proj_id,team_id,status,proj_Title,proj_desc};
+        Object [] args = { proj_id ,team_id, status ,proj_desc,proj_Title};
 
-        Pair <Boolean , Integer> result = CRUD2.updateDbDynamic(query);
+        Pair <Boolean , Integer> result = CRUD2.updateDbDynamic(query , args);
 
-        if(result.getKey())
-            return true;
+       return result.getKey();
 
-        return false;
+    }
 
+    public boolean addEmployee(int emp_id , String emp_email , String emp_name , String emp_password
+            , String emp_role , String emp_type , int team_id){
+
+        String query = "INSERT INTO plproject.EMPLOYEE (Emp_Id , Emp_Email , Emp_Name , Emp_Password , Emp_Role , Emp_Type , Team_Id) VALUES ( ?, ?, ?, ?, ?, ?, ?)";
+
+        Object [] args = {emp_id , emp_email , emp_name , emp_password , emp_role , emp_type , team_id};
+
+        Pair< Boolean , Integer > result = CRUD2.updateDbDynamic(query , args);
+
+        return result.getKey();
     }
 
     public void print(){
