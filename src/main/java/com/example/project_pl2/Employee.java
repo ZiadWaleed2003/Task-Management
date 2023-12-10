@@ -102,6 +102,27 @@ public class Employee extends Person{
         }
         return result;
     }
+    public ArrayList<Project> retrieveAllProjects() throws SQLException{
+        if (Utility.UserSingle.getInstance().emp.id == Utility.UserSingle.getInstance().emp.team_id){
+            ArrayList<Project> result = new ArrayList<Project>();
+            String query = "SELECT * FROM plproject.project WHERE Assigned_To = ?";
+            Integer[] args = {this.id};
+            try {
+                ResultSet res = CRUD2.readDbDynamic(query, args);
+                if (res.isBeforeFirst()) {
+                    while (res.next()) {
+                        result.add(new Project(res));
+                    }
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            return result;
+        }
+        else {
+            return null;
+        }
+    }
     @Override
     public String getName() {
         return this.name;
