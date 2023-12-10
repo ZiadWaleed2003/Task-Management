@@ -1,5 +1,8 @@
 package com.example.project_pl2;
 
+import com.mysql.cj.conf.ConnectionUrlParser;
+import javafx.util.Pair;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -71,8 +74,8 @@ public class Request {
             return false;
     }
 
-    public boolean SendRequest( int request_id , String request_description, String request_type ) {
-        this.request_id          = request_id;
+    public Pair<Boolean , Integer> SendRequest(String request_description, String request_type ) {
+
         this.request_description = request_description;
         this.request_type        = request_type;
         this.request_status      = false;
@@ -80,7 +83,7 @@ public class Request {
         String query = "insert into request (Request_Type,Request_Desc,Request_Status) " +
                 "values(" + request_type + "," + request_description + "," + false + ")";
 
-        boolean check_insert = CRUD2.updateDbDynamic(query).getKey();
+        Pair<Boolean , Integer> check_insert = CRUD2.updateDbDynamic(query);
 
         return check_insert;
     }

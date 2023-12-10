@@ -80,12 +80,6 @@ public class Admin extends Person implements File{
             while(result.next()){
 
                 Request request = new Request();
-
-                request.set_id(result.getInt("Request_Id"));
-                request.set_description(result.getNString("Request_Desc"));
-                request.set_status(result.getBoolean("Request_Status"));
-                request.set_type(result.getNString("Request_Type"));
-
                 Request_list.set(i,request);
 
                 i++;
