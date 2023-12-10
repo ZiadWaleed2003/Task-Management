@@ -102,14 +102,14 @@ public class Admin extends Person implements File{
 
     public boolean CreateProject (int proj_id , int team_id ,Utility.CompletionStatus status,String proj_desc , String proj_Title ){
 
-        String query = "INSERT INTO your_table (Project_id , Assigned_To , Progress_status " +
-                ", Project_desc , Project_Title) VALUES ('proj_id','team_id','status','proj_desc','proj_Title')";
+        String query = "INSERT INTO Project (Project_Id , Assigned_To , Progress_status , Project_desc , Project_Title) " +
+                "VALUES" + "(" + proj_id + "," + team_id + "," + status + "," + proj_desc + "," + proj_Title + ")";
 
 //        Objects [] args = {proj_id,team_id,status,proj_Title,proj_desc};
 
-        Pair <Boolean , Integer> res = CRUD2.updateDbDynamic(query);
+        Pair <Boolean , Integer> result = CRUD2.updateDbDynamic(query);
 
-        if(res.getKey())
+        if(result.getKey())
             return true;
 
         return false;
