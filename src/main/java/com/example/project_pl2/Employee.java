@@ -13,7 +13,9 @@ public class Employee extends Person{
 
     private EmpType emp_type;
 
-    private List<IndivTask> tasks_list;
+    private ArrayList<IndivTask> tasks_list;
+    private ArrayList<Request> requests_list;
+    private
 
     private int team_id;
 
@@ -75,7 +77,23 @@ public class Employee extends Person{
             ResultSet res = CRUD2.readDbDynamic(query, args);
             if (res.isBeforeFirst()) {
                 while(res.next()){
-                    result.add(IndivTask(res));
+                    result.add(new IndivTask(res));
+                }
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
+    public ArrayList<Request> retrieveAllRequests() throws SQLException{
+        ArrayList<Request> result =  new ArrayList<Request>();
+        String query = "SELECT * FROM plproject.request WHERE Requested_by = ?";
+        Integer[] args = {this.id};
+        try {
+            ResultSet res = CRUD2.readDbDynamic(query, args);
+            if (res.isBeforeFirst()) {
+                while(res.next()){
+                    result.add(new Request(res));
                 }
             }
         }catch (SQLException e){

@@ -13,15 +13,8 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="d83c7348-baeb-4210-9231-5a55901a9fed">
-      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[insert into request (
-    `Request_Desc`,
-    `Request_Status`,
-    `Request_Type`)
-values (
-    'Ay Haga',
-    false,
-    '3ayez_amshy')
-;]]></console>
+      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[ALTER TABLE request
+ADD Request_By int(10) AFTER Request_Id;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
