@@ -2,6 +2,8 @@ package com.example.project_pl2;
 
 import javafx.util.Pair;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 public class IndivTask {
 
@@ -155,5 +157,29 @@ public class IndivTask {
     }
 
     // TODO [Zeyad Hussam] make (readTask) to task
+
+    public ResultSet readTask(){
+
+        int emp_id = 20;
+
+        String query = "SELECT * FROM plproject.task WHERE Assigned_To = " + emp_id;
+
+        Object [] args = {emp_id};
+
+        ResultSet result = CRUD2.readDbDynamic(query);
+
+        try {
+            if(result.isBeforeFirst()){
+                result.next();
+
+                return result;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return result;
+    }
+
 }
 

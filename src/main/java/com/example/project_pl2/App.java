@@ -43,9 +43,16 @@ public class App extends Application{
 
     }
 //<<<<<<< HEAD
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
-         launch();
+//         launch();
+
+
+         IndivTask x = new IndivTask();
+
+         ResultSet res = x.readTask();
+
+         System.out.print("Assigned to : " + res.getInt("Assigned_To"));
 
 
     }
