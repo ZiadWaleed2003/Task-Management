@@ -103,6 +103,7 @@ public class Employee extends Person{
         return result;
     }
     public ArrayList<Project> retrieveAllProjects() throws SQLException{
+
         if (Utility.UserSingle.getInstance().emp.id == Utility.UserSingle.getInstance().emp.team_id){
             ArrayList<Project> result = new ArrayList<Project>();
             String query = "SELECT * FROM plproject.project WHERE Assigned_To = ?";
