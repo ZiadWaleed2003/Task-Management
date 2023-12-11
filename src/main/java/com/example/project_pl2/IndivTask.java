@@ -43,7 +43,16 @@ public class IndivTask {
         this.due_date = due_date;
     }
 
-    public IndivTask(ResultSet res){
+    public IndivTask(ResultSet res) throws SQLException{
+        this.id = res.getInt("Task_Id");
+        this.name = res.getNString("Task_Name");
+        this.description = res.getNString("Task_Desc");
+        this.status = Utility.CompletionStatus.values()[res.getInt("task_Status")];
+        this.assigned_to = res.getInt(("Assigned_To"));
+        this.project = res.getInt("Project_Id");
+        this.priority = Priority.values()[res.getInt("Priority)")];
+        this.start_date = res.getDate("Start_Date");
+        this.due_date = res.getDate("Due_Date");
     }
 
     public int getId() {
