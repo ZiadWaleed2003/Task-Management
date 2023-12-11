@@ -104,6 +104,30 @@ public class Admin extends Person implements File{
 
     }
 
+
+    public boolean deleteProject(int proj_id){
+
+        String query = "DELETE * FROM plproject.project WHERE Project_Id = ?";
+
+        Object [] args = {proj_id};
+
+        boolean result = CRUD2.updateDbDynamic(query , args).getKey();
+
+        return result;
+    }
+
+    public boolean reassignProject(int proj_id,int team_id){
+
+        String query = "UPDATE plproject.PROJECT SET Assigned_To = ? WHERE Project_Id = ?";
+
+        Object [] args = {team_id,proj_id};
+
+        boolean result = CRUD2.updateDbDynamic( query , args).getKey();
+
+        return result;
+    }
+
+
     public boolean addEmployee(int emp_id , String emp_email , String emp_name , String emp_password
             , String emp_role , String emp_type , int team_id){
 

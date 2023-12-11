@@ -18,7 +18,9 @@ MODIFY COLUMN Emp_Type int(2);]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
-    <last-used-providers />
+    <last-used-providers>
+      <object-type object-type="TABLE" editor-provider="DATA" />
+    </last-used-providers>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
@@ -28,7 +30,11 @@ MODIFY COLUMN Emp_Type int(2);]]></console>
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.employee" active-filter-id="c8c2f992-c3dd-41f3-9c99-dea1cb70ab96">
       <filter id="c8c2f992-c3dd-41f3-9c99-dea1cb70ab96" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
-    <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.task" active-filter-id="" />
+    <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.task" active-filter-id="195f4b22-39e4-4ec4-897f-d0240bf9a680">
+      <filter id="195f4b22-39e4-4ec4-897f-d0240bf9a680" name="22" temporary="true" custom-name="false" type="basic" join-type="AND">
+        <condition column="Project_Id" operator="=" value="22" active="true" />
+      </filter>
+    </filter-actions>
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.request" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.project" active-filter-id="" />
   </component>
