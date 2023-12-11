@@ -43,6 +43,9 @@ public class IndivTask {
         this.due_date = due_date;
     }
 
+    public IndivTask(ResultSet res){
+    }
+
     public int getId() {
         return id;
     }
@@ -119,7 +122,7 @@ public class IndivTask {
 
     //TODO: use overloaded updatedbdynamic w/ args for better code readability
     public boolean addTask(){
-        String addTaskQuery = String.format("INSERT INTO task (Task_Id, Assigned_To, Due_date, Priority, Project_Id, Start_Date, Task_Desc, Task_Name, Task_Status) " +
+                String addTaskQuery = String.format("INSERT INTO task (Task_Id, Assigned_To, Due_date, Priority, Project_Id, Start_Date, Task_Desc, Task_Name, Task_Status) " +
                         "VALUES (%d, %d, '%s', '%s', %d, '%s', '%s', '%s', '%s');",
                 getId(), getAssignedTo(), getDueDate(), getPriority(), getProject(), getStartDate(), getDescription(), getName(), getStatus());
 
