@@ -6,22 +6,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
-//<<<<<<< HEAD
 import java.io.IOException;
-//=======
 import java.io.*;
 import java.sql.*;
-
 import  javafx.fxml.FXMLLoader.*;
 import javafx.util.Pair;
-//>>>>>>> main
+
 
 public class App extends Application{
     @Override
     public void start(Stage stage) throws IOException {
-
-//        Parent root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("MainPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -32,20 +26,16 @@ public class App extends Application{
 
 
 
-//        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("MainPage.fxml"));
-//        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-//        stage.setTitle("WELCOME TO ELZOZAT TASK MANAGER");
-//        stage.setScene(scene);
-//        stage.setResizable(false);
-//        stage.show();
-
-
-
     }
-//<<<<<<< HEAD
+
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.load();
+    }
+
     public static void main(String[] args) throws SQLException {
-        // mt3mlsh comment ll launch ya nigga htdena error
-         launch();
+
+
 
 
 
@@ -55,17 +45,11 @@ public class App extends Application{
 
          System.out.print("Assigned to : " + res.getInt("Assigned_To"));
 
+         launch();
+
+
 
     }
 
-//=======
-//    public static void main(String[] args) throws SQLException {
-//
-//        Employee emp = new Employee();
-//        boolean x = emp.login("ZiadWaleed@gmail.com","2003");
-////>>>>>>> main
-//    }
 }
-//}
-
 

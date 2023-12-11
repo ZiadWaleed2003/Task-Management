@@ -62,6 +62,18 @@ public class Admin extends Person implements File{
 
     }
 
+
+    public boolean requestResponse(int request_id , int response){
+
+        String query   = "UPDATE plproject.request SET Request_Status = ? WHERE request_id = ?";
+
+        Object [] args = {response , request_id};
+
+        boolean result = CRUD2.updateDbDynamic(query , args).getKey();
+
+        return result;
+    }
+
     public List<Request> reviewRequests () throws SQLException {
 
 
