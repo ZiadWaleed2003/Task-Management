@@ -13,32 +13,24 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="d83c7348-baeb-4210-9231-5a55901a9fed">
-      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[insert into task (
-    `Task_Id`,
-    `Assigned_To`,
-    `Priority`,
-    `Project_Id`,
-    `Task_Name`,
-    `Task_Status`)
-values (
-    11,
-    20,
-    'low',
-    22,
-    'task',
-    'pending')
-;]]></console>
+      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[ALTER TABLE plproject.employee
+MODIFY COLUMN Emp_Type int(2);]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" object-ref="schemas/plproject/tables/employee" />
+      <object connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" object-ref="consoles/MySQL Connection" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.team" active-filter-id="" />
-    <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.employee" active-filter-id="" />
+    <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.employee" active-filter-id="c8c2f992-c3dd-41f3-9c99-dea1cb70ab96">
+      <filter id="c8c2f992-c3dd-41f3-9c99-dea1cb70ab96" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.task" active-filter-id="" />
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.request" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.project" active-filter-id="" />
@@ -550,8 +542,8 @@ values (
   <component name="DBNavigator.Project.StatementExecutionManager">
     <execution-variables>
       <file file-url="db://d83c7348-baeb-4210-9231-5a55901a9fed/consoles/MySQL Connection">
-        <variable name="it" data-type="LITERAL" />
         <variable name="2" data-type="LITERAL" />
+        <variable name="it" data-type="LITERAL" />
       </file>
     </execution-variables>
     <execution-variable-types>
