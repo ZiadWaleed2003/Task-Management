@@ -15,12 +15,12 @@
          <children>
             <Pane layoutY="46.0" prefHeight="276.0" prefWidth="223.0" styleClass="button1">
                <children>
-                  <Button layoutX="14.0" layoutY="49.0" mnemonicParsing="false" onAction="#switchToProjects" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #F1E5E5;" styleClass="AdminButtons" stylesheets="@st.css" text="Projects">
+                  <Button layoutX="14.0" layoutY="71.0" mnemonicParsing="false" onAction="#switchToEmployees" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #F1E5E5;" styleClass="AdminButtons" stylesheets="@st.css" text="Employees">
                      <font>
                         <Font name="Arial Black" size="23.0" />
                      </font>
                   </Button>
-                  <Button layoutX="14.0" layoutY="197.0" mnemonicParsing="false" onAction="#switchToEmployees" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #F1E5E5;" styleClass="AdminButtons" stylesheets="@st.css" text="Employees">
+                  <Button layoutX="14.0" layoutY="197.0" mnemonicParsing="false" onAction="#switchToRequests" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #F1E5E5;" styleClass="AdminButtons" stylesheets="@st.css" text="Requests">
                      <font>
                         <Font name="Arial Black" size="23.0" />
                      </font>
@@ -42,31 +42,56 @@
       </Pane>
       <Pane layoutX="245.0" layoutY="-2.0" prefHeight="45.0" prefWidth="1037.0" styleClass="header">
          <children>
-            <Label layoutX="14.0" layoutY="23.0" prefHeight="46.0" prefWidth="305.0" text="Requests Table">
+            <Label layoutX="7.0" layoutY="23.0" prefHeight="46.0" prefWidth="305.0" text="Projects Table">
                <font>
                   <Font name="Tahoma Bold" size="32.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <TableView layoutX="252.0" layoutY="140.0" prefHeight="426.0" prefWidth="678.0" style="-fx-background-color: #FFFCFC;" stylesheets="@st.css">
+      <TableView layoutX="252.0" layoutY="88.0" prefHeight="436.0" prefWidth="678.0" style="-fx-background-color: #FFFCFC;" stylesheets="@st.css">
          <columns>
             <TableColumn prefWidth="36.79998779296875" style="-fx-background-color: #4B5085;" text="ID" />
-            <TableColumn prefWidth="107.2000732421875" style="-fx-background-color: #6699EE;" text="Type" />
-            <TableColumn prefWidth="394.39990234375" style="-fx-background-color: #4B5085;" text="Description" />
-            <TableColumn prefWidth="139.20001220703125" style="-fx-background-color: #6699EE;" text="Status" />
+            <TableColumn prefWidth="132.79998779296875" style="-fx-background-color: #6699EE;" text="Title" />
+            <TableColumn prefWidth="96.79998779296875" style="-fx-background-color: #4B5085;" text="Status" />
+            <TableColumn prefWidth="280.0" style="-fx-background-color: #6699EE;" text="Descreption" />
+            <TableColumn prefWidth="131.199951171875" style="-fx-background-color: #4B5085;" text="Assigned To" />
          </columns>
       </TableView>
-      <TextField layoutX="319.0" layoutY="631.0" promptText="Request ID">
+      <TextField layoutX="309.0" layoutY="554.0" prefHeight="26.0" prefWidth="174.0" promptText="ID">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="591.0" layoutY="642.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="63.0" style="-fx-background-color: #00FD00;" text="Accept">
+      <Button layoutX="797.0" layoutY="670.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="102.0" text="Create">
          <font>
-            <Font name="Tahoma Bold" size="12.0" />
+            <Font name="Tahoma Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="700.0" layoutY="642.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="63.0" style="-fx-background-color: #FF0000;" text="Reject" />
+      <TextField layoutX="309.0" layoutY="611.0" prefHeight="26.0" prefWidth="174.0" promptText="Title">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="309.0" layoutY="656.0" prefHeight="79.0" prefWidth="209.0" promptText="Description">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="519.0" layoutY="611.0" prefHeight="26.0" prefWidth="174.0" promptText="Team ID">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="710.0" layoutY="554.0" prefHeight="26.0" prefWidth="174.0" promptText="Comp Progress">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="519.0" layoutY="554.0" prefHeight="26.0" prefWidth="174.0" promptText="Progress">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

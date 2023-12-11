@@ -44,8 +44,9 @@ public class App extends Application{
     }
 //<<<<<<< HEAD
     public static void main(String[] args) throws SQLException {
+        // mt3mlsh comment ll launch ya nigga htdena error
+         launch();
 
-//         launch();
 
 
          IndivTask x = new IndivTask();

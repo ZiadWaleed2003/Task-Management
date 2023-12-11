@@ -41,7 +41,7 @@ public class login_controller {
             return;
         }
         if ((login(email, password))) {
-            switchToAdmin(event);
+            switchToEmployee(event);
             //login successfull
             //TODO implement if login successful after checking DB
         } else {
@@ -50,15 +50,28 @@ public class login_controller {
         }
     }
 
-    private boolean login(String email, String password) {
+
+
+        private boolean login(String email, String password) {
+        boolean confirm = false;
         //TODO implement logic to check if username and pass exist in DB
-        email = "Zyad";
-        password = "123d";
-        return true;
-    }
+        if (email.equals("Zyad") &&  password.equals("123")){
+           confirm = true;}
+    return confirm;}
+
+
 
     public void switchToAdmin(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Admin_Dashboard.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public void switchToEmployee(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("TeamLeader_Dashboard.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

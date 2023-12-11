@@ -1,5 +1,8 @@
-.background{
+.backgroundAdmin{
     -fx-background-color: linear-gradient(to left, #262C4E, #21092D);
+}
+.backgroundEmployee{
+    -fx-background-color: linear-gradient(to left, #2b5876,#4e4376);
 }
 .AdminButtons {
     -fx-background-color: #d2a1ef;
