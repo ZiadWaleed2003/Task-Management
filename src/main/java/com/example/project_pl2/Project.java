@@ -83,7 +83,7 @@ public class Project {
     }
 
     public boolean deleteProject(int project_id) {
-        String query = "Delete from project where project_id = ?";
+        String query = "Delete * from project where project_id = ?";
 
         Integer Project_Id = project_id;
 
