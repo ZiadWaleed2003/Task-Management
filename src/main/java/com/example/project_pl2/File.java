@@ -3,11 +3,18 @@ package com.example.project_pl2;
 import java.io.*;
 
 public interface File {
-     void update();
+    String file_name = ""; // add File bath
+    String readFile() throws IOException;
 
-      void delete();
+    void updateAdminUsername(String username) throws IOException;
 
-      String read();
+    void updateAdminPassword(String password) throws IOException;
 
-      void write(int id,String content,String email,String password)throws IOException;
+    void addProjectFile(int projectId) throws IOException;
+
+    void deleteProjectFile(int projectId) throws IOException;
+
+    int[] getAllProjectIds() throws IOException;
+
+//    void write(int id,String content,String email,String password)throws IOException;
 }
