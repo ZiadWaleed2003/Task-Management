@@ -21,10 +21,7 @@ MODIFY COLUMN Emp_Type int(2);]]></console>
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" object-ref="schemas/plproject/tables/employee" />
-      <object connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" object-ref="consoles/MySQL Connection" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.team" active-filter-id="" />

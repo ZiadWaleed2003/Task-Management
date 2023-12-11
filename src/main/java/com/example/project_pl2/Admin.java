@@ -116,6 +116,36 @@ public class Admin extends Person implements File{
         return result.getKey();
     }
 
+
+    public boolean editEmployeeType(int emp_id , String type){
+
+        String query = "UPDATE employee SET Emp_Type = ? WHERE Emp_Id = ?";
+
+        int emp_type = 1;
+
+        if(type.toUpperCase().equals("LEADER"))
+            emp_type = 0;
+
+        Object [] args = {emp_type,emp_id};
+        boolean result;
+
+        result = CRUD2.updateDbDynamic(query , args).getKey();
+
+        return result;
+
+    }
+
+    public boolean deleteEmployee(int emp_id){
+
+        String query = "DELETE * FROM employee WHERE Emp_Id = ?";
+
+        Object [] args = {emp_id};
+
+        boolean result = CRUD2.updateDbDynamic(query , args).getKey();
+
+        return result;
+    }
+
     public void print(){
 
     }
