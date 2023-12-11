@@ -39,15 +39,15 @@ public class Employee extends Person{
     }
 
     public Employee(ResultSet set) throws SQLException{
-        super.name = set.getNString(2);
-        super.email = set.getNString(1);
-        super.password = set.getNString(3);
-        super.id = set.getInt(0);
-        this.emp_type = EmpType.values()[set.getInt(6)]; //TODO: object -> enum conversion
-        this.team_id = set.getInt(8);
-        this.time_card = set.getDouble(9);
-        this.request_id = set.getInt(7);
-        this.role = set.getNString(5);
+        super.name = set.getString("Emp_Name");
+        super.email = set.getString("Emp_Email");
+        super.password = set.getString("Emp_Password");
+        super.id = set.getInt("Emp_Id");
+        this.emp_type = EmpType.values()[set.getInt("Emp_Type")]; //TODO: object -> enum conversion
+        this.team_id = set.getInt("Team_Id");
+        this.time_card = set.getDouble("Time_Card");
+        this.request_id = set.getInt("Request_Id");
+        this.role = set.getString("Emp_Role");
 
         }
 
@@ -64,13 +64,12 @@ public class Employee extends Person{
             Employee emp = new Employee(result);
             Utility.UserSingle CurrentUser = Utility.UserSingle.getInstance();
             CurrentUser.emp = emp;
+            return true;
 //          System.out.println("Email : " + this.email + "\nPassword is : " + this.password);
         }else{
             System.out.println("Error");
             return false;
         }
-
-        return false;
     }
 
     public ArrayList<IndivTask> constructTasksList() throws SQLException{
