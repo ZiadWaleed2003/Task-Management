@@ -6,13 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
-//<<<<<<< HEAD
 import java.io.IOException;
-//=======
 import java.io.*;
 import java.sql.*;
-
 import  javafx.fxml.FXMLLoader.*;
 import javafx.util.Pair;
 

@@ -43,19 +43,24 @@ public class login_controller {
         if (Employee.login(email,password)) {
            System.out.print("Login successfully !\n" + "Name is : " + Utility.UserSingle.getInstance().emp.name);
 
-           App.setRoot("EmployeesView.fxml");
+            switchToEmpMainview(event);
         } else {
             err_message_label.setText("Invalid Username or Password\n");
             err_message_label.setVisible(true);
         }
     }
 
-    private void employeeLogIn(ActionEvent event){
-
+    public void switchToEmpMainview(ActionEvent e)throws IOException{
+            switchScenes(e,".fxml");
+    }
+    public void switchToAdminMainView(ActionEvent e) throws IOException {
+            switchScenes(e,"Admin_Dashboard.fxml");
     }
 
-    public void switchToAdmin(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Admin_Dashboard.fxml"));
+
+    public void switchScenes(ActionEvent event , String fxml) throws IOException {
+
+        root = FXMLLoader.load(getClass().getResource(fxml));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
