@@ -2,6 +2,8 @@ package com.example.project_pl2;
 
 import javafx.util.Pair;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 public class IndivTask {
 
@@ -29,7 +31,8 @@ public class IndivTask {
         this.start_date = new Date();
         this.due_date = null;
     }
-    public IndivTask(int id, String name, String description, Utility.CompletionStatus status, int assigned_to, int project, Priority priority, Date start_date, Date due_date) {
+    public IndivTask(int id, String name, String description, Utility.CompletionStatus status, int assigned_to,
+                     int project, Priority priority, Date start_date, Date due_date) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -39,6 +42,18 @@ public class IndivTask {
         this.priority = priority;
         this.start_date = start_date;
         this.due_date = due_date;
+    }
+
+    public IndivTask(ResultSet res) throws SQLException{
+        this.id = res.getInt("Task_Id");
+        this.name = res.getNString("Task_Name");
+        this.description = res.getNString("Task_Desc");
+        this.status = Utility.CompletionStatus.values()[res.getInt("task_Status")];
+        this.assigned_to = res.getInt(("Assigned_To"));
+        this.project = res.getInt("Project_Id");
+        this.priority = Priority.values()[res.getInt("Priority)")];
+        this.start_date = res.getDate("Start_Date");
+        this.due_date = res.getDate("Due_Date");
     }
 
     public int getId() {
@@ -116,34 +131,8 @@ public class IndivTask {
 
 
     //TODO: use overloaded updatedbdynamic w/ args for better code readability
-    public boolean addTask(){
-        String addTaskQuery = String.format("INSERT INTO task (Task_Id, Assigned_To, Due_date, Priority, Project_Id, Start_Date, Task_Desc, Task_Name, Task_Status) " +
-                        "VALUES (%d, %d, '%s', '%s', %d, '%s', '%s', '%s', '%s');",
-                getId(), getAssignedTo(), getDueDate(), getPriority(), getProject(), getStartDate(), getDescription(), getName(), getStatus());
 
-        Pair<Boolean , Integer> res = CRUD2.updateDbDynamic(addTaskQuery);
 
-        return res.getKey();
-    }
-
-    public boolean updateTask(int required_task_id){
-        String updateTaskQuery = String.format("UPDATE task " +
-                        "SET " +
-                        "    Assigned_To = %d, " +
-                        "    Due_date = '%s' " +
-                        "    Priority = '%s', " +
-                        "    Project_Id = %d, " +
-                        "    Start_Date = '%s', " +
-                        "    Task_Desc = '%s', " +
-                        "    Task_Name = '%s', " +
-                        "    Task_Status = '%s', " +
-                        "WHERE Task_Id = %d;",
-                getAssignedTo(), getDueDate(), getPriority(), getProject(), getStartDate(), getDescription(), getName(), getStatus(), required_task_id);
-
-        Pair<Boolean , Integer> res = CRUD2.updateDbDynamic(updateTaskQuery);
-
-        return res.getKey();
-    }
 
     public boolean deleteTask(int required_task_id){
         String deleteTaskQuery = "DELETE FROM task " +
@@ -155,5 +144,37 @@ public class IndivTask {
     }
 
     // TODO [Zeyad Hussam] make (readTask) to task
+
+    public ResultSet readTask(){
+
+        int emp_id = Utility.UserSingle.getInstance().emp.id;
+
+        String query = "SELECT * FROM plproject.task WHERE Assigned_To = " + emp_id;
+
+        ResultSet result = CRUD2.readDbDynamic(query);
+
+        try {
+            if(result.isBeforeFirst()){
+                result.next();
+
+                return result;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return result;
+    }
+    public boolean updateTask(){ //TODO: i'm about to create spaghetti never seen/made by any mortal being in history.
+        //TODO: since this shitty lang doesn't even have named parameters or even refs like any other goddamn human lang.
+        String updateTaskQuery = "INSERT INTO task (Task_Id, Assigned_To, Due_date, Priority, Project_Id, Start_Date, " +
+                "Task_Desc, Task_Name, Task_Status) VALUES (?, ?, ?, ? ,? ,? ,?, ?, ?);";
+        Object[] args = {this.getId(), this.getAssignedTo(), this.getDueDate(), this.getPriority(), this.getProject(),
+                this.getStartDate(), this.getDescription(), this.getName(), this.getStatus()};
+        Pair<Boolean , Integer> res = CRUD2.updateDbDynamic(updateTaskQuery);
+        //TODO: this isn't even complete  i don't know even how to do this without so much stupid overhead.
+        return res.getKey();
+    }
+
 }
 

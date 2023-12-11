@@ -1,7 +1,10 @@
 package com.example.project_pl2;
 
+import javafx.util.Pair;
+
 import java.sql.*;
 import java.util.*;
+import java.util.Date;
 
 
 public class Employee extends Person{
@@ -103,7 +106,9 @@ public class Employee extends Person{
         return result;
     }
     public ArrayList<Project> retrieveAllProjects() throws SQLException{
-        if (Utility.UserSingle.getInstance().emp.id == Utility.UserSingle.getInstance().emp.team_id){
+
+        if (Utility.UserSingle.getInstance().emp.emp_type == EmpType.LEADER){
+
             ArrayList<Project> result = new ArrayList<Project>();
             String query = "SELECT * FROM plproject.project WHERE Assigned_To = ?";
             Integer[] args = {this.id};
@@ -211,4 +216,21 @@ public class Employee extends Person{
             this.emp_type = EmpType.MEMBER;
         }
     }
+
+    public static boolean addTask(int id, String name, String description, Utility.CompletionStatus status,
+                           int assigned_to, int project, IndivTask.Priority priority, Date start_date, Date due_date){
+        IndivTask temp = new IndivTask(id,name,description, status,
+         assigned_to,  project,  priority,  start_date,  due_date);
+        String addTaskQuery = "INSERT INTO task (Task_Id, Assigned_To, Due_date, Priority, Project_Id, Start_Date, " +
+                "Task_Desc, Task_Name, Task_Status) VALUES (?, ?, ?, ? ,? ,? ,?, ?, ?);";
+        Object[] args = {temp.getId(), temp.getAssignedTo(), temp.getDueDate(), temp.getPriority(), temp.getProject(),
+                temp.getStartDate(), temp.getDescription(), temp.getName(), temp.getStatus()};
+
+        Pair<Boolean , Integer> res = CRUD2.updateDbDynamic(addTaskQuery, args);
+
+        return res.getKey();
+    }
+
+
+
 }

@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Admin extends Person implements File{
 
@@ -69,18 +71,14 @@ public class Admin extends Person implements File{
 
         List<Request> Request_list = null;
 
-        /* the next block of code might seem crazy,
-        but it's easy if the query returned a result
-        then assign every row's values to an object
-        and then keep that object in the list of objects called Requst_list
-         */
+
 
         if(result.isBeforeFirst()){
             int i = 0 ;
 
             while(result.next()){
 
-                Request request = new Request();
+                Request request = new Request(result);
                 Request_list.set(i,request);
 
                 i++;
@@ -108,6 +106,30 @@ public class Admin extends Person implements File{
 
     }
 
+
+    public boolean deleteProject(int proj_id){
+
+        String query = "DELETE * FROM plproject.project WHERE Project_Id = ?";
+
+        Object [] args = {proj_id};
+
+        boolean result = CRUD2.updateDbDynamic(query , args).getKey();
+
+        return result;
+    }
+
+    public boolean reassignProject(int proj_id,int team_id){
+
+        String query = "UPDATE plproject.PROJECT SET Assigned_To = ? WHERE Project_Id = ?";
+
+        Object [] args = {team_id,proj_id};
+
+        boolean result = CRUD2.updateDbDynamic( query , args).getKey();
+
+        return result;
+    }
+
+
     public boolean addEmployee(int emp_id , String emp_email , String emp_name , String emp_password
             , String emp_role , String emp_type , int team_id){
 
@@ -120,43 +142,188 @@ public class Admin extends Person implements File{
         return result.getKey();
     }
 
-    public void print(){
+
+    public boolean editEmployeeType(int emp_id , String type){
+
+        String query = "UPDATE employee SET Emp_Type = ? WHERE Emp_Id = ?";
+
+        int emp_type = 1;
+
+        if(type.toUpperCase().equals("LEADER"))
+            emp_type = 0;
+
+        Object [] args = {emp_type,emp_id};
+        boolean result;
+
+        result = CRUD2.updateDbDynamic(query , args).getKey();
+
+        return result;
+
+    }
+
+    public boolean deleteEmployee(int emp_id){
+
+        String query = "DELETE * FROM employee WHERE Emp_Id = ?";
+
+        Object [] args = {emp_id};
+
+        boolean result = CRUD2.updateDbDynamic(query , args).getKey();
+
+        return result;
+    }
+
+    @Override
+    public String readFile() throws IOException {
+        StringBuilder content = new StringBuilder();
+        BufferedReader reader = new BufferedReader(new FileReader(new java.io.File(file_name)));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            content.append(line).append("\n");
+        }
+        reader.close();
+        return content.toString().trim();
+    }
+
+    @Override
+    // Update Admin Password
+    public void updateAdminUsername(String new_username) throws IOException {
+        String file_content = readFromFile();
+        String updated_content = file_content.replaceAll("Admin_Username: (.*)", "Admin_Username: " + new_username);
+        writeToFile(updated_content);
+        System.out.println("Admin username updated successfully!");
+    }
+
+    @Override
+    // Update Admin Password
+    public void updateAdminPassword(String new_password) throws IOException {
+        String file_content = readFromFile();
+        String updated_content = file_content.replaceAll("Admin_Password: (.*)", "Admin_Password: " + new_password);
+        writeToFile(updated_content);
+        System.out.println("Admin password updated successfully!");
+    }
+
+    @Override
+    // Add Project
+    public void addProjectFile(int project_id) throws IOException {
+        String file_content = readFromFile();
+
+        // Check if required ID is presents or not
+        int[] ids = getAllProjectIds();
+        for (int j : ids) {
+            if (j == project_id){
+                System.out.println("! This ID is already Exist !");
+                return;
+            }
+        }
+
+        // Extract current project count
+        Pattern projects_pattern = Pattern.compile("Projects: (\\d+)");
+        Matcher projects_matcher = projects_pattern.matcher(file_content);
+
+        if (projects_matcher.find()) {
+            int current_projects = Integer.parseInt(projects_matcher.group(1));
+
+            // Add the project with the given ID
+            file_content = file_content + "\nProject_Id = " + project_id;
+
+            // Update the project count
+            file_content = file_content.replaceAll("Projects: \\d+", "Projects: " + (current_projects + 1));
+
+            // Write the updated content back to the file
+            writeToFile(file_content);
+
+            System.out.println("Project added successfully!");
+
+        }
+    }
+
+    @Override
+    // Delete Project
+    public void deleteProjectFile(int project_id) throws IOException {
+        String file_content = readFromFile();
+
+        // Extract current project count
+        Pattern projects_pattern = Pattern.compile("Projects: (\\d+)");
+        Matcher projects_matcher = projects_pattern.matcher(file_content);
+
+        if (projects_matcher.find()) {
+            int current_projects = Integer.parseInt(projects_matcher.group(1));
+
+            // Check if Admin have any Projects
+            if(current_projects > 0) {
+                // Remove the project with the given ID
+                String project_pattern_str = "\n" + "Project_Id = " + project_id;
+
+                int size_before_delete = file_content.length();
+                file_content = file_content.replaceAll(project_pattern_str, "");
+
+                // Check if Project of required ID is exist
+                if(size_before_delete == file_content.length()){
+                    System.out.println("! No Project of ID[" +project_id+ "] in the list !");
+                    return;
+                }
+
+                // Update the project count
+                file_content = file_content.replaceAll("Projects: \\d+", "Projects: " + (current_projects - 1));
+
+                // Write the updated content back to the file
+                writeToFile(file_content);
+
+                System.out.println("Project deleted successfully!");
+            }
+            else {
+                System.out.println("! No Project exist to be DELETED !");
+            }
+        } else {
+            System.out.println("Projects count not found in the file.");
+        }
 
     }
 
     @Override
-    public void update() {
+    // Get an array of all project IDs
+    public int[] getAllProjectIds() throws IOException {
+        String file_content = readFromFile();
 
+        // Extract all Project IDs using regular expression
+        List<Integer> project_ids = new ArrayList<>();
+        Pattern project_pattern = Pattern.compile("Project_Id = (\\d+)");
+        Matcher project_matcher = project_pattern.matcher(file_content);
+
+        while (project_matcher.find()) {
+            int project_id = Integer.parseInt(project_matcher.group(1));
+            project_ids.add(project_id);
+        }
+
+        // Convert the List to an array
+        int[] project_ids_Array = new int[project_ids.size()];
+        for (int i = 0; i < project_ids.size(); i++) {
+            project_ids_Array[i] = project_ids.get(i);
+        }
+
+        return project_ids_Array;
     }
 
-    @Override
-    public void delete() {
-
+    // Read File Content
+    private String readFromFile() throws IOException {
+        StringBuilder content = new StringBuilder();
+        BufferedReader reader = new BufferedReader(new FileReader(new java.io.File(file_name)));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            content.append(line).append("\n");
+        }
+        reader.close();
+        return content.toString().trim();
     }
 
-    @Override
-    public String read() {
-        return null;
+    // Write Content to File
+    private void writeToFile(String content) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(new java.io.File(file_name)));
+        writer.write(content);
+        writer.close();
     }
 
-
-
-
-    @Override
-    public void write(int id,String name,String email,String password) throws IOException{
-        String filepath = "D:/ADMIN_DATA.TXT";
-        java.io.File file = new java.io.File(filepath);
-        if (!file.exists())
-            file.createNewFile();
-        FileWriter fwrite = new FileWriter(file,true);
-        fwrite.write(id +"\n");
-        fwrite.write(name+"\n");
-        fwrite.write(email+"\n");
-        fwrite.write(password+"\n");
-
-        fwrite.close();
-
-    }
+    
 }
 
 
