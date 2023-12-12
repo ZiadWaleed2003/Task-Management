@@ -42,7 +42,7 @@ public class login_controller {
         }
         if (Employee.login(email,password)) {
            System.out.print("Login successfully !\n" + "Name is : " + Utility.UserSingle.getInstance().emp.name);
-            switchToEmpMainview(event);
+            switchToTeamLeaderMainView(event);
         }
         else {
             err_message_label.setText("Invalid Username or Password\n");
