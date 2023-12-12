@@ -42,7 +42,7 @@ public class login_controller {
         }
         if (Employee.login(email,password)) {
            System.out.print("Login successfully !\n" + "Name is : " + Utility.UserSingle.getInstance().emp.name);
-            switchToTeamLeaderMainView(event);
+            switchToAdminMainView(event);
         }
         else {
             err_message_label.setText("Invalid Username or Password\n");
@@ -63,9 +63,6 @@ public class login_controller {
     }
 
 
-    public void switchToTeamLeaderMainView(ActionEvent e) throws IOException {
-        switchScenes(e,"TeamLeader_Dashboard.fxml");
-    }
 
     public void switchScenes(ActionEvent event , String fxml) throws IOException {
 
