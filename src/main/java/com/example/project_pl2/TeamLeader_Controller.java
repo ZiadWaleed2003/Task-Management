@@ -25,6 +25,10 @@ public class TeamLeader_Controller{
 
 
 
+
+
+
+
         public void Logout(ActionEvent event)throws IOException {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Logout");
@@ -36,37 +40,37 @@ public class TeamLeader_Controller{
 
 
         public void switchToMainPage(ActionEvent event) throws IOException {
-            root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            switchScenes(event,"MainPage.fxml");
+
 
         }
         public void switchToATaskAssigment(ActionEvent event) throws IOException {
-            root = FXMLLoader.load(getClass().getResource("TaskAssigment.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            switchScenes(event,"TaskAssigment.fxml");
+
 
         }
         public void switchToTeamLeader_Requests(ActionEvent event) throws IOException {
-            root = FXMLLoader.load(getClass().getResource("TeamLeader_Requests.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            switchScenes(event,"TeamLeader_Requests.fxml");
+
 
         }
         public void switchToTasks(ActionEvent event) throws IOException {
-            root = FXMLLoader.load(getClass().getResource("Tasks.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
+            switchScenes(event,"Tasks");
         }
+
+
+    public void switchScenes(ActionEvent event , String fxml) throws IOException {
+
+        root = FXMLLoader.load(getClass().getResource(fxml));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+
+
     }
 
 
