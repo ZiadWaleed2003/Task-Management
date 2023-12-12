@@ -70,52 +70,37 @@ public class AfterLoginAdminController
 
 
             public void switchToMainPage(ActionEvent event) throws IOException {
-                root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-
+                switchScenes(event,"MainPage.fxml");
             }
+
             public void switchToRequests(ActionEvent event) throws IOException {
-                root = FXMLLoader.load(getClass().getResource("Requests.fxml"));
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-
+                switchScenes(event,"Requests.fxml");
             }
+
             public void switchToEmployees(ActionEvent event) throws IOException {
-                root = FXMLLoader.load(getClass().getResource("EmployeesView.fxml"));
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-
+                switchScenes(event,"EmployeesView.fxml");
             }
+
     public void switchToProjects(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Projects.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
+        switchScenes(event,"Projects.fxml");
     }
+
             public void switchToAddEmployee(ActionEvent event) throws IOException {
-                root = FXMLLoader.load(getClass().getResource("AddEmployee.fxml"));
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-
+                switchScenes(event,"AddEmployee.fxml");
             }
+
             public void switchToAddProjects(ActionEvent event) throws IOException {
-                root = FXMLLoader.load(getClass().getResource("AddProject.fxml"));
+                switchScenes(event,"AddPorject.fxml");
+            }
+
+            public void switchScenes(ActionEvent event , String fxml) throws IOException {
+
+                root = FXMLLoader.load(getClass().getResource(fxml));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
 
             }
-}
+        }
 

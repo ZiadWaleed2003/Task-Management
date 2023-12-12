@@ -1007,8 +1007,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="292" parent="1" name="plproject">
-      <IntrospectionTimestamp>2023-12-09.21:01:00</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2023-12-09.17:01:00</LocalIntrospectionTimestamp>
+      <IntrospectionTimestamp>2023-12-12.16:25:19</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2023-12-12.12:25:19</LocalIntrospectionTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="293" parent="1" name="mysql.infoschema">
@@ -1081,7 +1081,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>7</Position>
     </column>
     <column id="309" parent="297" name="Emp_Type">
-      <DasType>varchar(15)|0s</DasType>
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
     <column id="310" parent="297" name="Time_Card">
@@ -1164,7 +1165,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="326" parent="299" name="Request_Id">
-      <AutoIncrement>5</AutoIncrement>
+      <AutoIncrement>12</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>

@@ -42,9 +42,9 @@ public class login_controller {
         }
         if (Employee.login(email,password)) {
            System.out.print("Login successfully !\n" + "Name is : " + Utility.UserSingle.getInstance().emp.name);
-
-            switchToEmpMainview(event);
-        } else {
+            switchToTeamLeaderMainView(event);
+        }
+        else {
             err_message_label.setText("Invalid Username or Password\n");
             err_message_label.setVisible(true);
         }
@@ -52,13 +52,16 @@ public class login_controller {
 
     public void switchToEmpMainview(ActionEvent e)throws IOException{
 
-        switchScenes(e,"Employee_Dashboard.fxml");
+            switchScenes(e,"Employee_Dashboard.fxml");
+
     }
     public void switchToAdminMainView(ActionEvent e) throws IOException {
             switchScenes(e,"Admin_Dashboard.fxml");
 
     }
-
+    public void switchToTeamLeaderMainView(ActionEvent e) throws IOException {
+        switchScenes(e,"TeamLeader_Dashboard.fxml");
+    }
 
     public void switchScenes(ActionEvent event , String fxml) throws IOException {
 

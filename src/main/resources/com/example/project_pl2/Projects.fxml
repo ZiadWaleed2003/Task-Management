@@ -83,5 +83,10 @@
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
+      <TextField layoutX="613.0" layoutY="652.0" prefHeight="26.0" prefWidth="174.0" promptText="Team ID">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>
