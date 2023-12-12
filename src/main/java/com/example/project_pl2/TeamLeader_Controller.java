@@ -11,11 +11,13 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
 public class TeamLeader_Controller implements Initializable {
+
         @FXML
         private Button LogoutButton;
         @FXML
@@ -28,9 +30,13 @@ public class TeamLeader_Controller implements Initializable {
         @FXML
     private TextField projectIDtextfield;
         @FXML
+
     private ChoiceBox<Utility.CompletionStatus> completionStatusChoiceBox;
         @FXML
         private ChoiceBox<IndivTask.Priority> priorityChoiceBox;
+    private TextField statustextfield;
+        @FXML
+        private TextField prioritytextfield;
         @FXML
         private DatePicker startdatetextfield;
         @FXML
@@ -71,6 +77,29 @@ public class TeamLeader_Controller implements Initializable {
 
 
 
+
+
+
+        public void createtaskbutton(ActionEvent event){
+            int task_id = Integer.parseInt(taskidtextfield.getText());
+            String name = tasknametextfield.getText();
+            String description = taskdesctextfield.getText();
+            Utility.CompletionStatus status = Utility.CompletionStatus.valueOf(statustextfield.getText());
+            int project_id = Integer.parseInt(projectIDtextfield.getText());
+            IndivTask.Priority priority = IndivTask.Priority.valueOf(prioritytextfield.getText());
+            int assignto =Integer.parseInt(assigendtotextfield.getText());
+            Date startDate = Date.valueOf(startdatetextfield.getValue());
+            Date dueDate = Date.valueOf(duedatetextfield.getValue());
+            boolean success = Employee.addTask(task_id,name,description,status,assignto,project_id,priority,startDate,dueDate);
+            if (success){
+//                addtask_err_label.setText("Task Added Successfully");
+                Alert alert= new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Task Added");
+                alert.setContentText("Task Added Successfully");
+            }
+
+
+    }
 
 
 
@@ -118,15 +147,15 @@ public class TeamLeader_Controller implements Initializable {
 
     }
 
+
     public void getstat(ActionEvent event)throws IOException{
         IndivTask.Priority priority = (IndivTask.Priority) priorityChoiceBox.getSelectionModel().getSelectedItem();
     }
     public void getprioority(ActionEvent event)throws IOException{
          Utility.CompletionStatus status = (Utility.CompletionStatus) completionStatusChoiceBox.getSelectionModel().getSelectedItem();
+
+
     }
-
-
-
 
 }
 

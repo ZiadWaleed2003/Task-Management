@@ -58,7 +58,9 @@ public class login_controller {
     public void switchToAdminMainView(ActionEvent e) throws IOException {
             switchScenes(e,"Admin_Dashboard.fxml");
     }
-
+    public void switchToTeamLeaderMainView(ActionEvent e) throws IOException {
+        switchScenes(e,"TeamLeader_Dashboard.fxml");
+    }
 
 
     public void switchToTeamLeaderMainView(ActionEvent e) throws IOException {

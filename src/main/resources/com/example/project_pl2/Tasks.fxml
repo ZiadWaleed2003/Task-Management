@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -79,7 +80,11 @@
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </TextField>
+
       <TextField fx:id="projectIDtextfield" layoutX="538.0" layoutY="419.0" promptText="Project ID">
+
+      <TextField fx:id="statustextfield" layoutX="538.0" layoutY="501.0" promptText="Status">
+
          <font>
             <Font name="Tahoma Bold" size="12.0" />
          </font>
@@ -88,16 +93,26 @@
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
+
       </Button>
       <TextField fx:id="taskidtextfield" layoutX="270.0" layoutY="471.0" promptText="Task ID">
+
+      </TextField>
+      <TextField fx:id="prioritytextfield" layoutX="538.0" layoutY="574.0" promptText="Pirority">
+
          <font>
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </TextField>
+
       <TextField fx:id="assigendtotextfield" layoutX="748.0" layoutY="574.0" promptText="Assigned To">
+
+      <Button layoutX="791.0" layoutY="637.0" mnemonicParsing="false" onAction="#createtaskbutton" text="Create">
+
          <font>
-            <Font name="Tahoma Bold" size="12.0" />
+            <Font name="Tahoma Bold" size="14.0" />
          </font>
+
       </TextField>
       <DatePicker fx:id="startdatetextfield" layoutX="742.0" layoutY="418.0" promptText="Start Date" />
       <DatePicker fx:id="duedatetextfield" layoutX="742.0" layoutY="500.0" promptText="End Date" />
@@ -113,5 +128,19 @@
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </Label>
+
+      </Button>
+      <TextField fx:id="taskidtextfield" layoutX="270.0" layoutY="471.0" promptText="Task ID">
+         <font>
+            <Font name="Tahoma Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="assigendtotextfield" layoutX="748.0" layoutY="574.0" promptText="Assigned To">
+         <font>
+            <Font name="Tahoma Bold" size="12.0" />
+         </font>
+      </TextField>
+      <DatePicker fx:id="startdatetextfield" layoutX="742.0" layoutY="418.0" promptText="Start Date" />
+      <DatePicker fx:id="duedatetextfield" layoutX="742.0" layoutY="500.0" promptText="End Date" />
    </children>
 </AnchorPane>
