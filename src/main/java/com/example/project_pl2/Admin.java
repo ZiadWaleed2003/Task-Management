@@ -53,8 +53,18 @@ public class Admin extends Person implements File{
     }
 
     //Zeyad Tarek
-    public static boolean login(String email, String password) {
-        return false;
+    public static boolean login(String username, String password) throws IOException {
+        String admin_username = getAdminUsername();
+        String admin_password = getAdminPassword();
+
+        username = username.toLowerCase();
+        
+        if(username.equals(admin_username) && password.equals(admin_password)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 
@@ -200,7 +210,7 @@ public class Admin extends Person implements File{
     // Update Admin Password
     public void updateAdminUsername(String new_username) throws IOException {
         String file_content = readFromFile();
-        String updated_content = file_content.replaceAll("Admin_Username: (.*)", "Admin_Username: " + new_username);
+        String updated_content = file_content.replaceAll("Admin_Username: (.*)", "Admin_Username: " + new_username.toLowerCase());
         writeToFile(updated_content);
         System.out.println("Admin username updated successfully!");
     }
@@ -317,7 +327,7 @@ public class Admin extends Person implements File{
     }
 
     // Read File Content
-    private String readFromFile() throws IOException {
+    private static String readFromFile() throws IOException {
         StringBuilder content = new StringBuilder();
         BufferedReader reader = new BufferedReader(new FileReader(new java.io.File(file_name)));
         String line;
@@ -335,6 +345,37 @@ public class Admin extends Person implements File{
         writer.close();
     }
 
+
+    
+    // Get Admin Username
+    public static String getAdminUsername() throws IOException {
+        String file_content = readFromFile();
+        Pattern projects_pattern = Pattern.compile("Admin_Username: (\\w+)");
+        Matcher projects_matcher = projects_pattern.matcher(file_content);
+
+        if(projects_matcher.find()){
+            String Username = projects_matcher.group(1);
+            return Username;
+        }
+        else {
+            return "ERROR In get Admin Username";
+        }
+    }
+
+    //  Get Admin Password
+    public static String getAdminPassword() throws IOException {
+        String file_content = readFromFile();
+        Pattern projects_pattern = Pattern.compile("Admin_Password: (\\w+)");
+        Matcher projects_matcher = projects_pattern.matcher(file_content);
+
+        if(projects_matcher.find()){
+            String Password = projects_matcher.group(1);
+            return Password;
+        }
+        else {
+            return "ERROR In get Admin Password";
+        }
+    }
     
 }
 
