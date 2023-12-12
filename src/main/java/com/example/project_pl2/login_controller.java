@@ -51,10 +51,12 @@ public class login_controller {
     }
 
     public void switchToEmpMainview(ActionEvent e)throws IOException{
-            switchScenes(e,".fxml");
+
+        switchScenes(e,"Employee_Dashboard.fxml");
     }
     public void switchToAdminMainView(ActionEvent e) throws IOException {
             switchScenes(e,"Admin_Dashboard.fxml");
+
     }
 
 
