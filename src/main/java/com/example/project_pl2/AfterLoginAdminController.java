@@ -18,9 +18,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
-public class AfterLoginAdminController
-        //implements Initializable
+public class AfterLoginAdminController implements Initializable
         {
             @FXML
             private Button LogoutButton;
@@ -28,36 +29,56 @@ public class AfterLoginAdminController
     private Scene scene;
     private Parent root;
     private Stage stage;
-//    @FXML
-//    private Label Selection;
-//
-//    @FXML
-//    private TableView<Project> projectTableView;
-//    @FXML
-//    private TableColumn<Project, Integer> project_id;
-//    @FXML
-//    private TableColumn<Project, String> project_title;
-//    @FXML
-//    private TableColumn<Project, String> project_status;
-//    @FXML
-//    private TableColumn<Project, String> project_desc;
-//    @FXML
-//    private TableColumn<Project, Integer> Assigned_to;
-//
-//    ObservableList<Project> Project = FXCollections.observableArrayList();
-//
-//    @Override
-//    public void initialize(URL url, ResourceBundle resourceBundle) {
-//
-//        project_id.setCellValueFactory(new PropertyValueFactory<Project,Integer>("project_id"));
-//        project_title.setCellValueFactory(new PropertyValueFactory<Project,String>("project_title"));
-//        project_status.setCellValueFactory(new PropertyValueFactory<Project,String>("project_status"));
-//        Assigned_to.setCellValueFactory(new PropertyValueFactory<Project,Integer>("team_id"));
-//
-//
-//
-//    }
-//
+    @FXML
+    private Label Selection;
+
+    @FXML
+    private TableView<Project> projectTableView;
+    @FXML
+    private TableColumn<Project, Integer> ID;
+    @FXML
+    private TableColumn<Project, String> Title;
+    @FXML
+    private TableColumn<Project, String> status;
+    @FXML
+    private TableColumn<Project, String> Descreption;
+    @FXML
+    private TableColumn<Project, Integer> Assigned_to;
+
+    ObservableList<Project> Project = FXCollections.observableArrayList();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        ID.setCellValueFactory(new PropertyValueFactory<Project,Integer>("Project_Id"));
+        Title.setCellValueFactory(new PropertyValueFactory<Project,String>("Project_Title"));
+        status.setCellValueFactory(new PropertyValueFactory<Project,String>("Progress_status"));
+        Descreption.setCellValueFactory(new PropertyValueFactory<Project,String>("Project_desc"));
+        Assigned_to.setCellValueFactory(new PropertyValueFactory<Project,Integer>("Assigned_To"));
+
+    String query = "SELECT * FROM Project";
+        ResultSet resultSet= CRUD2.readDbDynamic(query);
+        try{while (resultSet.next()){
+            int project_id = resultSet.getInt("Project_Id");
+            String project_title = resultSet.getString("Project_Title");
+            Utility.CompletionStatus project_status = Utility.CompletionStatus.valueOf(resultSet.getString("Progress_status"));
+            String project_desc = resultSet.getString("project_desc");
+            int Assigned_to=resultSet.getInt("Assigned_To");
+            Admin admin = new Admin();
+            admin.createProject(project_id,Assigned_to,project_status,project_desc,project_title);
+
+
+
+        }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        projectTableView.setItems(Project);
+
+
+    }
+
 
 
             public void Logout(ActionEvent event)throws IOException{
