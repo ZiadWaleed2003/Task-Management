@@ -52,7 +52,7 @@ public class Admin extends Person implements File{
         this.email = email;
     }
 
-
+    //Zeyad Tarek
     public static boolean login(String email, String password) {
         return false;
     }
