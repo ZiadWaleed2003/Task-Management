@@ -18,38 +18,36 @@ public class Project {
     protected int project_id;
     protected int team_id;
     //Progress
-    protected Utility.CompletionStatus current_status;
+    protected String current_status;
     protected int internal_task_count;
     protected ArrayList<IndivTask> internal_tasks;
     protected int current_progress;
     //Desc:
     protected String project_title;
-    protected StringBuilder project_description = new StringBuilder(); //NOTE: probably doing this wrong
+    protected String project_description;
 
-    Project(int team_id, String project_title){
-        this.team_id = team_id;
-        this.project_id =project_id;
-        this.project_title = project_title;
-        this.project_description.append("To be set.");
-        this.current_status = Utility.CompletionStatus.PENDING;
-        this.internal_task_count =0;
-        this.current_progress = calculateProgress();
-
+    Project(int project_id, String project_title , String project_Status , String project_description , int team_id){
+        this.project_id          = project_id;
+        this.project_title       = project_title;
+        this.current_status      = project_Status;
+        this.project_description = project_description;
+        this.team_id             = team_id;
     }
 
-    public Project(ResultSet res){
-        this.team_id = team_id;
-        this.project_id =project_id;
-        this.project_title = project_title;
-        this.project_description.append("To be set.");
-        this.current_status = Utility.CompletionStatus.PENDING;
-        this.internal_task_count =0;
-        this.current_progress = calculateProgress();
+    public Project(ResultSet res) throws SQLException {
+
+        this.project_description = res.getString("Project_desc");
+        this.project_title       = res.getString("Project_Title");
+        this.project_id          = res.getInt("Project_Id");
+        this.team_id             = res.getInt("Assigned_To");
+        this.current_status    = res.getString("Progress_status");
+
+
     }
 
     public void setProjectDesc(String desc){
-        this.project_description.delete(0, this.project_description.length()-1);
-        this.project_description.append(desc);
+//        this.project_description.delete(0, this.project_description.length()-1);
+//        this.project_description.append(desc);
     }
 
 
@@ -65,9 +63,9 @@ public class Project {
         return this.internal_tasks.add(task);
     }
 
-    public Utility.CompletionStatus getCompletionStatus(){
-        return this.current_status;
-    }
+//    public Utility.CompletionStatus getCompletionStatus(){
+//        return this.current_status;
+//    }
 
     public int getCompletionProgress(){
         return this.current_progress;

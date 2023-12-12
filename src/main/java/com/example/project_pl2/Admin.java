@@ -52,6 +52,11 @@ public class Admin extends Person implements File{
         this.email = email;
     }
 
+    public Admin(String username , String password ){
+        super.email     = username;
+        super.password  = password;
+    }
+
     //Zeyad Tarek
     public static boolean login(String username, String password) throws IOException {
         String admin_username = getAdminUsername();
@@ -60,7 +65,12 @@ public class Admin extends Person implements File{
         username = username.toLowerCase();
         
         if(username.equals(admin_username) && password.equals(admin_password)){
+
+            Admin admin = new Admin(username , password);
+            Utility.UserSingle CurrentUser = Utility.UserSingle.getInstance();
+            CurrentUser.admin = admin;
             return true;
+
         }
         else{
             return false;
@@ -68,8 +78,28 @@ public class Admin extends Person implements File{
     }
 
 
-    public void showProjectProgress (){
+    public ArrayList<Project> showProject () throws SQLException {
+        String query = "SELECT * from plproject.Project";
 
+        ResultSet result = CRUD2.readDbDynamic(query);
+
+        ArrayList<Project> project_list = new ArrayList<Project>();
+
+        if(result.isBeforeFirst()){
+            int i = 0 ;
+
+            while(result.next()){
+
+                Project project = new Project(result);
+                project_list.add(project);
+                i++;
+
+            }
+
+        }else{
+            System.out.print("No Projects available to review");
+        }
+        return project_list;
     }
 
 

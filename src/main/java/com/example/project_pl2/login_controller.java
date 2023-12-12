@@ -30,11 +30,14 @@ public class login_controller {
 
     private boolean Success;
 
+    private String email;
+    private String password;
+
 
     @FXML
     public void LoginButtonAction(ActionEvent event) throws IOException, SQLException {
-        String email = emailtextfield.getText();
-        String password = passwordtextfield.getText();
+            email = emailtextfield.getText();
+             password = passwordtextfield.getText();
         if (email.isEmpty() || password.isEmpty()) {
             err_message_label.setText("Email And Password Are Required Fields Cannot Be Left Empty\n");
             err_message_label.setVisible(true);
@@ -42,7 +45,13 @@ public class login_controller {
         }
         if (Employee.login(email,password)) {
            System.out.print("Login successfully !\n" + "Name is : " + Utility.UserSingle.getInstance().emp.name);
-            switchToAdminMainView(event);
+
+           if(Utility.UserSingle.getInstance().emp.getEmp_type() == Employee.EmpType.LEADER ){
+                    switchScenes(event , "TeamLeader_Dashboard.fxml");
+           }else{
+               switchScenes(event , "Employee_Dashboard.fxml");
+           }
+
         }
         else {
             err_message_label.setText("Invalid Username or Password\n");
@@ -50,16 +59,20 @@ public class login_controller {
         }
     }
 
-    public void switchToEmpMainview(ActionEvent e)throws IOException{
 
-            switchScenes(e,"Employee_Dashboard.fxml");
+    public void adminLogIn(ActionEvent event) throws IOException {
+        email    = emailtextfield.getText();
+        password = passwordtextfield.getText();
 
-    }
-    public void switchToAdminMainView(ActionEvent e) throws IOException {
-            switchScenes(e,"Admin_Dashboard.fxml");
-    }
-    public void switchToTeamLeaderMainView(ActionEvent e) throws IOException {
-        switchScenes(e,"TeamLeader_Dashboard.fxml");
+        if (email.isEmpty() || password.isEmpty()) {
+            err_message_label.setText("Email And Password Are Required Fields Cannot Be Left Empty\n");
+            err_message_label.setVisible(true);
+            return;
+        }
+
+        if(Admin.login(email , password)){
+            switchScenes(event , "Admin_Dashboard.fxml");
+        }
     }
 
 
