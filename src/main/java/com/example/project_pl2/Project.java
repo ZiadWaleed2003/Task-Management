@@ -37,10 +37,22 @@ public class Project {
 
     }
 
+    public Project(ResultSet res){
+        this.team_id = team_id;
+        this.project_id =project_id;
+        this.project_title = project_title;
+        this.project_description.append("To be set.");
+        this.current_status = Utility.CompletionStatus.PENDING;
+        this.internal_task_count =0;
+        this.current_progress = calculateProgress();
+    }
+
     public void setProjectDesc(String desc){
         this.project_description.delete(0, this.project_description.length()-1);
         this.project_description.append(desc);
     }
+
+
 
     public int getTeamID(){
         return this.team_id;
@@ -67,34 +79,34 @@ public class Project {
         return this.project_description.toString();
     }
 
-    public void createProject(int team_id, String project_title,String project_desc) {
-        this.team_id = team_id;
-        // need to connect project_id from db id counter
-        this.project_id =project_id;
-        this.project_title = project_title;
-        this.project_description= new StringBuilder(project_desc);
-        this.current_status = Utility.CompletionStatus.PENDING;
-        this.internal_task_count =0;
-        this.current_progress = calculateProgress();
-    }
+//    public void createProject(int team_id, String project_title,String project_desc) {
+//        this.team_id = team_id;
+//        // need to connect project_id from db id counter
+//        this.project_id =project_id;
+//        this.project_title = project_title;
+//        this.project_description= new StringBuilder(project_desc);
+//        this.current_status = Utility.CompletionStatus.PENDING;
+//        this.internal_task_count =0;
+//        this.current_progress = calculateProgress();
+//    }
 
     public void updateProjectData(String desc) {
         setProjectDesc(desc);
     }
 
-    public boolean deleteProject(int project_id) {
-        String query = "Delete * from project where project_id = ?";
-
-        Integer Project_Id = project_id;
-
-        Integer[] args = {Project_Id};
-
-
-        Pair<Boolean,Integer> check = CRUD2.updateDbDynamic(query,args);
-
-        return check.getKey();
-
-    }
+//    public boolean deleteProject(int project_id) {
+//        String query = "Delete * from project where project_id = ?";
+//
+//        Integer Project_Id = project_id;
+//
+//        Integer[] args = {Project_Id};
+//
+//
+//        Pair<Boolean,Integer> check = CRUD2.updateDbDynamic(query,args);
+//
+//        return check.getKey();
+//
+//    }
     private int calculateProgress(){
         int comp_tsks = 0;
         for (IndivTask tsk: this.internal_tasks) {

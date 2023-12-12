@@ -1,6 +1,7 @@
 package com.example.project_pl2;
 
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public abstract class Person {
@@ -27,7 +28,7 @@ public abstract class Person {
     public abstract void setPassword(String password);
     public abstract void setEmail(String email);
 
-    public static boolean login(String email , String password) throws SQLException{
+    public static boolean login(String email , String password) throws SQLException, IOException{
         return false;
     };
 

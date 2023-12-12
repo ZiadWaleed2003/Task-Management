@@ -3,7 +3,7 @@ package com.example.project_pl2;
 import java.io.*;
 
 public interface File {
-    String file_name = ""; // add File bath
+    String file_name = "admin_data.txt"; // add File bath
     String readFile() throws IOException;
 
     void updateAdminUsername(String username) throws IOException;

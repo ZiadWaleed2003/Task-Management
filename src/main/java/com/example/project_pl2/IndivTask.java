@@ -165,16 +165,5 @@ public class IndivTask {
 
         return result;
     }
-    public boolean updateTask(){ //TODO: i'm about to create spaghetti never seen/made by any mortal being in history.
-        //TODO: since this shitty lang doesn't even have named parameters or even refs like any other goddamn human lang.
-        String updateTaskQuery = "INSERT INTO task (Task_Id, Assigned_To, Due_date, Priority, Project_Id, Start_Date, " +
-                "Task_Desc, Task_Name, Task_Status) VALUES (?, ?, ?, ? ,? ,? ,?, ?, ?);";
-        Object[] args = {this.getId(), this.getAssignedTo(), this.getDueDate(), this.getPriority(), this.getProject(),
-                this.getStartDate(), this.getDescription(), this.getName(), this.getStatus()};
-        Pair<Boolean , Integer> res = CRUD2.updateDbDynamic(updateTaskQuery);
-        //TODO: this isn't even complete  i don't know even how to do this without so much stupid overhead.
-        return res.getKey();
-    }
-
 }
 
