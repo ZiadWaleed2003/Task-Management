@@ -38,13 +38,6 @@ public class App extends Application{
 
 
 
-
-         IndivTask x = new IndivTask();
-
-         ResultSet res = x.readTask();
-
-         System.out.print("Assigned to : " + res.getInt("Assigned_To"));
-
          launch();
 
 
