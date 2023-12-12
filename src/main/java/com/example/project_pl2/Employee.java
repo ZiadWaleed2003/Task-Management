@@ -262,6 +262,10 @@ public class Employee extends Person{
         return result;
     }
 
+    public EmpType getEmp_type(){
+        return this.emp_type;
+    }
+
 
 
 }
