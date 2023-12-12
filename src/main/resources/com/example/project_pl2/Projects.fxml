@@ -4,17 +4,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="935.0" style="-fx-background-color: #F1E5E5;" stylesheets="@st.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_pl2.AfterLoginAdminController">
    <children>
-      <Pane prefHeight="744.0" prefWidth="246.0" styleClass="background" stylesheets="@st.css">
+      <Pane prefHeight="744.0" prefWidth="246.0" styleClass="backgroundAdmin" stylesheets="@st.css">
          <children>
             <Pane layoutY="46.0" prefHeight="276.0" prefWidth="223.0" styleClass="button1">
                <children>
-                  <Button layoutX="14.0" layoutY="49.0" mnemonicParsing="false" onAction="#switchToProjects" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #F1E5E5;" styleClass="AdminButtons" stylesheets="@st.css" text="Employees">
+                  <Button layoutX="14.0" layoutY="71.0" mnemonicParsing="false" onAction="#switchToEmployees" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #F1E5E5;" styleClass="AdminButtons" stylesheets="@st.css" text="Employees">
                      <font>
                         <Font name="Arial Black" size="23.0" />
                      </font>
@@ -32,23 +33,28 @@
                   <Font name="Tahoma Bold" size="14.0" />
                </font>
             </Label>
-            <Button layoutX="23.0" layoutY="616.0" mnemonicParsing="false" styleClass="background" stylesheets="@st.css" text="Logout" textFill="WHITE">
+            <Button fx:id="LogoutButton" layoutX="23.0" layoutY="616.0" mnemonicParsing="false" onAction="#Logout" styleClass="backgroundAdmin" stylesheets="@st.css" text="Logout" textFill="WHITE">
                <font>
                   <Font name="Tahoma Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="14.0" layoutY="372.0" mnemonicParsing="false" onAction="#switchToAddProjects" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #F1E5E5;" styleClass="AdminButtons" stylesheets="@st.css" text="ADD Project">
+               <font>
+                  <Font name="Arial Black" size="23.0" />
                </font>
             </Button>
          </children>
       </Pane>
       <Pane layoutX="245.0" layoutY="-2.0" prefHeight="45.0" prefWidth="1037.0" styleClass="header">
          <children>
-            <Label layoutX="14.0" layoutY="23.0" prefHeight="46.0" prefWidth="305.0" text="Projects Table">
+            <Label layoutX="7.0" layoutY="23.0" prefHeight="46.0" prefWidth="305.0" text="Projects Table">
                <font>
                   <Font name="Tahoma Bold" size="32.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <TableView layoutX="252.0" layoutY="140.0" prefHeight="426.0" prefWidth="678.0" style="-fx-background-color: #FFFCFC;" stylesheets="@st.css">
+      <TableView layoutX="252.0" layoutY="88.0" prefHeight="436.0" prefWidth="678.0" style="-fx-background-color: #FFFCFC;" stylesheets="@st.css">
          <columns>
             <TableColumn prefWidth="36.79998779296875" style="-fx-background-color: #4B5085;" text="ID" />
             <TableColumn prefWidth="132.79998779296875" style="-fx-background-color: #6699EE;" text="Title" />
@@ -57,5 +63,25 @@
             <TableColumn prefWidth="131.199951171875" style="-fx-background-color: #4B5085;" text="Assigned To" />
          </columns>
       </TableView>
+      <Button layoutX="267.0" layoutY="564.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="88.0" text="Delete">
+         <font>
+            <Font name="Tahoma Bold" size="18.0" />
+         </font>
+      </Button>
+      <TextField layoutX="396.0" layoutY="568.0" prefHeight="26.0" prefWidth="174.0" promptText="Project ID">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </TextField>
+      <Button layoutX="267.0" layoutY="648.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="102.0" text="Update">
+         <font>
+            <Font name="Tahoma Bold" size="18.0" />
+         </font>
+      </Button>
+      <TextField layoutX="396.0" layoutY="652.0" prefHeight="26.0" prefWidth="174.0" promptText="Project ID">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

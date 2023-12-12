@@ -15,7 +15,7 @@
          <children>
             <Pane layoutY="46.0" prefHeight="276.0" prefWidth="223.0" styleClass="button1">
                <children>
-                  <Button layoutX="14.0" layoutY="49.0" mnemonicParsing="false" onAction="#switchToATaskAssigment" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #212121;" styleClass="AdminButtons" stylesheets="@st.css" text="Assign Task" textFill="WHITE">
+                  <Button layoutX="14.0" layoutY="49.0" mnemonicParsing="false" onAction="#switchToTasks" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #212121;" styleClass="AdminButtons" stylesheets="@st.css" text="Tasks" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="23.0" />
                      </font>
@@ -49,7 +49,7 @@
             </Label>
          </children>
       </Pane>
-      <TableView layoutX="252.0" layoutY="77.0" prefHeight="282.0" prefWidth="678.0" style="-fx-background-color: #FFFCFC;" stylesheets="@st.css">
+      <TableView layoutX="252.0" layoutY="76.0" prefHeight="337.0" prefWidth="678.0" style="-fx-background-color: #FFFCFC;" stylesheets="@st.css">
          <columns>
             <TableColumn prefWidth="36.79998779296875" style="-fx-background-color: #4D4476;" text="ID" />
             <TableColumn prefWidth="81.5999755859375" style="-fx-background-color: #2C5776;" text="Name" />
@@ -62,49 +62,24 @@
             <TableColumn prefWidth="69.5999755859375" style="-fx-background-color: #4D4476;" text="Project_ID" />
          </columns>
       </TableView>
-      <Label layoutX="273.0" layoutY="372.0" text="Create Task" textFill="WHITE">
+      <Label layoutX="262.0" layoutY="438.0" prefHeight="20.0" prefWidth="106.0" text="Assign To" textFill="WHITE">
          <font>
-            <Font name="Tahoma Bold" size="24.0" />
+            <Font name="Tahoma Bold" size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="270.0" layoutY="419.0" promptText="Name">
+      <TextField layoutX="262.0" layoutY="488.0" prefHeight="26.0" prefWidth="163.0" promptText="Employee_ID">
          <font>
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField layoutX="269.0" layoutY="470.0" prefHeight="146.0" prefWidth="238.0" promptText="Task Description">
+      <TextField layoutX="263.0" layoutY="558.0" promptText="Employee_Name">
          <font>
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField layoutX="538.0" layoutY="501.0" promptText="Status">
+      <Button layoutX="433.0" layoutY="609.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="69.0" text="Assign">
          <font>
             <Font name="Tahoma Bold" size="12.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="538.0" layoutY="419.0" promptText="Project ID">
-         <font>
-            <Font name="Tahoma Bold" size="12.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="538.0" layoutY="574.0" promptText="Pirority">
-         <font>
-            <Font name="Tahoma Bold" size="12.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="742.0" layoutY="419.0" promptText="Start Date">
-         <font>
-            <Font name="Tahoma Bold" size="12.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="742.0" layoutY="501.0" promptText="End Date">
-         <font>
-            <Font name="Tahoma Bold" size="12.0" />
-         </font>
-      </TextField>
-      <Button layoutX="791.0" layoutY="637.0" mnemonicParsing="false" text="Create">
-         <font>
-            <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Button>
    </children>

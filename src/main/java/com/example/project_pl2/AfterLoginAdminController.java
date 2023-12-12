@@ -22,6 +22,9 @@ import java.util.ResourceBundle;
 public class AfterLoginAdminController
         //implements Initializable
         {
+            @FXML
+            private Button LogoutButton;
+
     private Scene scene;
     private Parent root;
     private Stage stage;
@@ -56,6 +59,24 @@ public class AfterLoginAdminController
 //    }
 //
 
+
+            public void Logout(ActionEvent event)throws IOException{
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Logout");
+                alert.setHeaderText("You Are About To Logout");
+                alert.setContentText("You Will Be Redirected To the Main Page");
+                if (alert.showAndWait().get()==ButtonType.OK)
+                    switchToMainPage(event);}
+
+
+            public void switchToMainPage(ActionEvent event) throws IOException {
+                root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+
+            }
             public void switchToRequests(ActionEvent event) throws IOException {
                 root = FXMLLoader.load(getClass().getResource("Requests.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -80,5 +101,21 @@ public class AfterLoginAdminController
         stage.show();
 
     }
+            public void switchToAddEmployee(ActionEvent event) throws IOException {
+                root = FXMLLoader.load(getClass().getResource("AddEmployee.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+
+            }
+            public void switchToAddProjects(ActionEvent event) throws IOException {
+                root = FXMLLoader.load(getClass().getResource("AddProject.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+
+            }
 }
 
