@@ -74,8 +74,24 @@ public class Employee extends Person{
 
     public ArrayList<IndivTask> constructTasksList() throws SQLException{
         ArrayList<IndivTask> result =  new ArrayList<IndivTask>();
-        String query = "SELECT * FROM plproject.task WHERE Assigned_To = ?";
-        Integer[] args = {this.id};
+        String query;
+        Object[] args = {};
+        if (this.emp_type == EmpType.LEADER){
+
+            String Query1 = "SELECT Project_Id FROM plproject.project WHERE Assigned_To = ?";
+            Object[] args1 = {this.team_id};
+            ResultSet req = CRUD2.readDbDynamic(Query1, args);
+            int team_id = 0;
+            if (req.isBeforeFirst()){
+                req.next();
+                team_id = req.getInt("Assigned_To");
+            }
+            query = "SELECT * FROM plproject.task WHERE Project_Id = ?";
+            args[0] = team_id;
+        }else{
+            query = "SELECT * FROM plproject.task WHERE Assigned_To = ?";
+            args[0] = this.id;
+        }
         try {
             ResultSet res = CRUD2.readDbDynamic(query, args);
             if (res.isBeforeFirst()) {
@@ -115,7 +131,7 @@ public class Employee extends Person{
                 ResultSet res = CRUD2.readDbDynamic(query, args);
                 if (res.isBeforeFirst()) {
                     while (res.next()) {
-//                        result.add(new Project(res));
+                        result.add(new Project(res));
                     }
                 }
             } catch (SQLException e) {
@@ -232,6 +248,18 @@ public class Employee extends Person{
         }else{
             return false;
         }
+    }
+    public boolean reassignTask(int task_id, int emp_id ){
+        String query = "UPDATE plproject.task SET Assigned_To = ? WHERE Task_Id = ?";
+        Object [] args = {emp_id, task_id};
+        boolean result = CRUD2.updateDbDynamic( query , args).getKey();
+        return result;
+    }
+    public boolean updateTaskStatus(int task_id, int status ){
+        String query = "UPDATE plproject.task SET Task_Status = ? WHERE Task_Id = ?";
+        Object [] args = {status, task_id};
+        boolean result = CRUD2.updateDbDynamic( query , args).getKey();
+        return result;
     }
 
 

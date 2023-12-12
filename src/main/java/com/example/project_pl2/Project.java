@@ -37,10 +37,22 @@ public class Project {
 
     }
 
+    public Project(ResultSet res){
+        this.team_id = team_id;
+        this.project_id =project_id;
+        this.project_title = project_title;
+        this.project_description.append("To be set.");
+        this.current_status = Utility.CompletionStatus.PENDING;
+        this.internal_task_count =0;
+        this.current_progress = calculateProgress();
+    }
+
     public void setProjectDesc(String desc){
         this.project_description.delete(0, this.project_description.length()-1);
         this.project_description.append(desc);
     }
+
+
 
     public int getTeamID(){
         return this.team_id;
