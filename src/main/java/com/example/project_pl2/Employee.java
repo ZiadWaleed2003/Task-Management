@@ -80,7 +80,7 @@ public class Employee extends Person{
             ResultSet res = CRUD2.readDbDynamic(query, args);
             if (res.isBeforeFirst()) {
                 while(res.next()){
-//                    result.add(new IndivTask(res));
+                    result.add(new IndivTask(res));
                 }
             }
         }catch (SQLException e){
@@ -216,18 +216,22 @@ public class Employee extends Person{
         }
     }
 
-    public static boolean addTask(int id, String name, String description, Utility.CompletionStatus status,
+    public boolean addTask(int id, String name, String description, Utility.CompletionStatus status,
                            int assigned_to, int project, IndivTask.Priority priority, Date start_date, Date due_date){
-        IndivTask temp = new IndivTask(id,name,description, status,
-         assigned_to,  project,  priority,  start_date,  due_date);
-        String addTaskQuery = "INSERT INTO task (Task_Id, Assigned_To, Due_date, Priority, Project_Id, Start_Date, " +
-                "Task_Desc, Task_Name, Task_Status) VALUES (?, ?, ?, ? ,? ,? ,?, ?, ?);";
-        Object[] args = {temp.getId(), temp.getAssignedTo(), temp.getDueDate(), temp.getPriority(), temp.getProject(),
-                temp.getStartDate(), temp.getDescription(), temp.getName(), temp.getStatus()};
+        if(this.emp_type == EmpType.LEADER){
+            IndivTask temp = new IndivTask(id, name, description, status,
+                    assigned_to, project, priority, start_date, due_date);
+            String addTaskQuery = "INSERT INTO task (Task_Id, Assigned_To, Due_date, Priority, Project_Id, Start_Date, " +
+                    "Task_Desc, Task_Name, Task_Status) VALUES (?, ?, ?, ? ,? ,? ,?, ?, ?);";
+            Object[] args = {temp.getId(), temp.getAssignedTo(), temp.getDueDate(), temp.getPriority(), temp.getProject(),
+                    temp.getStartDate(), temp.getDescription(), temp.getName(), temp.getStatus()};
 
-        Pair<Boolean , Integer> res = CRUD2.updateDbDynamic(addTaskQuery, args);
+            Pair<Boolean, Integer> res = CRUD2.updateDbDynamic(addTaskQuery, args);
 
-        return res.getKey();
+            return res.getKey();
+        }else{
+            return false;
+        }
     }
 
 
