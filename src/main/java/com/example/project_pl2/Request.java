@@ -17,9 +17,9 @@ public class Request {
 
         this.request_id = resultSet.getInt("Request_Id");
         this.requested_by = resultSet.getInt("Request_By");
-        this.request_description = resultSet.getNString("Request_Desc");
+        this.request_description = resultSet.getString("Request_Desc");
         this.request_status = resultSet.getBoolean("Request_Status");
-        this.request_type = resultSet.getNString("Request_Type");
+        this.request_type = resultSet.getString("Request_Type");
 
     }
 
