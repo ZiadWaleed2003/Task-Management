@@ -54,13 +54,13 @@
             </Label>
          </children>
       </Pane>
-      <TableView layoutX="252.0" layoutY="88.0" prefHeight="436.0" prefWidth="678.0" style="-fx-background-color: #FFFCFC;" stylesheets="@st.css">
+      <TableView fx:id="projectTableView" layoutX="252.0" layoutY="88.0" prefHeight="436.0" prefWidth="678.0" style="-fx-background-color: #FFFCFC;" stylesheets="@st.css">
          <columns>
-            <TableColumn prefWidth="36.79998779296875" style="-fx-background-color: #4B5085;" text="ID" />
-            <TableColumn prefWidth="132.79998779296875" style="-fx-background-color: #6699EE;" text="Title" />
-            <TableColumn prefWidth="96.79998779296875" style="-fx-background-color: #4B5085;" text="Status" />
-            <TableColumn prefWidth="280.0" style="-fx-background-color: #6699EE;" text="Descreption" />
-            <TableColumn prefWidth="131.199951171875" style="-fx-background-color: #4B5085;" text="Assigned To" />
+            <TableColumn fx:id="ID" prefWidth="36.79998779296875" style="-fx-background-color: #4B5085;" text="ID" />
+            <TableColumn fx:id="Title" prefWidth="132.79998779296875" style="-fx-background-color: #6699EE;" text="Title" />
+            <TableColumn fx:id="status" prefWidth="96.79998779296875" style="-fx-background-color: #4B5085;" text="Status" />
+            <TableColumn fx:id="Descreption" prefWidth="280.0" style="-fx-background-color: #6699EE;" text="Descreption" />
+            <TableColumn fx:id="Assigned_to" prefWidth="131.199951171875" style="-fx-background-color: #4B5085;" text="Assigned To" />
          </columns>
       </TableView>
       <Button layoutX="267.0" layoutY="564.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="88.0" text="Delete">

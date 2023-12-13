@@ -16,7 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
+import java.sql.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -25,8 +25,7 @@ import java.util.ResourceBundle;
 
 public class ProjectPanelController implements Initializable {
 
-    // Use the ObservableList to store data
-    ObservableList<Project> projectObservableList = FXCollections.observableArrayList();
+
 
     @FXML
     private TableView<Project> projectTableView;
@@ -41,6 +40,13 @@ public class ProjectPanelController implements Initializable {
     @FXML
     private TableColumn<Project, Integer> Assigned_to;
 
+
+
+    ObservableList<Project> projectObservableList = FXCollections.observableArrayList();
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
     public ProjectPanelController() {
 
         projectTableView = new TableView<Project>();
