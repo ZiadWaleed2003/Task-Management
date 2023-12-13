@@ -101,9 +101,7 @@ public class Request {
         this.request_description.set(request_description);
     }
 
-    public String getRequest_type() {
-        return request_type.get();
-    }
+    public String getRequest_type() { return request_type.get();}
 
     public SimpleStringProperty request_typeProperty() {
         return request_type;
