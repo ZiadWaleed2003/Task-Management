@@ -62,17 +62,13 @@ public class ProjectPanelController implements Initializable {
         try {
             ArrayList<Project> proj = Utility.UserSingle.getInstance().admin.showProject();
 
-            for (Project project : proj) {
-                projectObservableList.add(project);
-
-
-            }
+            projectObservableList.addAll(proj);
 
             ID.setCellValueFactory(new PropertyValueFactory<Project , Integer>("project_id"));
             Title.setCellValueFactory(new PropertyValueFactory<Project , String>("project_title"));
             status.setCellValueFactory(new PropertyValueFactory<Project , String>("current_status"));
             Descreption.setCellValueFactory(new PropertyValueFactory<Project , String>("project_description"));
-            Assigned_to.setCellValueFactory(new PropertyValueFactory<Project , Integer>("getTeamID()"));
+            Assigned_to.setCellValueFactory(new PropertyValueFactory<Project , Integer>("team_id"));
 
 
             projectTableView.setItems(projectObservableList);
@@ -80,7 +76,7 @@ public class ProjectPanelController implements Initializable {
             // Set the items in the table
 
 
-            projectTableView.getColumns().addAll(ID, Title, status, Descreption, Assigned_to);
+//            projectTableView.getColumns().addAll(ID, Title, status, Descreption, Assigned_to);
 
 
             // Refresh the table view
@@ -88,7 +84,7 @@ public class ProjectPanelController implements Initializable {
 //            projectTableView.refresh();
 
         } catch (Exception e) {
-            e.printStackTrace(); // Handle the exception appropriately
+            System.out.print("مصييييبة"); // Handle the exception appropriately
         }
 
     }

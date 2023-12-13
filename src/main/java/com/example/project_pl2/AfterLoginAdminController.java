@@ -54,7 +54,7 @@ public class AfterLoginAdminController{
             }
 
             public void switchToProjects(ActionEvent event) throws IOException {
-                switchScenes(event,"Project.fxml");
+                switchScenes(event,"Projects.fxml");
             }
 
             public void switchScenes(ActionEvent event , String fxml) throws IOException {
