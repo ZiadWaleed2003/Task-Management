@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -58,35 +59,36 @@ public class ProjectPanelController implements Initializable {
 
 
 
-
         try {
             ArrayList<Project> proj = Utility.UserSingle.getInstance().admin.showProject();
 
             for (Project project : proj) {
                 projectObservableList.add(project);
 
+
             }
 
+            ID.setCellValueFactory(new PropertyValueFactory<Project , Integer>("project_id"));
+            Title.setCellValueFactory(new PropertyValueFactory<Project , String>("project_title"));
+            status.setCellValueFactory(new PropertyValueFactory<Project , String>("current_status"));
+            Descreption.setCellValueFactory(new PropertyValueFactory<Project , String>("project_description"));
+            Assigned_to.setCellValueFactory(new PropertyValueFactory<Project , Integer>("getTeamID()"));
 
 
-
-            ID.setCellValueFactory(new PropertyValueFactory<Project, Integer>("getProjectID()"));
-            Title.setCellValueFactory(new PropertyValueFactory<Project, String>("project_title"));
-            status.setCellValueFactory(new PropertyValueFactory<Project, String>("current_status"));
-            Descreption.setCellValueFactory(new PropertyValueFactory<Project, String>("project_description"));
-            Assigned_to.setCellValueFactory(new PropertyValueFactory<Project, Integer>("team_id"));
+            projectTableView.setItems(projectObservableList);
 
             // Set the items in the table
-            projectTableView.setItems(projectObservableList);
+
 
             projectTableView.getColumns().addAll(ID, Title, status, Descreption, Assigned_to);
 
 
             // Refresh the table view
-            projectTableView.refresh();
+
+//            projectTableView.refresh();
 
         } catch (Exception e) {
-//            e.printStackTrace(); // Handle the exception appropriately
+            e.printStackTrace(); // Handle the exception appropriately
         }
 
     }
