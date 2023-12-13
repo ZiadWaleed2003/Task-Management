@@ -26,6 +26,10 @@ public class Project {
     protected String project_title;
     protected String project_description;
 
+
+    public Project() {
+    }
+
     Project(int project_id, String project_title , String project_Status , String project_description , int team_id){
         this.project_id          = project_id;
         this.project_title       = project_title;
