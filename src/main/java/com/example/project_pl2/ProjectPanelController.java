@@ -10,22 +10,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProjectPanelController implements Initializable {
 
+    public Button LogoutButton;
     // Use the ObservableList to store data
     ObservableList<Project> projectObservableList = FXCollections.observableArrayList();
 
@@ -38,7 +34,7 @@ public class ProjectPanelController implements Initializable {
     @FXML
     private TableColumn<Project, String> status;
     @FXML
-    private TableColumn<Project, String> Descreption;
+    private TableColumn<Project, String> Description;
     @FXML
     private TableColumn<Project, Integer> Assigned_to;
 
@@ -48,7 +44,7 @@ public class ProjectPanelController implements Initializable {
         ID              = new TableColumn<Project , Integer>("project_id");
         Title           = new TableColumn<Project , String>("project_title");
         status          = new TableColumn<Project , String>("current_status");
-        Descreption     = new TableColumn<Project , String>("project_description");
+        Description = new TableColumn<Project , String>("project_description");
         Assigned_to     = new TableColumn<Project , Integer>("team_id");
         // ... other initialization code
     }
@@ -67,7 +63,7 @@ public class ProjectPanelController implements Initializable {
             ID.setCellValueFactory(new PropertyValueFactory<Project , Integer>("project_id"));
             Title.setCellValueFactory(new PropertyValueFactory<Project , String>("project_title"));
             status.setCellValueFactory(new PropertyValueFactory<Project , String>("current_status"));
-            Descreption.setCellValueFactory(new PropertyValueFactory<Project , String>("project_description"));
+            Description.setCellValueFactory(new PropertyValueFactory<Project , String>("project_description"));
             Assigned_to.setCellValueFactory(new PropertyValueFactory<Project , Integer>("team_id"));
 
 
@@ -115,7 +111,7 @@ public class ProjectPanelController implements Initializable {
     }
 
     public void switchToAddProjects(ActionEvent event) throws IOException {
-        switchScenes(event,"Projects.fxml");
+        switchScenes(event,"AddProject.fxml");
     }
 
     public void switchScenes(ActionEvent event , String fxml) throws IOException {
