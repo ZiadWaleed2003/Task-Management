@@ -16,11 +16,6 @@ public class Employee extends Person{
 
     private EmpType emp_type;
 
-    private ArrayList<IndivTask> tasks_list;
-
-    private ArrayList<Request> requests_list;
-
-
     private int team_id;
 
     private double time_card;

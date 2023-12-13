@@ -13,115 +13,77 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import java.sql.*;
+
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
+public class ProjectPanelController implements Initializable {
+
+    public Button LogoutButton;
+    // Use the ObservableList to store data
+    ObservableList<Project> projectObservableList = FXCollections.observableArrayList();
+
+    @FXML
+    private TableView<Project> projectTableView;
+    @FXML
+    private TableColumn<Project, Integer> ID;
+    @FXML
+    private TableColumn<Project, String> Title;
+    @FXML
+    private TableColumn<Project, String> status;
+    @FXML
+    private TableColumn<Project, String> Description;
+    @FXML
+    private TableColumn<Project, Integer> Assigned_to;
+
+    public ProjectPanelController() {
+
+        projectTableView = new TableView<Project>();
+        ID              = new TableColumn<Project , Integer>("project_id");
+        Title           = new TableColumn<Project , String>("project_title");
+        status          = new TableColumn<Project , String>("current_status");
+        Description = new TableColumn<Project , String>("project_description");
+        Assigned_to     = new TableColumn<Project , Integer>("team_id");
+        // ... other initialization code
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
 
-//    @FXML
-//    private TableView<Project> projectTableView;
-//    @FXML
-//    private TableColumn<Project, Integer> ID;
-//    @FXML
-//    private TableColumn<Project, String> Title;
-//    @FXML
-//    private TableColumn<Project, String> status;
-//    @FXML
-//    private TableColumn<Project, String> Descreption;
-//    @FXML
-//    private TableColumn<Project, Integer> Assigned_to;
+        try {
+            ArrayList<Project> proj = Utility.UserSingle.getInstance().admin.showProject();
+
+            projectObservableList.addAll(proj);
+
+            ID.setCellValueFactory(new PropertyValueFactory<Project , Integer>("project_id"));
+            Title.setCellValueFactory(new PropertyValueFactory<Project , String>("project_title"));
+            status.setCellValueFactory(new PropertyValueFactory<Project , String>("current_status"));
+            Description.setCellValueFactory(new PropertyValueFactory<Project , String>("project_description"));
+            Assigned_to.setCellValueFactory(new PropertyValueFactory<Project , Integer>("team_id"));
 
 
-
-//    ObservableList<Project> projectObservableList = FXCollections.observableArrayList();
-
-    public class ProjectPanelController {
-        public Button show;
-
-        @FXML
-        private TableView<Project> projectTableView;
-        @FXML
-        private TableColumn<Project, Integer> ID;
-        @FXML
-        private TableColumn<Project, String> Title;
-        @FXML
-        private TableColumn<Project, String> status;
-        @FXML
-        private TableColumn<Project, String> Descreption;
-        @FXML
-        private TableColumn<Project, Integer> Assigned_to;
-
-
-        public void initialize() throws SQLException {
-            loadData(); // Automatically load data on FXML load
-            setCellValueFactories(); // Set cell value factories
-        }
-
-        public void loadData() throws SQLException {
-            ArrayList<Project> projects = Utility.UserSingle.getInstance().admin.showProject(); // Your existing method to fetch data
-            ObservableList<Project> projectObservableList = FXCollections.observableArrayList(projects);
             projectTableView.setItems(projectObservableList);
-        }
 
-        public void showDataButton() throws SQLException { // Button click handler
-            loadData(); // Reload data when button is clicked
-        }
-
-        private void setCellValueFactories() {
-            ID.setCellValueFactory(new PropertyValueFactory<>("project_id"));
-            Title.setCellValueFactory(new PropertyValueFactory<>("project_title"));
-            status.setCellValueFactory(new PropertyValueFactory<>("current_status"));
-            Descreption.setCellValueFactory(new PropertyValueFactory<>("project_description"));
-            Assigned_to.setCellValueFactory(new PropertyValueFactory<>("team_id"));
-        }
-
-    //}
+            // Set the items in the table
 
 
-//    @Override
-//    public void initialize(URL url, ResourceBundle resourceBundle) {
-//
-//
-//
-//        try {
-//            ArrayList<Project> proj = Utility.UserSingle.getInstance().admin.showProject();
-//
-//            for (Project project : proj) {
-//                projectObservableList.add(project);
-//
-//
-//            }
-//
-//            ID.setCellValueFactory(new PropertyValueFactory<Project , Integer>("project_id"));
-//            Title.setCellValueFactory(new PropertyValueFactory<Project , String>("project_title"));
-//            status.setCellValueFactory(new PropertyValueFactory<Project , String>("current_status"));
-//            Descreption.setCellValueFactory(new PropertyValueFactory<Project , String>("project_description"));
-//            Assigned_to.setCellValueFactory(new PropertyValueFactory<Project , Integer>("getTeamID()"));
-//
-//
-//            projectTableView.setItems(projectObservableList);
-//
-//            // Set the items in the table
-//
-//
 //            projectTableView.getColumns().addAll(ID, Title, status, Descreption, Assigned_to);
-//
-//
-//            // Refresh the table view
-//
-////            projectTableView.refresh();
-//
-//        } catch (Exception e) {
-//            e.printStackTrace(); // Handle the exception appropriately
-//        }
-//
-//    }
+
+
+            // Refresh the table view
+
+//            projectTableView.refresh();
+
+        } catch (Exception e) {
+            System.out.print("مصييييبة"); // Handle the exception appropriately
+        }
+
+    }
 
 
 
@@ -149,7 +111,7 @@ import java.util.ResourceBundle;
     }
 
     public void switchToAddProjects(ActionEvent event) throws IOException {
-        switchScenes(event,"AddProjects.fxml");
+        switchScenes(event,"AddProject.fxml");
     }
 
     public void switchScenes(ActionEvent event , String fxml) throws IOException {
@@ -161,8 +123,5 @@ import java.util.ResourceBundle;
         stage.show();
 
     }
-
-
-
-    }
+}
 
