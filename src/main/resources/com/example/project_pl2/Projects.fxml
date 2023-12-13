@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="935.0" style="-fx-background-color: #F1E5E5;" stylesheets="@st.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_pl2.ProjectPanelController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="935.0" style="-fx-background-color: #F1E5E5;" stylesheets="@st.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_pl2.ProjectPanelController">
    <children>
       <Pane prefHeight="744.0" prefWidth="246.0" styleClass="backgroundAdmin" stylesheets="@st.css">
          <children>
@@ -61,6 +61,7 @@
             <TableColumn fx:id="status" prefWidth="96.79998779296875" text="Status" />
             <TableColumn fx:id="Descreption" prefWidth="280.0" text="Descreption" />
             <TableColumn fx:id="Assigned_to" prefWidth="131.199951171875" text="Assigned To" />
+>>>>>>> 793f1f77e74a9b8acfd6c93ad3b5184b3fc54ccc
          </columns>
       </TableView>
       <Button layoutX="267.0" layoutY="564.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="88.0" text="Delete">
