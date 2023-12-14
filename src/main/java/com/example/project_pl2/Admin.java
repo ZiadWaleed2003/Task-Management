@@ -40,8 +40,8 @@ public class Admin extends Person implements File{
 
    // [TODO 12]Change Contructor to variable have property or change in employee to take variable direct not from constructor
     public Admin(String username , String password ){
-        super.email     = username;
-        super.password  = password;
+        super.email     = new SimpleStringProperty(username);
+        super.password  = new SimpleStringProperty(password);
     }
 
     //Zeyad Tarek

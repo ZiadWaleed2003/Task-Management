@@ -17,16 +17,15 @@ public class IndivTask {
     private SimpleIntegerProperty assigned_to;
     private SimpleIntegerProperty project;
     // [TODO 12]Change Priority to variable have property and change result set , add setter and getter
-    private Priority priority;
+    private SimpleStringProperty priority;
     // [TODO 12]Change Date to variable have property and change result set , add setter and getter
-    private Date start_date;
+    private SimpleStringProperty start_date;
     // [TODO 12]Change Date to variable have property and change result set , add setter and getter
-    private Date due_date;
+    private SimpleStringProperty due_date;
+
+//    private String [] priority_arr = {"LOW" , "MEDIUM" , "HIGH"};
 
 
-    public enum Priority {
-        LOW, MEDIUM, HIGH
-    }
  /*   public IndivTask(){
         this.id = 0;
         this.name = null;
@@ -39,29 +38,21 @@ public class IndivTask {
         this.due_date = null;
     }*/
  // [TODO 12]Change Contructor to variable have property or change in employee to take variable direct not from constructor
-    public IndivTask(int id, String name, String description, Utility.CompletionStatus status, int assigned_to,
-                     int project, Priority priority, Date start_date, Date due_date) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.status = status;
-        this.assigned_to = assigned_to;
-        this.project = project;
-        this.priority = priority;
-        this.start_date = start_date;
-        this.due_date = due_date;
-    }
 
     public IndivTask(ResultSet res) throws SQLException{
+
         this.id = new SimpleIntegerProperty(res.getInt("Task_Id"));
         this.name = new SimpleStringProperty(res.getNString("Task_Name"));
         this.description = new SimpleStringProperty(res.getNString("Task_Desc"));
         this.status = Utility.CompletionStatus.values()[res.getInt("task_Status")];
         this.assigned_to = new SimpleIntegerProperty(res.getInt(("Assigned_To")));
         this.project = new SimpleIntegerProperty(res.getInt("Project_Id"));
-        this.priority = Priority.values()[res.getInt("Priority)")];
-        this.start_date = res.getDate("Start_Date");
-        this.due_date = res.getDate("Due_Date");
+
+        this.priority = new SimpleStringProperty(res.getString("Priority"));
+
+
+        this.start_date = new SimpleStringProperty(res.getString("Start_Date"));
+        this.due_date = new SimpleStringProperty (res.getString("Due_Date"));
     }
 
 
@@ -134,29 +125,15 @@ public class IndivTask {
         this.status = status;
     }
 
-    public Priority getPriority() {
-        return priority;
+    public String getPriority() {
+        return this.priority.get();
     }
 
-    public void setPriority(Priority priority) {
-        this.priority = priority;
+    public void setPriority(String priority) {
+        this.priority.set(priority);
     }
 
-    public Date getStartDate() {
-        return start_date;
-    }
 
-    public void setStartDate(Date start_date) {
-        this.start_date = start_date;
-    }
-
-    public Date getDueDate() {
-        return due_date;
-    }
-
-    public void setDueDate(Date due_date) {
-        this.due_date = due_date;
-    }
 
 
 
@@ -175,7 +152,7 @@ public class IndivTask {
 
     public ResultSet readTask(){
 
-        int emp_id = Utility.UserSingle.getInstance().emp.id;
+        int emp_id = Utility.UserSingle.getInstance().emp.getId();
 
         String query = "SELECT * FROM plproject.task WHERE Assigned_To = " + emp_id;
 
@@ -192,6 +169,30 @@ public class IndivTask {
         }
 
         return result;
+    }
+
+    public String getStart_date() {
+        return start_date.get();
+    }
+
+    public SimpleStringProperty start_dateProperty() {
+        return start_date;
+    }
+
+    public void setStart_date(String start_date) {
+        this.start_date.set(start_date);
+    }
+
+    public String getDue_date() {
+        return due_date.get();
+    }
+
+    public SimpleStringProperty due_dateProperty() {
+        return due_date;
+    }
+
+    public void setDue_date(String due_date) {
+        this.due_date.set(due_date);
     }
 }
 

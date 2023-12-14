@@ -30,12 +30,13 @@ public class Employee extends Person{
     public Employee(){}
 
     //[TODO 12]Change Contructor to variable have property or change in employee to take variable direct not from constructor
-    public Employee(String name, String email, String password, int id, EmpType emp_type, int team_id, String role) {
-        super(name, email, password, id);
-        this.emp_type = emp_type;
-        this.team_id = team_id;
-        this.role = role;
-    }
+
+//    public Employee(String name, String email, String password, int id, EmpType emp_type, int team_id, String role) {
+//        super(name, email, password, id);
+//        this.emp_type = emp_type;
+//        this.team_id = team_id;
+//        this.role = role;
+//    }
 
     public Employee(ResultSet set) throws SQLException{
         super.name = new SimpleStringProperty(set.getString("Emp_Name"));
@@ -178,7 +179,7 @@ public class Employee extends Person{
     public ArrayList<Request> retrieveAllRequests() throws SQLException{
         ArrayList<Request> result =  new ArrayList<Request>();
         String query = "SELECT * FROM plproject.request WHERE Request_by = ?";
-        Integer[] args = {this.id};
+        Integer[] args = {getId()};
         try {
             ResultSet res = CRUD2.readDbDynamic(query, args);
             if (res.isBeforeFirst()) {
@@ -197,7 +198,7 @@ public class Employee extends Person{
 
             ArrayList<Project> result = new ArrayList<Project>();
             String query = "SELECT * FROM plproject.project WHERE Assigned_To = ?";
-            Integer[] args = {this.id};
+            Integer[] args = {getId()};
             try {
                 ResultSet res = CRUD2.readDbDynamic(query, args);
                 if (res.isBeforeFirst()) {
@@ -218,14 +219,14 @@ public class Employee extends Person{
 
 
     public boolean addTask(int id, String name, String description, Utility.CompletionStatus status,
-                           int assigned_to, int project, IndivTask.Priority priority, Date start_date, Date due_date){
+                           int assigned_to, int project, String priority, String start_date, String due_date){
         if(this.emp_type == EmpType.LEADER){
-            IndivTask temp = new IndivTask(id, name, description, status,
-                    assigned_to, project, priority, start_date, due_date);
+
             String addTaskQuery = "INSERT INTO task (Task_Id, Assigned_To, Due_date, Priority, Project_Id, Start_Date, " +
                     "Task_Desc, Task_Name, Task_Status) VALUES (?, ?, ?, ? ,? ,? ,?, ?, ?);";
-            Object[] args = {temp.getId(), temp.getAssigned_to(), temp.getDueDate(), temp.getPriority(), temp.getProject(),
-                    temp.getStartDate(), temp.getDescription(), temp.getName(), temp.getStatus()};
+
+
+            Object[] args = { id , assigned_to , due_date , priority , project , start_date , description , name , status };
 
             Pair<Boolean, Integer> res = CRUD2.updateDbDynamic(addTaskQuery, args);
 
