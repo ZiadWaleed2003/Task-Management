@@ -1,5 +1,7 @@
 package com.example.project_pl2;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.util.Pair;
 
 import java.sql.ResultSet;
@@ -7,20 +9,25 @@ import java.sql.SQLException;
 import java.util.Date;
 public class IndivTask {
 
-    protected int id;
-    protected String name;
-    protected String description;
-    protected Utility.CompletionStatus status;
-    protected int assigned_to;
-    protected int project;
-    protected Priority priority;
-    protected Date start_date;
-    protected Date due_date;
+    private SimpleIntegerProperty id;
+    private SimpleStringProperty name;
+    private SimpleStringProperty description;
+    // [TODO 12]Change Utility to variable have property and change result set , add setter and getter
+    private Utility.CompletionStatus status;
+    private SimpleIntegerProperty assigned_to;
+    private SimpleIntegerProperty project;
+    // [TODO 12]Change Priority to variable have property and change result set , add setter and getter
+    private Priority priority;
+    // [TODO 12]Change Date to variable have property and change result set , add setter and getter
+    private Date start_date;
+    // [TODO 12]Change Date to variable have property and change result set , add setter and getter
+    private Date due_date;
+
 
     public enum Priority {
         LOW, MEDIUM, HIGH
     }
-    public IndivTask(){
+ /*   public IndivTask(){
         this.id = 0;
         this.name = null;
         this.description = null;
@@ -30,7 +37,8 @@ public class IndivTask {
         this.priority = Priority.valueOf("LOW");
         this.start_date = new Date();
         this.due_date = null;
-    }
+    }*/
+ // [TODO 12]Change Contructor to variable have property or change in employee to take variable direct not from constructor
     public IndivTask(int id, String name, String description, Utility.CompletionStatus status, int assigned_to,
                      int project, Priority priority, Date start_date, Date due_date) {
         this.id = id;
@@ -45,36 +53,78 @@ public class IndivTask {
     }
 
     public IndivTask(ResultSet res) throws SQLException{
-        this.id = res.getInt("Task_Id");
-        this.name = res.getNString("Task_Name");
-        this.description = res.getNString("Task_Desc");
+        this.id = new SimpleIntegerProperty(res.getInt("Task_Id"));
+        this.name = new SimpleStringProperty(res.getNString("Task_Name"));
+        this.description = new SimpleStringProperty(res.getNString("Task_Desc"));
         this.status = Utility.CompletionStatus.values()[res.getInt("task_Status")];
-        this.assigned_to = res.getInt(("Assigned_To"));
-        this.project = res.getInt("Project_Id");
+        this.assigned_to = new SimpleIntegerProperty(res.getInt(("Assigned_To")));
+        this.project = new SimpleIntegerProperty(res.getInt("Project_Id"));
         this.priority = Priority.values()[res.getInt("Priority)")];
         this.start_date = res.getDate("Start_Date");
         this.due_date = res.getDate("Due_Date");
     }
 
+
     public int getId() {
+        return id.get();
+    }
+
+    public SimpleIntegerProperty idProperty() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id.set(id);
+    }
+
     public String getName() {
+        return name.get();
+    }
+
+    public SimpleStringProperty nameProperty() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name.set(name);
     }
 
     public String getDescription() {
+        return description.get();
+    }
+
+    public SimpleStringProperty descriptionProperty() {
         return description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description.set(description);
     }
+
+    public int getAssigned_to() {
+        return assigned_to.get();
+    }
+
+    public SimpleIntegerProperty assigned_toProperty() {
+        return assigned_to;
+    }
+
+    public void setAssigned_to(int assigned_to) {
+        this.assigned_to.set(assigned_to);
+    }
+
+    public int getProject() {
+        return project.get();
+    }
+
+    public SimpleIntegerProperty projectProperty() {
+        return project;
+    }
+
+    public void setProject(int project) {
+        this.project.set(project);
+    }
+
 
     public Utility.CompletionStatus getStatus() {
         return status;
@@ -82,22 +132,6 @@ public class IndivTask {
 
     public void setStatus(Utility.CompletionStatus status) {
         this.status = status;
-    }
-
-    public int getAssignedTo() {
-        return assigned_to;
-    }
-
-    public void setAssignedTo(int assigned_to) {
-        this.assigned_to = assigned_to;
-    }
-
-    public int getProject() {
-        return project;
-    }
-
-    public void setProject(int project) {
-        this.project = project;
     }
 
     public Priority getPriority() {
@@ -123,16 +157,10 @@ public class IndivTask {
     public void setDueDate(Date due_date) {
         this.due_date = due_date;
     }
-    // after getter and setter
-    // TODo (i need to know the main function that related to IndivTask )
-    // TODO make (ADD, UPDATE, DELETE) to task
-
 
 
 
     //TODO: use overloaded updatedbdynamic w/ args for better code readability
-
-
 
     public boolean deleteTask(int required_task_id){
         String deleteTaskQuery = "DELETE FROM task " +
