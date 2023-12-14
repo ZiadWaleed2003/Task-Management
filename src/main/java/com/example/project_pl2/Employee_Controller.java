@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 public class Employee_Controller {
+    //TODO implement a method that takes task id and changes its status
+    //this is the employees dashboard when they login
     private Scene scene;
     private Stage stage;
     private Parent root;
