@@ -13,7 +13,19 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="d83c7348-baeb-4210-9231-5a55901a9fed">
-      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main" />
+      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[insert into project (
+    `Project_Id`,
+    `Assigned_To`,
+    `Progress_status`,
+    `Project_desc`,
+    `Project_Title`)
+values (
+    26,
+    1,
+    'pending',
+    '5ara',
+    'Niggas')
+;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -72,7 +84,7 @@
           <deprecated-pwd value="bXNzcWxzdWNrczEyMw==" />
         </database>
         <properties>
-          <auto-commit value="false" />
+          <auto-commit value="true" />
         </properties>
         <ssh-settings>
           <active value="false" />

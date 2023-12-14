@@ -103,12 +103,18 @@ public class ProjectPanelController implements Initializable {
 
         try{
 
-            if(Utility.UserSingle.getInstance().admin.deleteProject(project_id)){
+            if(Utility.UserSingle.getInstance().admin.deleteProject(project_id) && Utility.UserSingle.getInstance().admin.deleteProjectFile(project_id)){
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Successful Operation");
                 alert.setHeaderText("Project with ID : " + project_id + " has been Deleted");
-
                 System.out.println(" Hell yeah !");
+
+
+
+                switchScenes(event , "Projects.fxml");
+
+
             }else{
                 throw new Exception("Operation failed");
             }
@@ -125,6 +131,26 @@ public class ProjectPanelController implements Initializable {
         }
 
 
+    }
+
+    public void reAssignProject(ActionEvent event){
+
+        int  proj_id = Integer.parseInt(update_project_id.getText());
+        int  team_id = Integer.parseInt(update_team_id.getText());
+
+        try{
+
+            if(Utility.UserSingle.getInstance().admin.reassignProject(proj_id , team_id)){
+                System.out.println("ReAssigned Successfully");
+
+                switchScenes(event , "Projects.fxml");
+            }else{
+                throw new Exception("Error Happpened");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e + " مصيييييبة ألحقووونا ");
+        }
     }
 
 

@@ -46,22 +46,24 @@ public abstract class CRUD2 {
 
         try{
             Connection conn_obj = db_conn.getConnection();
-            PreparedStatement statement = conn_obj.prepareStatement(query,
-                    PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = conn_obj.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
             int i = 1;
             for (Object arg: args) {
                 statement.setObject(i++, arg);
             }
             int aff_rows = statement.executeUpdate();
             if (aff_rows > 0){
+                int res = 0;
                 try (ResultSet rs_obj = statement.getGeneratedKeys()){
                     if (rs_obj.isBeforeFirst()){
                         rs_obj.next();
-                        return new Pair<Boolean, Integer>(true, rs_obj.getInt(1));
+                        res = rs_obj.getInt(1);
                     }
                 }catch (SQLException e){
                     throw new RuntimeException(e);
                 }
+                return new Pair<Boolean, Integer>(true, res);
+
             }
 
         }catch(SQLException | ClassNotFoundException e){

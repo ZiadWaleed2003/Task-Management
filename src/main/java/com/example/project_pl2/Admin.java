@@ -148,7 +148,7 @@ public class Admin extends Person implements File{
 
     public boolean deleteProject(int proj_id){
 
-        String query = "DELETE * FROM plproject.Project WHERE Project_Id = ?";
+        String query = "DELETE FROM Project WHERE Project_Id = ?";
 
         Object [] args = {proj_id};
 
@@ -159,7 +159,7 @@ public class Admin extends Person implements File{
 
     public boolean reassignProject(int proj_id,int team_id){
 
-        String query = "UPDATE plproject.PROJECT SET Assigned_To = ? WHERE Project_Id = ?";
+        String query = "UPDATE PROJECT SET Assigned_To = ? WHERE Project_Id = ?";
 
         Object [] args = {team_id,proj_id};
 
@@ -202,7 +202,7 @@ public class Admin extends Person implements File{
 
     public boolean deleteEmployee(int emp_id){
 
-        String query = "DELETE * FROM employee WHERE Emp_Id = ?";
+        String query = "DELETE FROM employee WHERE Emp_Id = ?";
 
         Object [] args = {emp_id};
 

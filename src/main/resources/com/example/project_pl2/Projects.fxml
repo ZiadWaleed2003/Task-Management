@@ -73,17 +73,17 @@
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="267.0" layoutY="648.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="102.0" text="Update">
+      <Button layoutX="267.0" layoutY="648.0" mnemonicParsing="false" onAction="#reAssignProject" prefHeight="36.0" prefWidth="200.0" text="ReAssign Project">
          <font>
             <Font name="Tahoma Bold" size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="update_project_id" layoutX="396.0" layoutY="652.0" prefHeight="26.0" prefWidth="174.0" promptText="Project ID">
+      <TextField fx:id="update_project_id" layoutX="524.0" layoutY="652.0" prefHeight="26.0" prefWidth="174.0" promptText="Project ID">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="update_team_id" layoutX="613.0" layoutY="652.0" prefHeight="26.0" prefWidth="174.0" promptText="Team ID">
+      <TextField fx:id="update_team_id" layoutX="732.0" layoutY="652.0" prefHeight="26.0" prefWidth="174.0" promptText="Team ID">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
