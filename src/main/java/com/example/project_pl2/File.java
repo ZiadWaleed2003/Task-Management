@@ -12,7 +12,7 @@ public interface File {
 
     void addProjectFile(int projectId) throws IOException;
 
-    void deleteProjectFile(int projectId) throws IOException;
+    boolean deleteProjectFile(int projectId) throws IOException;
 
     int[] getAllProjectIds() throws IOException;
 
