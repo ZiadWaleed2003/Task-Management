@@ -117,7 +117,7 @@ public class TeamLeader_Controller{
 
         }
         public void switchToTasks(ActionEvent event) throws IOException {
-            switchScenes(event,"Tasks.fxml");
+            switchScenes(event,".fxml");
         }
 
 
