@@ -33,7 +33,8 @@ public class TeamLeader_Controller{
 
     private ChoiceBox<Utility.CompletionStatus> completionStatusChoiceBox;
         @FXML
-        private ChoiceBox<IndivTask.Priority> priorityChoiceBox;
+//        private ChoiceBox<IndivTask.Priority> priorityChoiceBox;
+
     private TextField statustextfield;
         @FXML
         private TextField prioritytextfield;
@@ -132,14 +133,14 @@ public class TeamLeader_Controller{
     }
 
 
-    public void getstat(ActionEvent event)throws IOException{
-        IndivTask.Priority priority = (IndivTask.Priority) priorityChoiceBox.getSelectionModel().getSelectedItem();
-    }
-    public void getprioority(ActionEvent event)throws IOException{
-         Utility.CompletionStatus status = (Utility.CompletionStatus) completionStatusChoiceBox.getSelectionModel().getSelectedItem();
-
-
-    }
+//    public void getstat(ActionEvent event)throws IOException{
+//        String priority = (IndivTask.priority) priorityChoiceBox.getSelectionModel().getSelectedItem();
+//    }
+//    public void getprioority(ActionEvent event)throws IOException{
+//         Utility.CompletionStatus status = (Utility.CompletionStatus) completionStatusChoiceBox.getSelectionModel().getSelectedItem();
+//
+//
+//    }
 
 }
 

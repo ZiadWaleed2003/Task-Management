@@ -1,5 +1,8 @@
 package com.example.project_pl2;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.util.Pair;
 
 import java.sql.*;
@@ -9,42 +12,116 @@ import java.util.Date;
 
 public class Employee extends Person{
 
-
+    // [TODO 12]Change Enum to variable have property and change result set , add setter and getter
     public enum EmpType {
         LEADER , MEMBER
     }
 
     private EmpType emp_type;
 
-    private int team_id;
+    private SimpleIntegerProperty team_id;
 
-    private double time_card;
+    private SimpleDoubleProperty time_card;
 
-    private int request_id;
+    private SimpleIntegerProperty request_id;
 
-    private String role;
+    private SimpleStringProperty role;
 
     public Employee(){}
 
-    public Employee(String name, String email, String password, int id, EmpType emp_type, int team_id, String role) {
-        super(name, email, password, id);
-        this.emp_type = emp_type;
-        this.team_id = team_id;
-        this.role = role;
-    }
+    //[TODO 12]Change Contructor to variable have property or change in employee to take variable direct not from constructor
+
+//    public Employee(String name, String email, String password, int id, EmpType emp_type, int team_id, String role) {
+//        super(name, email, password, id);
+//        this.emp_type = emp_type;
+//        this.team_id = team_id;
+//        this.role = role;
+//    }
 
     public Employee(ResultSet set) throws SQLException{
-        super.name = set.getString("Emp_Name");
-        super.email = set.getString("Emp_Email");
-        super.password = set.getString("Emp_Password");
-        super.id = set.getInt("Emp_Id");
+        super.name = new SimpleStringProperty(set.getString("Emp_Name"));
+        super.email = new SimpleStringProperty(set.getString("Emp_Email"));
+        super.password = new SimpleStringProperty(set.getString("Emp_Password"));
+        super.id = new SimpleIntegerProperty(set.getInt("Emp_Id"));
         this.emp_type = EmpType.values()[set.getInt("Emp_Type")]; //TODO: object -> enum conversion
-        this.team_id = set.getInt("Team_Id");
-        this.time_card = set.getDouble("Time_Card");
-        this.request_id = set.getInt("Request_Id");
-        this.role = set.getString("Emp_Role");
+        this.team_id = new SimpleIntegerProperty(set.getInt("Team_Id"));
+        this.time_card = new SimpleDoubleProperty(set.getDouble("Time_Card"));
+        this.request_id = new SimpleIntegerProperty(set.getInt("Request_Id"));
+        this.role = new SimpleStringProperty(set.getString("Emp_Role"));
 
         }
+
+    @Override
+    public String getName() {return name.get();}
+    @Override
+    public SimpleStringProperty nameProperty(){return name;}
+    @Override
+    public void setName(String name){this.name.set(name);}
+    @Override
+    public String getEmail(){return email.get();}
+    @Override
+    public SimpleStringProperty emailProperty(){return email;}
+    @Override
+    public void setEmail(String email){this.email.set(email);}
+    @Override
+    public String getPassword(){return password.get();}
+    @Override
+    public SimpleStringProperty passwordProperty(){return password;}
+    @Override
+    public void setPassword(String password){this.password.set(password);}
+    @Override
+    public int getId() {return id.get();}
+    @Override
+    public SimpleIntegerProperty idProperty(){return id;}
+    @Override
+    public void setId(int id){this.id.set(id);}
+
+    public double getTime_card() {
+        return time_card.get();
+    }
+
+    public SimpleDoubleProperty time_cardProperty() {
+        return time_card;
+    }
+
+    public void setTime_card(double time_card) {
+        this.time_card.set(time_card);
+    }
+
+    public int getRequest_id() {
+        return request_id.get();
+    }
+
+    public SimpleIntegerProperty request_idProperty() {
+        return request_id;
+    }
+
+    public void setRequest_id(int request_id) {
+        this.request_id.set(request_id);
+    }
+    public String getRole() {
+        return role.get();
+    }
+
+    public SimpleStringProperty roleProperty() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role.set(role);
+    }
+
+    public void setEmptype(String e_type){
+
+        if(e_type.equals("TeamLeader")){
+            this.emp_type = EmpType.LEADER;
+        }else{
+            this.emp_type = EmpType.MEMBER;
+        }
+    }
+    public EmpType getEmp_type(){return this.emp_type;}
+
+
 
     public static boolean login(String email, String password) throws SQLException {
 
@@ -102,7 +179,7 @@ public class Employee extends Person{
     public ArrayList<Request> retrieveAllRequests() throws SQLException{
         ArrayList<Request> result =  new ArrayList<Request>();
         String query = "SELECT * FROM plproject.request WHERE Request_by = ?";
-        Integer[] args = {this.id};
+        Integer[] args = {getId()};
         try {
             ResultSet res = CRUD2.readDbDynamic(query, args);
             if (res.isBeforeFirst()) {
@@ -121,7 +198,7 @@ public class Employee extends Person{
 
             ArrayList<Project> result = new ArrayList<Project>();
             String query = "SELECT * FROM plproject.project WHERE Assigned_To = ?";
-            Integer[] args = {this.id};
+            Integer[] args = {getId()};
             try {
                 ResultSet res = CRUD2.readDbDynamic(query, args);
                 if (res.isBeforeFirst()) {
@@ -138,104 +215,18 @@ public class Employee extends Person{
             return null;
         }
     }
-    @Override
-    public String getName() {
-        return this.name;
-    }
-
-    @Override
-    public String getPassword() {
-        return this.password;
-    }
-
-    @Override
-    public String getEmail() {
-        return this.email;
-    }
-
-    @Override
-    public int getId() {
-        return this.id;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Override
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public double getTime_card() {
-        return time_card;
-    }
-
-    public void setTime_card(double time_card) {
-        this.time_card = time_card;
-    }
-
-    public int getTeam_id() {
-        return team_id;
-    }
-
-    public void setTeam_id(int team_id) {
-        this.team_id = team_id;
-    }
-
- /*   public List<String> getTask_id() {
-        return task_id;
-    }
-*/
-/*    public void setTask_id(List<String> task_id) {
-        this.task_id = task_id;
-    }*/
-
-    public int getRequest_id() {
-        return request_id;
-    }
-
-    public void setRequest_id(int request_id) {
-        this.request_id = request_id;
-    }
 
 
-    public void setEmptype(String e_type){
-
-        if(e_type.equals("TeamLeader")){
-            this.emp_type = EmpType.LEADER;
-        }else{
-            this.emp_type = EmpType.MEMBER;
-        }
-    }
 
     public boolean addTask(int id, String name, String description, Utility.CompletionStatus status,
-                           int assigned_to, int project, IndivTask.Priority priority, Date start_date, Date due_date){
+                           int assigned_to, int project, String priority, String start_date, String due_date){
         if(this.emp_type == EmpType.LEADER){
-            IndivTask temp = new IndivTask(id, name, description, status,
-                    assigned_to, project, priority, start_date, due_date);
+
             String addTaskQuery = "INSERT INTO task (Task_Id, Assigned_To, Due_date, Priority, Project_Id, Start_Date, " +
                     "Task_Desc, Task_Name, Task_Status) VALUES (?, ?, ?, ? ,? ,? ,?, ?, ?);";
-            Object[] args = {temp.getId(), temp.getAssignedTo(), temp.getDueDate(), temp.getPriority(), temp.getProject(),
-                    temp.getStartDate(), temp.getDescription(), temp.getName(), temp.getStatus()};
+
+
+            Object[] args = { id , assigned_to , due_date , priority , project , start_date , description , name , status };
 
             Pair<Boolean, Integer> res = CRUD2.updateDbDynamic(addTaskQuery, args);
 
@@ -256,11 +247,4 @@ public class Employee extends Person{
         boolean result = CRUD2.updateDbDynamic( query , args).getKey();
         return result;
     }
-
-    public EmpType getEmp_type(){
-        return this.emp_type;
-    }
-
-
-
 }

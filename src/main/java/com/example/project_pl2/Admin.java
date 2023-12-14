@@ -1,4 +1,6 @@
 package com.example.project_pl2;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.layout.Border;
 import javafx.util.Pair;
 
@@ -11,50 +13,35 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Admin extends Person implements File{
-
     @Override
-    public String getName() {
-        return name;
-    }
-
+    public String getName() {return name.get();}
     @Override
-    public String getPassword() {
-        return password;
-    }
-
+    public SimpleStringProperty nameProperty(){return name;}
     @Override
-    public String getEmail() {
-        return email;
-    }
-
+    public void setName(String name){this.name.set(name);}
     @Override
-    public int getId() {
-        return id;
-    }
-
+    public String getEmail(){return email.get();}
     @Override
-    public void setName(String name){
-        this.name = name;
-    }
-
+    public SimpleStringProperty emailProperty(){return email;}
     @Override
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    public void setEmail(String email){this.email.set(email);}
     @Override
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
+    public String getPassword(){return password.get();}
     @Override
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public SimpleStringProperty passwordProperty(){return password;}
+    @Override
+    public void setPassword(String password){this.password.set(password);}
+    @Override
+    public int getId() {return id.get();}
+    @Override
+    public SimpleIntegerProperty idProperty(){return id;}
+    @Override
+    public void setId(int id){this.id.set(id);}
 
+   // [TODO 12]Change Contructor to variable have property or change in employee to take variable direct not from constructor
     public Admin(String username , String password ){
-        super.email     = username;
-        super.password  = password;
+        super.email     = new SimpleStringProperty(username);
+        super.password  = new SimpleStringProperty(password);
     }
 
     //Zeyad Tarek
