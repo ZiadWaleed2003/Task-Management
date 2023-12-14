@@ -14,12 +14,12 @@
       <Pane prefHeight="744.0" prefWidth="246.0" styleClass="backgroundEmployee" stylesheets="@st.css">
          <children>
             <AnchorPane layoutX="23.0" layoutY="654.0" prefHeight="5.0" prefWidth="200.0" style="-fx-background-color: #F1E5E5;" />
-            <Label layoutX="23.0" layoutY="674.0" text="Welcome Employee Name" textFill="WHITE">
+            <Label layoutX="87.0" layoutY="670.0" text="Welcome" textFill="WHITE">
                <font>
                   <Font name="Tahoma Bold" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="LogoutButton" layoutX="23.0" layoutY="616.0" mnemonicParsing="false" onAction="#Logout" styleClass="backgroundEmployee" stylesheets="@st.css" text="Logout" textFill="WHITE">
+            <Button fx:id="LogoutButton" layoutX="88.0" layoutY="617.0" mnemonicParsing="false" onAction="#Logout" styleClass="backgroundEmployee" stylesheets="@st.css" text="Logout" textFill="WHITE">
                <font>
                   <Font name="Tahoma Bold" size="13.0" />
                </font>
