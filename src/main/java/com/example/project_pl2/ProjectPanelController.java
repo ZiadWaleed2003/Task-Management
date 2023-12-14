@@ -95,7 +95,7 @@ public class ProjectPanelController implements Initializable {
 
     }
 
-    public void deleteProject(ActionEvent event){
+    public void deleteProject(ActionEvent event) throws IOException {
 
         String text = delete_project_id.getText();
 
@@ -105,14 +105,15 @@ public class ProjectPanelController implements Initializable {
 
             if(Utility.UserSingle.getInstance().admin.deleteProject(project_id) && Utility.UserSingle.getInstance().admin.deleteProjectFile(project_id)){
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                switchScenes(event , "Projects.fxml");
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Successful Operation");
                 alert.setHeaderText("Project with ID : " + project_id + " has been Deleted");
                 System.out.println(" Hell yeah !");
 
 
 
-                switchScenes(event , "Projects.fxml");
 
 
             }else{
@@ -122,11 +123,15 @@ public class ProjectPanelController implements Initializable {
 
         }catch (Exception e){
 
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Failed Operation");
-            alert.setHeaderText(e + " please try again !");
+//            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//            alert.setTitle("Failed Operation");
+//            alert.setHeaderText(e + " please try again !");
+//            alert.setContentText("You Will Be Redirected To the Main Page");
+//            if (alert.showAndWait().get()== ButtonType.OK)
+
 
             System.out.println("Failed tany ahhhhhhhh");
+            switchScenes(event , "Projects.fxml");
 
         }
 
@@ -143,7 +148,15 @@ public class ProjectPanelController implements Initializable {
             if(Utility.UserSingle.getInstance().admin.reassignProject(proj_id , team_id)){
                 System.out.println("ReAssigned Successfully");
 
-                switchScenes(event , "Projects.fxml");
+                    switchScenes(event , "Projects.fxml");
+
+//                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//                alert.setTitle("Successful Operation");
+//                alert.setHeaderText("Project with ID : " + proj_id + " has been Deleted");
+//                alert.setContentText("You Will Be Redirected To the Main Page");
+//                if (alert.showAndWait().get()== ButtonType.OK)
+
+
             }else{
                 throw new Exception("Error Happpened");
             }

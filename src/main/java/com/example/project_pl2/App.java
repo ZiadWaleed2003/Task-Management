@@ -1,4 +1,3 @@
-
 package com.example.project_pl2;
 
 import javafx.application.Application;

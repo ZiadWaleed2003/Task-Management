@@ -1,11 +1,8 @@
 Admin_Username: admin
 Admin_Password: 1234
 
-Projects: 15
+Projects: 12
 ===============================
-Project_Id = 36
-Project_Id = 38
-Project_Id = 39
 Project_Id = 40
 Project_Id = 41
 Project_Id = 42
