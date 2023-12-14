@@ -63,12 +63,12 @@
             <TableColumn fx:id="Assigned_to" prefWidth="131.199951171875" text="Assigned To" />
          </columns>
       </TableView>
-      <Button layoutX="267.0" layoutY="564.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="88.0" text="Delete">
+      <Button layoutX="267.0" layoutY="564.0" mnemonicParsing="false" onAction="#deleteProject" prefHeight="32.0" prefWidth="88.0" text="Delete">
          <font>
             <Font name="Tahoma Bold" size="18.0" />
          </font>
       </Button>
-      <TextField layoutX="396.0" layoutY="568.0" prefHeight="26.0" prefWidth="174.0" promptText="Project ID">
+      <TextField fx:id="delete_project_id" layoutX="396.0" layoutY="568.0" prefHeight="26.0" prefWidth="174.0" promptText="Project ID">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
@@ -78,12 +78,12 @@
             <Font name="Tahoma Bold" size="18.0" />
          </font>
       </Button>
-      <TextField layoutX="396.0" layoutY="652.0" prefHeight="26.0" prefWidth="174.0" promptText="Project ID">
+      <TextField fx:id="update_project_id" layoutX="396.0" layoutY="652.0" prefHeight="26.0" prefWidth="174.0" promptText="Project ID">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="613.0" layoutY="652.0" prefHeight="26.0" prefWidth="174.0" promptText="Team ID">
+      <TextField fx:id="update_team_id" layoutX="613.0" layoutY="652.0" prefHeight="26.0" prefWidth="174.0" promptText="Team ID">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>

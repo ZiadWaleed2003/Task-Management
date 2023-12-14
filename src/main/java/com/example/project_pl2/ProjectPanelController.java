@@ -38,6 +38,16 @@ public class ProjectPanelController implements Initializable {
     @FXML
     private TableColumn<Project, Integer> Assigned_to;
 
+    @FXML
+    private TextField update_project_id;
+
+    @FXML
+    private TextField update_team_id;
+
+    @FXML
+    private TextField delete_project_id;
+
+
     public ProjectPanelController() {
 
         projectTableView = new TableView<Project>();
@@ -82,6 +92,38 @@ public class ProjectPanelController implements Initializable {
         } catch (Exception e) {
             System.out.print("مصييييبة"); // Handle the exception appropriately
         }
+
+    }
+
+    public void deleteProject(ActionEvent event){
+
+        String text = delete_project_id.getText();
+
+        int project_id = Integer.parseInt(text);
+
+        try{
+
+            if(Utility.UserSingle.getInstance().admin.deleteProject(project_id)){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Successful Operation");
+                alert.setHeaderText("Project with ID : " + project_id + " has been Deleted");
+
+                System.out.println(" Hell yeah !");
+            }else{
+                throw new Exception("Operation failed");
+            }
+
+
+        }catch (Exception e){
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Failed Operation");
+            alert.setHeaderText(e + " please try again !");
+
+            System.out.println("Failed tany ahhhhhhhh");
+
+        }
+
 
     }
 

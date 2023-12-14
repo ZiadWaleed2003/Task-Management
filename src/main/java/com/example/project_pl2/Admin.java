@@ -148,7 +148,7 @@ public class Admin extends Person implements File{
 
     public boolean deleteProject(int proj_id){
 
-        String query = "DELETE * FROM plproject.project WHERE Project_Id = ?";
+        String query = "DELETE * FROM plproject.Project WHERE Project_Id = ?";
 
         Object [] args = {proj_id};
 
@@ -278,7 +278,7 @@ public class Admin extends Person implements File{
 
     @Override
     // Delete Project
-    public void deleteProjectFile(int project_id) throws IOException {
+    public boolean deleteProjectFile(int project_id) throws IOException {
         String file_content = readFromFile();
 
         // Extract current project count
@@ -299,7 +299,7 @@ public class Admin extends Person implements File{
                 // Check if Project of required ID is exist
                 if(size_before_delete == file_content.length()){
                     System.out.println("! No Project of ID[" +project_id+ "] in the list !");
-                    return;
+                    return false;
                 }
 
                 // Update the project count
@@ -309,12 +309,16 @@ public class Admin extends Person implements File{
                 writeToFile(file_content);
 
                 System.out.println("Project deleted successfully!");
+
+                return true;
             }
             else {
                 System.out.println("! No Project exist to be DELETED !");
+                return false;
             }
         } else {
             System.out.println("Projects count not found in the file.");
+            return false;
         }
 
     }
