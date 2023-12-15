@@ -1,9 +1,5 @@
 package com.example.project_pl2;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Random;
-
 public interface Utility {
      enum CompletionStatus {
         PENDING, IN_PROGRESS, COMPLETED, CANCELED
@@ -18,6 +14,9 @@ public interface Utility {
                  instance = new UserSingle();
              }
              return instance;
+         }
+         public static void nullifyInstance(){
+                instance = null;
          }
 
     }

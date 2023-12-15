@@ -90,15 +90,15 @@ public class Admin extends Person implements File{
     }
 
 
-    public boolean requestResponse(int request_id , int response){
+    public boolean requestResponse  (int request_id , int response) throws SQLException{
+            String query = "UPDATE plproject.request SET Request_Status = ? WHERE request_id = ?";
 
-        String query   = "UPDATE plproject.request SET Request_Status = ? WHERE request_id = ?";
+            Object[] args = {response, request_id};
 
-        Object [] args = {response , request_id};
+            boolean result = CRUD2.updateDbDynamic(query, args).getKey();
 
-        boolean result = CRUD2.updateDbDynamic(query , args).getKey();
+            return result;
 
-        return result;
     }
 
     public ArrayList<Request> reviewRequests () throws SQLException {
@@ -108,7 +108,7 @@ public class Admin extends Person implements File{
 
         ResultSet result = CRUD2.readDbDynamic(query);
 
-        ArrayList<Request> Request_list = null;
+        ArrayList<Request> Request_list = new ArrayList<Request>();
 
 
 

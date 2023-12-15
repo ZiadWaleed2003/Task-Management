@@ -36,7 +36,8 @@ public class login_controller {
 
     @FXML
     public void LoginButtonAction(ActionEvent event) throws IOException, SQLException {
-            email = emailtextfield.getText();
+        Utility.UserSingle.nullifyInstance();
+        email = emailtextfield.getText();
              password = passwordtextfield.getText();
         if (email.isEmpty() || password.isEmpty()) {
             err_message_label.setText("Email And Password Are Required Fields Cannot Be Left Empty\n");
@@ -61,6 +62,7 @@ public class login_controller {
 
 
     public void adminLogIn(ActionEvent event) throws IOException {
+        Utility.UserSingle.nullifyInstance();
         email    = emailtextfield.getText();
         password = passwordtextfield.getText();
 

@@ -31,12 +31,17 @@ public class AdminRequests_Controller implements  Initializable{
     private TableView<Request>  requestTableView;
     @FXML
     private TableColumn<Request,Integer> ID;
+
+    @FXML
+    private TableColumn<Request,Integer> by_ID;
     @FXML
     private TableColumn<Request,String> Type;
     @FXML
     private TableColumn<Request,String> request_desc;
     @FXML
     private TableColumn<Request,Boolean> status;
+    @FXML
+    private TextField request_id;
 
     private Scene scene;
     private Parent root;
@@ -46,12 +51,14 @@ public class AdminRequests_Controller implements  Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         try {
             ArrayList<Request> requests = Utility.UserSingle.getInstance().admin.reviewRequests();
 
             requestObservableList.addAll(requests);
 
             ID.setCellValueFactory(new PropertyValueFactory<Request,Integer>("request_id"));
+            by_ID.setCellValueFactory(new PropertyValueFactory<Request,Integer>("requested_by"));
             Type.setCellValueFactory(new PropertyValueFactory<Request,String>("request_type"));
             request_desc.setCellValueFactory(new PropertyValueFactory<Request,String>("request_description"));
             status.setCellValueFactory(new PropertyValueFactory<Request,Boolean>("request_status"));
@@ -64,6 +71,39 @@ public class AdminRequests_Controller implements  Initializable{
         }
 
 
+
+    }
+
+    public void acceptRequest(ActionEvent event){
+
+        int req_id = Integer.parseInt(request_id.getText());
+
+        try{
+            if(Utility.UserSingle.getInstance().admin.requestResponse(req_id , 1)){
+                System.out.println("Request Accepted");
+
+                switchScenes(event , "Requests.fxml");
+
+            }else{
+
+            }
+        }catch (SQLException | IOException e) {
+            // alert hna
+
+            System.out.println("A7aaaaa booobies");
+        }
+
+    }
+    public void refuseRequest(ActionEvent event){
+        int req_id = Integer.parseInt(request_id.getText());
+        try{
+            Utility.UserSingle.getInstance().admin.requestResponse(req_id, 0);
+            switchScenes(event, "Requests.fxml");
+        }catch (SQLException | IOException e){
+            //enta brdo hena
+
+            System.out.println("a7aaa kol deh teez");
+        }
 
     }
 

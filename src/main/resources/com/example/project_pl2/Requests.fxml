@@ -52,21 +52,22 @@
       <TableView fx:id="requestTableView" layoutX="252.0" layoutY="140.0" prefHeight="426.0" prefWidth="678.0" style="-fx-background-color: #FFFCFC;" stylesheets="@st.css">
          <columns>
             <TableColumn fx:id="ID" prefWidth="36.79998779296875" text="ID" />
+            <TableColumn fx:id="by_ID" prefWidth="36.79998779296875" text="By" />
             <TableColumn fx:id="Type" prefWidth="107.2000732421875" text="Type" />
-            <TableColumn fx:id="request_desc" prefWidth="394.39990234375" text="Description" />
-            <TableColumn fx:id="status" prefWidth="139.20001220703125" text="Status" />
+            <TableColumn fx:id="request_desc" prefWidth="304.8000183105469" text="Description" />
+            <TableColumn fx:id="status" prefWidth="229.60003662109375" text="Status" />
          </columns>
       </TableView>
-      <TextField layoutX="319.0" layoutY="631.0" promptText="Request ID">
+      <TextField fx:id="request_id" layoutX="319.0" layoutY="631.0" promptText="Request ID">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="591.0" layoutY="642.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="63.0" style="-fx-background-color: #00FD00;" text="Accept">
+      <Button layoutX="591.0" layoutY="642.0" mnemonicParsing="false" onAction="#acceptRequest" prefHeight="34.0" prefWidth="63.0" style="-fx-background-color: #00FD00;" text="Accept">
          <font>
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="700.0" layoutY="642.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="63.0" style="-fx-background-color: #FF0000;" text="Reject" />
+      <Button layoutX="700.0" layoutY="642.0" mnemonicParsing="false" onAction="#refuseRequest" prefHeight="34.0" prefWidth="63.0" style="-fx-background-color: #FF0000;" text="Reject" />
    </children>
 </AnchorPane>
