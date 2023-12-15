@@ -65,22 +65,27 @@
           <TableColumn fx:id="Emp_Type" prefWidth="90.0" text="Emp_Type" />
         </columns>
       </TableView>
-      <Button layoutX="271.0" layoutY="608.0" mnemonicParsing="false" text="Delete">
+      <Button layoutX="271.0" layoutY="608.0" mnemonicParsing="false" onAction="#deleteEmployee" text="Delete">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>
       </Button>
-      <TextField layoutX="402.0" layoutY="608.0" promptText="Employee ID">
+      <TextField fx:id="IdTextFieldDel" layoutX="402.0" layoutY="608.0" promptText="Employee ID">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="271.0" layoutY="669.0" mnemonicParsing="false" text="Update">
+      <Button layoutX="271.0" layoutY="669.0" mnemonicParsing="false" onAction="#updateEmployee" text="Update">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>
       </Button>
-      <TextField layoutX="402.0" layoutY="669.0" promptText="Employee ID">
+      <TextField fx:id="IdTextFieldUp" layoutX="402.0" layoutY="669.0" promptText="Employee ID">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="IdTextFieldUp1" layoutX="614.0" layoutY="669.0" promptText="Employee Type">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
