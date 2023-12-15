@@ -49,12 +49,12 @@
             </Label>
          </children>
       </Pane>
-      <TableView layoutX="252.0" layoutY="140.0" prefHeight="426.0" prefWidth="678.0" style="-fx-background-color: #FFFCFC;" stylesheets="@st.css">
+      <TableView fx:id="requestTableView" layoutX="252.0" layoutY="140.0" prefHeight="426.0" prefWidth="678.0" style="-fx-background-color: #FFFCFC;" stylesheets="@st.css">
          <columns>
-            <TableColumn prefWidth="36.79998779296875" style="-fx-background-color: #4B5085;" text="ID" />
-            <TableColumn prefWidth="107.2000732421875" style="-fx-background-color: #6699EE;" text="Type" />
-            <TableColumn prefWidth="394.39990234375" style="-fx-background-color: #4B5085;" text="Description" />
-            <TableColumn prefWidth="139.20001220703125" style="-fx-background-color: #6699EE;" text="Status" />
+            <TableColumn fx:id="ID" prefWidth="36.79998779296875" text="ID" />
+            <TableColumn fx:id="Type" prefWidth="107.2000732421875" text="Type" />
+            <TableColumn fx:id="request_desc" prefWidth="394.39990234375" text="Description" />
+            <TableColumn fx:id="status" prefWidth="139.20001220703125" text="Status" />
          </columns>
       </TableView>
       <TextField layoutX="319.0" layoutY="631.0" promptText="Request ID">
