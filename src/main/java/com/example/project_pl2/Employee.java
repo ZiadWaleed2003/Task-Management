@@ -267,4 +267,10 @@ public class Employee extends Person{
         boolean result = CRUD2.updateDbDynamic( query , args).getKey();
         return result;
     }
+    public boolean updateProjStatus(int proj_id, int status ){
+        String query = "UPDATE plproject.project SET Progress_status = ? WHERE Project_Id = ?";
+        Object [] args = {status, proj_id};
+        boolean result = CRUD2.updateDbDynamic( query , args).getKey();
+        return result;
+    }
 }
