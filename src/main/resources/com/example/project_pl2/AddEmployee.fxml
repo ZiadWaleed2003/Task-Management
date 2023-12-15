@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="935.0" style="-fx-background-color: #F1E5E5;" stylesheets="@st.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_pl2.AddEmployee_Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="935.0" style="-fx-background-color: #F1E5E5;" stylesheets="@st.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_pl2.AddEmployee_Controller">
    <children>
       <Pane prefHeight="744.0" prefWidth="246.0" styleClass="backgroundAdmin" stylesheets="@st.css">
          <children>
@@ -49,55 +49,54 @@
             </Label>
          </children>
       </Pane>
-      <TableView layoutX="252.0" layoutY="113.0" prefHeight="374.0" prefWidth="678.0" style="-fx-background-color: #FFFCFC;" stylesheets="@st.css">
+      <TableView fx:id="EmployeeTableView" layoutX="252.0" layoutY="113.0" prefHeight="374.0" prefWidth="678.0" style="-fx-background-color: #FFFCFC;" stylesheets="@st.css">
          <columns>
-            <TableColumn prefWidth="36.79998779296875" style="-fx-background-color: #4B5085;" text="ID" />
-            <TableColumn prefWidth="81.5999755859375" style="-fx-background-color: #6699EE;" text="Name" />
-            <TableColumn prefWidth="124.0" style="-fx-background-color: #4B5085;" text="Email" />
-            <TableColumn prefWidth="93.60000610351562" style="-fx-background-color: #6699EE;" text="Password" />
-            <TableColumn prefWidth="75.0" style="-fx-background-color: #4B5085;" text="Role" />
-            <TableColumn prefWidth="56.0" style="-fx-background-color: #6699EE;" text="Team ID" />
-            <TableColumn prefWidth="72.00006103515625" style="-fx-background-color: #4B5085;" text="Request ID" />
-            <TableColumn prefWidth="93.5999755859375" style="-fx-background-color: #6699EE;" text="Emp_Type" />
-            <TableColumn prefWidth="35.20004882812498" style="-fx-background-color: #4B5085;" text="TC" />
+            <TableColumn fx:id="Emp_ID" prefWidth="45.3333740234375" text="ID" />
+            <TableColumn fx:id="Emp_Name" prefWidth="78.66668701171875" text="Name" />
+            <TableColumn fx:id="Emp_Email" prefWidth="98.66668701171875" text="Email" />
+            <TableColumn fx:id="Emp_Password" prefWidth="93.33331298828125" text="Password" />
+            <TableColumn fx:id="Emp_Role" prefWidth="87.33331298828125" text="Role" />
+            <TableColumn fx:id="Emp_Team" prefWidth="74.0" text="Team ID" />
+            <TableColumn fx:id="Emp_Type" prefWidth="94.666748046875" text="Emp_Type" />
+            <TableColumn fx:id="Emp_Depart" prefWidth="104.0" text="Dep" />
          </columns>
       </TableView>
-      <Button layoutX="789.0" layoutY="683.0" mnemonicParsing="false" text="Create">
+      <Button layoutX="789.0" layoutY="683.0" mnemonicParsing="false" onAction="#addEmployee" text="Create">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>
       </Button>
-      <TextField layoutX="279.0" layoutY="526.0" promptText="ID">
+      <TextField fx:id="employee_id" layoutX="279.0" layoutY="526.0" promptText="ID">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="279.0" layoutY="587.0" promptText="Name">
+      <TextField fx:id="emp_name" layoutX="279.0" layoutY="587.0" promptText="Name">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="279.0" layoutY="655.0" promptText="Employee Type">
+      <TextField fx:id="emp_type" layoutX="279.0" layoutY="655.0" promptText="Employee Type">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="497.0" layoutY="526.0" promptText="Email">
+      <TextField fx:id="Emp_email" layoutX="497.0" layoutY="526.0" promptText="Email">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="497.0" layoutY="655.0" promptText="Team ID">
+      <TextField fx:id="emp_team" layoutX="497.0" layoutY="655.0" promptText="Team ID">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="497.0" layoutY="587.0" promptText="Password">
+      <TextField fx:id="emp_password" layoutX="497.0" layoutY="587.0" promptText="Password">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="723.0" layoutY="587.0" promptText="Dept.">
+      <TextField fx:id="emp_role" layoutX="723.0" layoutY="587.0" promptText="Role">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>

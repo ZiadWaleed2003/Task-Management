@@ -73,13 +73,13 @@ public class Admin extends Person implements File{
         ArrayList<Project> project_list = new ArrayList<Project>();
 
         if(result.isBeforeFirst()){
-            int i = 0 ;
+
 
             while(result.next()){
 
                 Project project = new Project(result);
                 project_list.add(project);
-                i++;
+
 
             }
 
@@ -101,26 +101,25 @@ public class Admin extends Person implements File{
         return result;
     }
 
-    public List<Request> reviewRequests () throws SQLException {
+    public ArrayList<Request> reviewRequests () throws SQLException {
 
 
         String query = "SELECT * from Request";
 
         ResultSet result = CRUD2.readDbDynamic(query);
 
-        List<Request> Request_list = null;
+        ArrayList<Request> Request_list = null;
 
 
 
         if(result.isBeforeFirst()){
-            int i = 0 ;
+
 
             while(result.next()){
 
                 Request request = new Request(result);
-                Request_list.set(i,request);
+                Request_list.add(request);
 
-                i++;
 
             }
 
@@ -169,12 +168,45 @@ public class Admin extends Person implements File{
     }
 
 
+
+    public ArrayList<Employee> ShowEmployees() throws SQLException {
+
+        String query = "SELECT * FROM Employee INNER JOIN Team on Employee.Team_Id = Team.Team_Id";
+
+        ResultSet result = CRUD2.readDbDynamic(query);
+
+        ArrayList<Employee> Employees = new ArrayList<>();
+
+        if(result.isBeforeFirst()){
+
+            while (result.next()){
+                Employee emp = new Employee(result);
+                Employees.add(emp);
+
+            }
+
+
+        }
+
+        return Employees;
+    }
+
+
+
     public boolean addEmployee(int emp_id , String emp_email , String emp_name , String emp_password
             , String emp_role , String emp_type , int team_id){
 
+            int Emp_type;
+
+        if(emp_type.toUpperCase().equals("LEADER")){
+            Emp_type = 0;
+        }else{
+            Emp_type = 1;
+        }
+
         String query = "INSERT INTO plproject.EMPLOYEE (Emp_Id , Emp_Email , Emp_Name , Emp_Password , Emp_Role , Emp_Type , Team_Id) VALUES ( ?, ?, ?, ?, ?, ?, ?)";
 
-        Object [] args = {emp_id , emp_email , emp_name , emp_password , emp_role , emp_type , team_id};
+        Object [] args = {emp_id , emp_email , emp_name , emp_password , emp_role , Emp_type , team_id};
 
         Pair< Boolean , Integer > result = CRUD2.updateDbDynamic(query , args);
 

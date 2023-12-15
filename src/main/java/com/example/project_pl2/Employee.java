@@ -46,18 +46,22 @@ public class Employee extends Person{
         EmpType type = EmpType.values()[set.getInt("Emp_Type")];
 
 
-        super.name = new SimpleStringProperty(set.getString("Emp_Name"));
-        super.email = new SimpleStringProperty(set.getString("Emp_Email"));
-        super.password = new SimpleStringProperty(set.getString("Emp_Password"));
-        super.id = new SimpleIntegerProperty(set.getInt("Emp_Id"));
-        this.emp_type = new SimpleStringProperty(type.name());
-        this.team_id = new SimpleIntegerProperty(set.getInt("Team_Id"));
-        this.time_card = new SimpleDoubleProperty(set.getDouble("Time_Card"));
-        this.request_id = new SimpleIntegerProperty(set.getInt("Request_Id"));
-        this.role = new SimpleStringProperty(set.getString("Emp_Role"));
+        super.name          = new SimpleStringProperty(set.getString("Emp_Name"));
+        super.email         = new SimpleStringProperty(set.getString("Emp_Email"));
+        super.password      = new SimpleStringProperty(set.getString("Emp_Password"));
+        super.id            = new SimpleIntegerProperty(set.getInt("Emp_Id"));
+        this.emp_type       = new SimpleStringProperty(type.name());
+        this.team_id        = new SimpleIntegerProperty(set.getInt("Team_Id"));
+        this.time_card      = new SimpleDoubleProperty(set.getDouble("Time_Card"));
+        this.request_id     = new SimpleIntegerProperty(set.getInt("Request_Id"));
+        this.role           = new SimpleStringProperty(set.getString("Emp_Role"));
+        this.department     = new SimpleStringProperty(set.getString("Department"));
 
         }
 
+
+    public SimpleIntegerProperty team_idProperty(){return team_id;}
+    public int getTeam_Id() {return team_id.get();}
     @Override
     public String getName() {return name.get();}
     @Override
@@ -131,7 +135,7 @@ public class Employee extends Person{
         this.role.set(role);
     }
 
-    public void setEmptype(String e_type){
+    public void setEmp_type(String e_type){
 
         this.emp_type.set(e_type.toUpperCase());
     }

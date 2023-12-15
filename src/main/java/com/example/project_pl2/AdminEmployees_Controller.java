@@ -1,22 +1,26 @@
 package com.example.project_pl2;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 
-public class AdminEmployees_Controller {
+public class AdminEmployees_Controller  implements Initializable {
 
         @FXML
         private Button LogoutButton;
@@ -26,6 +30,62 @@ public class AdminEmployees_Controller {
         private Stage stage;
         @FXML
         private Label Selection;
+
+    ObservableList<Employee> EmployeeObservableList = FXCollections.observableArrayList();
+
+    @FXML
+    private TableView<Employee> EmployeeTableView;
+    @FXML
+    private TableColumn<Employee, Integer> Emp_ID;
+    @FXML
+    private TableColumn<Employee, String> Emp_Name;
+    @FXML
+    private TableColumn<Employee, String> Emp_Email;
+    @FXML
+    private TableColumn<Employee, String> Emp_Password;
+    @FXML
+    private TableColumn<Employee, Integer> Emp_Team;
+    @FXML
+    private TableColumn<Employee, String> Emp_Depart;
+    @FXML
+    private TableColumn<Employee, String> Emp_Role;
+    @FXML
+    private TableColumn<Employee, String> Emp_Type;
+
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        try{
+            ArrayList<Employee> Employees = Utility.UserSingle.getInstance().admin.ShowEmployees();
+
+            if(!Employees.isEmpty()){
+
+                EmployeeObservableList.addAll(Employees);
+
+                Emp_ID.setCellValueFactory(new PropertyValueFactory<Employee , Integer>("id"));
+                Emp_Team.setCellValueFactory(new PropertyValueFactory<Employee , Integer>("team_id"));
+                Emp_Name.setCellValueFactory(new PropertyValueFactory<Employee , String>("name"));
+                Emp_Email.setCellValueFactory(new PropertyValueFactory<Employee , String>("email"));
+                Emp_Password.setCellValueFactory(new PropertyValueFactory<Employee , String>("password"));
+                Emp_Role.setCellValueFactory(new PropertyValueFactory<Employee , String>("role"));
+                Emp_Depart.setCellValueFactory(new PropertyValueFactory<Employee , String>("department"));
+                Emp_Type.setCellValueFactory(new PropertyValueFactory<Employee , String>("emp_type"));
+
+                EmployeeTableView.setItems(EmployeeObservableList);
+
+            }else{
+                throw new Exception("moseeeba el Employees msh mwgodeen");
+            }
+
+
+        }catch (Exception e){
+
+            System.out.println(e);
+        }
+
+    }
 
 
         public void Logout(ActionEvent event)throws IOException {
