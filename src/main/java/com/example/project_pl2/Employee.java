@@ -175,16 +175,11 @@ public class Employee extends Person{
 
         if (this.emp_type.get().equals("LEADER")){
 
-            String Query1 = "SELECT Project_Id FROM plproject.project WHERE Assigned_To = ?";
-            Object[] args1 = {this.team_id.get()};
-            ResultSet req = CRUD2.readDbDynamic(Query1, args);
-            int team_id = 0;
-            if (req.isBeforeFirst()){
-                req.next();
-                team_id = req.getInt("Assigned_To");
-            }
-            query = "SELECT * FROM plproject.task WHERE Project_Id = ?";
+            query = "SELECT * FROM plproject.task WHERE Project_Id IN " +
+                    "(SELECT Project_Id FROM plproject.project WHERE Assigned_To " +
+                    "= ? AND Progress_status = ?)";
             args[0] = team_id;
+            args[1] = 1;
         }else{
             query = "SELECT * FROM plproject.task WHERE Assigned_To = ?";
             args[0] = this.id;
@@ -271,5 +266,16 @@ public class Employee extends Person{
         Object [] args = {status, task_id};
         boolean result = CRUD2.updateDbDynamic( query , args).getKey();
         return result;
+    }
+
+
+    public boolean deleteTask(int required_task_id){
+
+        String deleteTaskQuery = "DELETE FROM task WHERE Task_Id = ?";
+        Object [] args = {required_task_id};
+
+        Pair<Boolean , Integer> res = CRUD2.updateDbDynamic(deleteTaskQuery , args);
+
+        return res.getKey();
     }
 }

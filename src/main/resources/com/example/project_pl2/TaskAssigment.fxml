@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="935.0" style="-fx-background-color: #212121;" stylesheets="@st.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_pl2.TeamLeaderTaskAssigment_Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="935.0" style="-fx-background-color: #212121;" stylesheets="@st.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_pl2.TeamLeaderTaskAssigment_Controller">
    <children>
       <Pane prefHeight="744.0" prefWidth="246.0" styleClass="backgroundEmployee" stylesheets="@st.css">
          <children>
@@ -67,17 +67,17 @@
             <Font name="Tahoma Bold" size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="262.0" layoutY="488.0" prefHeight="26.0" prefWidth="163.0" promptText="Employee_ID">
+      <TextField fx:id="EmpIdTextField" layoutX="262.0" layoutY="488.0" prefHeight="26.0" prefWidth="163.0" promptText="Employee Id">
          <font>
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField layoutX="263.0" layoutY="558.0" promptText="Employee_Name">
+      <TextField fx:id="TaskIdTextField" layoutX="263.0" layoutY="558.0" promptText="Task Id">
          <font>
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </TextField>
-      <Button layoutX="433.0" layoutY="609.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="69.0" text="Assign">
+      <Button layoutX="433.0" layoutY="609.0" mnemonicParsing="false" onAction="#reAssignTask" prefHeight="33.0" prefWidth="69.0" text="Assign">
          <font>
             <Font name="Tahoma Bold" size="12.0" />
          </font>
