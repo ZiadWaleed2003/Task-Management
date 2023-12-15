@@ -37,7 +37,7 @@ values (
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.team" active-filter-id="" />
+    <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.team" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.employee" active-filter-id="c8c2f992-c3dd-41f3-9c99-dea1cb70ab96">
       <filter id="c8c2f992-c3dd-41f3-9c99-dea1cb70ab96" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
@@ -47,7 +47,9 @@ values (
       </filter>
     </filter-actions>
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.request" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.project" active-filter-id="" />
+    <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.project" active-filter-id="a4fcb33f-1410-43b8-a20d-c6244b45108b">
+      <filter id="a4fcb33f-1410-43b8-a20d-c6244b45108b" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
