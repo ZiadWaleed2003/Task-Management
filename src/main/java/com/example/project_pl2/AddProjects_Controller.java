@@ -95,7 +95,7 @@ public class AddProjects_Controller {
 
         switchScenes(event , "Projects.fxml");
     }
-    
+
 
 
     public void Logout(ActionEvent event)throws IOException {

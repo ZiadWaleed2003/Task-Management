@@ -12,12 +12,13 @@ import java.util.Date;
 
 public class Employee extends Person{
 
+
     // [TODO 12]Change Enum to variable have property and change result set , add setter and getter
     public enum EmpType {
         LEADER , MEMBER
     }
 
-    private EmpType emp_type;
+    private SimpleStringProperty emp_type;
 
     private SimpleIntegerProperty team_id;
 
@@ -26,6 +27,8 @@ public class Employee extends Person{
     private SimpleIntegerProperty request_id;
 
     private SimpleStringProperty role;
+
+    private SimpleStringProperty department;
 
     public Employee(){}
 
@@ -39,11 +42,15 @@ public class Employee extends Person{
 //    }
 
     public Employee(ResultSet set) throws SQLException{
+
+        EmpType type = EmpType.values()[set.getInt("Emp_Type")];
+
+
         super.name = new SimpleStringProperty(set.getString("Emp_Name"));
         super.email = new SimpleStringProperty(set.getString("Emp_Email"));
         super.password = new SimpleStringProperty(set.getString("Emp_Password"));
         super.id = new SimpleIntegerProperty(set.getInt("Emp_Id"));
-        this.emp_type = EmpType.values()[set.getInt("Emp_Type")]; //TODO: object -> enum conversion
+        this.emp_type = new SimpleStringProperty(type.name());
         this.team_id = new SimpleIntegerProperty(set.getInt("Team_Id"));
         this.time_card = new SimpleDoubleProperty(set.getDouble("Time_Card"));
         this.request_id = new SimpleIntegerProperty(set.getInt("Request_Id"));
@@ -75,6 +82,19 @@ public class Employee extends Person{
     public SimpleIntegerProperty idProperty(){return id;}
     @Override
     public void setId(int id){this.id.set(id);}
+
+    public String getDepartment() {
+        return department.get();
+    }
+
+    public SimpleStringProperty departmentProperty() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department.set(department);
+    }
+
 
     public double getTime_card() {
         return time_card.get();
@@ -113,13 +133,13 @@ public class Employee extends Person{
 
     public void setEmptype(String e_type){
 
-        if(e_type.equals("TeamLeader")){
-            this.emp_type = EmpType.LEADER;
-        }else{
-            this.emp_type = EmpType.MEMBER;
-        }
+        this.emp_type.set(e_type.toUpperCase());
     }
-    public EmpType getEmp_type(){return this.emp_type;}
+    public String getEmp_type(){return this.emp_type.get();}
+
+    public SimpleStringProperty emp_typeProperty() {
+        return emp_type;
+    }
 
 
 
@@ -148,10 +168,11 @@ public class Employee extends Person{
         ArrayList<IndivTask> result =  new ArrayList<IndivTask>();
         String query;
         Object[] args = {};
-        if (this.emp_type == EmpType.LEADER){
+
+        if (this.emp_type.get().equals("LEADER")){
 
             String Query1 = "SELECT Project_Id FROM plproject.project WHERE Assigned_To = ?";
-            Object[] args1 = {this.team_id};
+            Object[] args1 = {this.team_id.get()};
             ResultSet req = CRUD2.readDbDynamic(Query1, args);
             int team_id = 0;
             if (req.isBeforeFirst()){
@@ -194,7 +215,7 @@ public class Employee extends Person{
     }
     public ArrayList<Project> retrieveAllProjects() throws SQLException{
 
-        if (Utility.UserSingle.getInstance().emp.emp_type == EmpType.LEADER){
+        if (Utility.UserSingle.getInstance().emp.emp_type.get().equals("LEADER")){
 
             ArrayList<Project> result = new ArrayList<Project>();
             String query = "SELECT * FROM plproject.project WHERE Assigned_To = ?";
@@ -220,7 +241,7 @@ public class Employee extends Person{
 
     public boolean addTask(int id, String name, String description, Utility.CompletionStatus status,
                            int assigned_to, int project, String priority, String start_date, String due_date){
-        if(this.emp_type == EmpType.LEADER){
+        if(this.emp_type.get().equals("LEADER")){
 
             String addTaskQuery = "INSERT INTO task (Task_Id, Assigned_To, Due_date, Priority, Project_Id, Start_Date, " +
                     "Task_Desc, Task_Name, Task_Status) VALUES (?, ?, ?, ? ,? ,? ,?, ?, ?);";

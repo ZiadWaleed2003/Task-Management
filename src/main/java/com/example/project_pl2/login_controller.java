@@ -46,7 +46,7 @@ public class login_controller {
         if (Employee.login(email,password)) {
            System.out.print("Login successfully !\n" + "Name is : " + Utility.UserSingle.getInstance().emp.name);
 
-           if(Utility.UserSingle.getInstance().emp.getEmp_type() == Employee.EmpType.LEADER ){
+           if(Utility.UserSingle.getInstance().emp.getEmp_type().equals("LEADER")){
                     switchScenes(event , "TeamLeader_Dashboard.fxml");
            }else{
                switchScenes(event , "Employee_Dashboard.fxml");
