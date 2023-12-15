@@ -1,23 +1,86 @@
 package com.example.project_pl2;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-public class Employee_Controller {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Employee_Controller implements Initializable {
     //TODO implement a method that takes task id and changes its status
     //this is the employees dashboard when they login
     private Scene scene;
     private Stage stage;
     private Parent root;
+
+    ObservableList<IndivTask> taskObservableList  = FXCollections.observableArrayList();
+
+    @FXML
+    private TableView<IndivTask> taskTableView;
+    @FXML
+    private TableColumn<IndivTask, Integer> ID;
+    @FXML
+    private TableColumn<IndivTask, String> Name;
+    @FXML
+    private TableColumn<IndivTask, String> Description;
+    @FXML
+    private TableColumn<IndivTask, String> Status;
+    @FXML
+    private TableColumn<IndivTask, Integer> Assigned_to;
+    @FXML
+    private TableColumn<IndivTask, String> Priority;
+    @FXML
+    private TableColumn<IndivTask, String> Start_date;
+    @FXML
+    private TableColumn<IndivTask, String> Due_date;
+    @FXML
+    private TableColumn<IndivTask, Integer> Project_id;
+
+
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        try {
+            taskTableView = new TableView<>();
+
+            ID.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("id"));
+            Name.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("name"));
+            Description.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("description"));
+//        Status.setCellValueFactory(new PropertyValueFactory<IndivTask,String>("status"));
+            Assigned_to.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("assigned_to"));
+            Priority.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("priority"));
+            Start_date.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("start_date"));
+            Due_date.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("due_date"));
+            Project_id.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("project_id"));
+        } catch(Exception e){
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
 
 
     public void Logout(ActionEvent event)throws IOException {
@@ -66,5 +129,6 @@ public class Employee_Controller {
         stage.show();
 
     }
+
 
 }
