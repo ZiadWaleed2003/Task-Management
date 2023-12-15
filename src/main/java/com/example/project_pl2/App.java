@@ -32,6 +32,7 @@ public class App extends Application{
 
          launch();
          //Zyad atef is a nigga
+        //zyad waleed bya5od feha
 
 
     }

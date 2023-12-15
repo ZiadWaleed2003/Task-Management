@@ -13,7 +13,7 @@ public class IndivTask {
     private SimpleStringProperty name;
     private SimpleStringProperty description;
     // [TODO 12]Change Utility to variable have property and change result set , add setter and getter
-    private Utility.CompletionStatus status;
+    private SimpleStringProperty status;
     private SimpleIntegerProperty assigned_to;
     private SimpleIntegerProperty project;
     // [TODO 12]Change Priority to variable have property and change result set , add setter and getter
@@ -23,7 +23,7 @@ public class IndivTask {
     // [TODO 12]Change Date to variable have property and change result set , add setter and getter
     private SimpleStringProperty due_date;
 
-//    private String [] priority_arr = {"LOW" , "MEDIUM" , "HIGH"};
+
 
 
  /*   public IndivTask(){
@@ -41,10 +41,12 @@ public class IndivTask {
 
     public IndivTask(ResultSet res) throws SQLException{
 
+        Utility.CompletionStatus stat = Utility.CompletionStatus.values()[res.getInt("task_Status")];
+
         this.id = new SimpleIntegerProperty(res.getInt("Task_Id"));
         this.name = new SimpleStringProperty(res.getNString("Task_Name"));
         this.description = new SimpleStringProperty(res.getNString("Task_Desc"));
-        this.status = Utility.CompletionStatus.values()[res.getInt("task_Status")];
+        this.status      = new SimpleStringProperty(stat.name());
         this.assigned_to = new SimpleIntegerProperty(res.getInt(("Assigned_To")));
         this.project = new SimpleIntegerProperty(res.getInt("Project_Id"));
 
@@ -54,6 +56,8 @@ public class IndivTask {
         this.start_date = new SimpleStringProperty(res.getString("Start_Date"));
         this.due_date = new SimpleStringProperty (res.getString("Due_Date"));
     }
+
+
 
 
     public int getId() {
@@ -92,6 +96,18 @@ public class IndivTask {
         this.description.set(description);
     }
 
+    public String getStatus() {
+        return status.get();
+    }
+
+    public SimpleStringProperty statusProperty() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status.set(status);
+    }
+
     public int getAssigned_to() {
         return assigned_to.get();
     }
@@ -116,61 +132,17 @@ public class IndivTask {
         this.project.set(project);
     }
 
-
-    public Utility.CompletionStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(Utility.CompletionStatus status) {
-        this.status = status;
-    }
-
     public String getPriority() {
-        return this.priority.get();
+        return priority.get();
+    }
+
+    public SimpleStringProperty priorityProperty() {
+        return priority;
     }
 
     public void setPriority(String priority) {
         this.priority.set(priority);
     }
-
-
-
-
-
-    //TODO: use overloaded updatedbdynamic w/ args for better code readability
-
-    public boolean deleteTask(int required_task_id){
-        String deleteTaskQuery = "DELETE FROM task " +
-                "WHERE id = "+required_task_id+";";
-
-        Pair<Boolean , Integer> res = CRUD2.updateDbDynamic(deleteTaskQuery);
-
-        return res.getKey();
-    }
-
-    // TODO [Zeyad Hussam] make (readTask) to task
-
-    public ResultSet readTask(){
-
-        int emp_id = Utility.UserSingle.getInstance().emp.getId();
-
-        String query = "SELECT * FROM plproject.task WHERE Assigned_To = " + emp_id;
-
-        ResultSet result = CRUD2.readDbDynamic(query);
-
-        try {
-            if(result.isBeforeFirst()){
-                result.next();
-
-                return result;
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return result;
-    }
-
     public String getStart_date() {
         return start_date.get();
     }
@@ -194,5 +166,6 @@ public class IndivTask {
     public void setDue_date(String due_date) {
         this.due_date.set(due_date);
     }
+
 }
 
