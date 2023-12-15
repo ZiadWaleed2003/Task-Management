@@ -272,4 +272,15 @@ public class Employee extends Person{
         boolean result = CRUD2.updateDbDynamic( query , args).getKey();
         return result;
     }
+
+
+    public boolean deleteTask(int required_task_id){
+
+        String deleteTaskQuery = "DELETE FROM task WHERE Task_Id = ?";
+        Object [] args = {required_task_id};
+
+        Pair<Boolean , Integer> res = CRUD2.updateDbDynamic(deleteTaskQuery , args);
+
+        return res.getKey();
+    }
 }

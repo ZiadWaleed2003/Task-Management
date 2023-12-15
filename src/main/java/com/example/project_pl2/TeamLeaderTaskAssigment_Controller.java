@@ -1,25 +1,91 @@
 package com.example.project_pl2;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class TeamLeaderTaskAssigment_Controller {
+public class TeamLeaderTaskAssigment_Controller implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
 
+    @FXML
+    private TextField EmpIdTextField;
+
+    @FXML
+    private TextField TaskIdTextField;
+
+    ObservableList<IndivTask> TasksObservableList = FXCollections.observableArrayList();
+
+    @FXML
+    private TableView<IndivTask> TaskTableView;
+    @FXML
+    private TableColumn<IndivTask, Integer> Task_ID;
+    @FXML
+    private TableColumn<IndivTask, String> Task_Name;
+    @FXML
+    private TableColumn<IndivTask, String> Task_Desc;
+    @FXML
+    private TableColumn<IndivTask, Integer> Assigned_To;
+    @FXML
+    private TableColumn<IndivTask, String> Priority;
+    @FXML
+    private TableColumn<IndivTask, String> Task_Status;
+    @FXML
+    private TableColumn<IndivTask, Integer> Project_Id;
 
 
 
 
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+
+
+        Task_ID.setCellValueFactory(new PropertyValueFactory<IndivTask , Integer>("id"));
+        Project_Id.setCellValueFactory(new PropertyValueFactory<IndivTask , Integer>("project"));
+        Task_Name.setCellValueFactory(new PropertyValueFactory<IndivTask , String>("name"));
+        Task_Desc.setCellValueFactory(new PropertyValueFactory<IndivTask , String>("description"));
+        Task_Status.setCellValueFactory(new PropertyValueFactory<IndivTask , String>("status"));
+    }
+
+
+
+
+
+    public void reAssignTask(ActionEvent event){
+
+        int emp_id  = Integer.parseInt(EmpIdTextField.getText());
+        int task_id = Integer.parseInt(TaskIdTextField.getText());
+
+        try {
+            if(Utility.UserSingle.getInstance().emp.reassignTask(task_id , emp_id)){
+
+                System.out.println("Task Reassigned Successfully");
+            }else{
+                throw new Exception("yalahwyyyy");
+            }
+        }catch (Exception e){
+
+            System.out.println(e);
+        }
+    }
 
 
 
