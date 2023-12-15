@@ -27,13 +27,13 @@ public class Project {
 
 
 
-//    Project(int project_id, String project_title , String project_Status , String project_description , int team_id){
-//        this.project_id          = project_id;
-//        this.project_title       = project_title;
-//        this.current_status      = project_Status;
-//        this.project_description = project_description;
-//        this.team_id             = team_id;
-//    }
+    Project(int project_id, String project_title , String project_description , int team_id, String current_status){
+        this.project_id          = new SimpleIntegerProperty(project_id);
+        this.project_title       = new SimpleStringProperty(project_title);
+        this.project_description = new SimpleStringProperty(project_description);
+        this.team_id             = new SimpleIntegerProperty(team_id);
+        this.current_status      = new SimpleStringProperty(current_status);
+    }
 
     public Project(ResultSet res) throws SQLException {
 

@@ -132,12 +132,12 @@ public class Admin extends Person implements File{
 
 
 
-    public boolean createProject (int proj_id , int team_id ,Utility.CompletionStatus status,String proj_desc , String proj_Title ){
+    public boolean createProject (int proj_id , int team_id ,String proj_desc , String proj_Title , String status ){
 
-        String query = "INSERT INTO Project (Project_Id , Assigned_To , Progress_status , Project_desc , Project_Title) " +
+        String query = "INSERT INTO Project (Project_Id , Assigned_To , Project_desc , Project_Title , Progress_status) " +
                 "VALUES (?,?,?,?,?)";
 
-        Object [] args = { proj_id ,team_id, status ,proj_desc,proj_Title};
+        Object [] args = { proj_id ,team_id ,proj_desc,proj_Title,status};
 
         Pair <Boolean , Integer> result = CRUD2.updateDbDynamic(query , args);
 
@@ -243,7 +243,7 @@ public class Admin extends Person implements File{
 
     @Override
     // Add Project
-    public void addProjectFile(int project_id) throws IOException {
+    public boolean addProjectFile(int project_id) throws IOException {
         String file_content = readFromFile();
 
         // Check if required ID is presents or not
@@ -251,7 +251,7 @@ public class Admin extends Person implements File{
         for (int j : ids) {
             if (j == project_id){
                 System.out.println("! This ID is already Exist !");
-                return;
+                return false;
             }
         }
 
@@ -273,7 +273,10 @@ public class Admin extends Person implements File{
 
             System.out.println("Project added successfully!");
 
+            return true;
+
         }
+        return false;
     }
 
     @Override

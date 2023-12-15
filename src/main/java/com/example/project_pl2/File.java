@@ -10,7 +10,7 @@ public interface File {
 
     void updateAdminPassword(String password) throws IOException;
 
-    void addProjectFile(int projectId) throws IOException;
+    boolean addProjectFile(int projectId) throws IOException;
 
     boolean deleteProjectFile(int projectId) throws IOException;
 
