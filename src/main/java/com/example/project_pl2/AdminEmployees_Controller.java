@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -51,6 +52,15 @@ public class AdminEmployees_Controller  implements Initializable {
     private TableColumn<Employee, String> Emp_Role;
     @FXML
     private TableColumn<Employee, String> Emp_Type;
+
+    @FXML
+    private TextField IdTextFieldDel;
+
+    @FXML
+    private TextField IdTextFieldUp;
+    @FXML
+    private TextField IdTextFieldUp1;
+
 
 
 
@@ -115,7 +125,6 @@ public class AdminEmployees_Controller  implements Initializable {
 
 
 
-
         public void switchScenes(ActionEvent event , String fxml) throws IOException {
 
             root = FXMLLoader.load(getClass().getResource(fxml));
@@ -126,7 +135,30 @@ public class AdminEmployees_Controller  implements Initializable {
 
         }
 
+    public void deleteEmployee(ActionEvent actionEvent) throws IOException {
+        try{
+            int emp_id = Integer.parseInt(IdTextFieldDel.getText());
+            Utility.UserSingle.getInstance().admin.deleteEmployee((emp_id));
+            switchScenes(actionEvent, "EmployeesView.fxml");
+        }catch(IOException e){
+            System.out.print("kosom 7ayty");
+        }
+
     }
+
+    public void updateEmployee(ActionEvent actionEvent) throws IOException {
+        try {
+            int emp_id = Integer.parseInt(IdTextFieldUp.getText());
+            String emp_type = IdTextFieldUp1.getText();
+            Utility.UserSingle.getInstance().admin.editEmployeeType(emp_id, emp_type);
+            switchScenes(actionEvent, "EmployeesView.fxml");
+        }catch(IOException e){
+            System.out.print("kosom 7ayty");
+        }
+
+    }
+
+}
 
 
 
