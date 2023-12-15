@@ -149,7 +149,7 @@ public class Employee extends Person{
 
     public static boolean login(String email, String password) throws SQLException {
 
-        String query = "SELECT * FROM Employee WHERE Emp_Email = ? AND Emp_Password = ?";
+        String query = "SELECT * FROM Employee inner join Team on Employee.Team_Id = Team.Team_Id WHERE Emp_Email = ? AND Emp_Password = ?";
 
         String[] arguments = {email, password};
 
