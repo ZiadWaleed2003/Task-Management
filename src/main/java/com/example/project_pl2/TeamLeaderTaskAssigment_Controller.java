@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class TeamLeaderTaskAssigment_Controller implements Initializable {
@@ -57,12 +58,31 @@ public class TeamLeaderTaskAssigment_Controller implements Initializable {
 
 
 
+        try{
 
-        Task_ID.setCellValueFactory(new PropertyValueFactory<IndivTask , Integer>("id"));
-        Project_Id.setCellValueFactory(new PropertyValueFactory<IndivTask , Integer>("project"));
-        Task_Name.setCellValueFactory(new PropertyValueFactory<IndivTask , String>("name"));
-        Task_Desc.setCellValueFactory(new PropertyValueFactory<IndivTask , String>("description"));
-        Task_Status.setCellValueFactory(new PropertyValueFactory<IndivTask , String>("status"));
+            ArrayList<IndivTask> tasks = Utility.UserSingle.getInstance().emp.constructTasksList();
+
+            if(!tasks.isEmpty()){
+
+                TasksObservableList.addAll(tasks);
+
+                Task_ID.setCellValueFactory(new PropertyValueFactory<IndivTask , Integer>("id"));
+                Project_Id.setCellValueFactory(new PropertyValueFactory<IndivTask , Integer>("project"));
+                Task_Name.setCellValueFactory(new PropertyValueFactory<IndivTask , String>("name"));
+                Task_Desc.setCellValueFactory(new PropertyValueFactory<IndivTask , String>("description"));
+                Task_Status.setCellValueFactory(new PropertyValueFactory<IndivTask , String>("status"));
+
+                TaskTableView.setItems(TasksObservableList);
+
+            }else{
+                throw new Exception("A777aaa meeen");
+            }
+
+
+
+        }catch (Exception e){
+                System.out.println(e);
+        }
     }
 
 
@@ -78,6 +98,7 @@ public class TeamLeaderTaskAssigment_Controller implements Initializable {
             if(Utility.UserSingle.getInstance().emp.reassignTask(task_id , emp_id)){
 
                 System.out.println("Task Reassigned Successfully");
+                switchScenes(event , "TaskAssigment.fxml");
             }else{
                 throw new Exception("yalahwyyyy");
             }
