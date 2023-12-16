@@ -23,29 +23,26 @@
             </Button>
          </children>
       </Pane>
-      <Pane layoutX="246.0" layoutY="-2.0" prefHeight="46.0" prefWidth="1037.0" styleClass="header">
-         <children>
-            <Label layoutX="14.0" layoutY="23.0" prefHeight="46.0" prefWidth="411.0" text="TeamLeader Dashboard" textFill="WHITE">
-               <font>
-                  <Font name="Tahoma Bold" size="32.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Button alignment="CENTER" layoutX="336.0" layoutY="178.0" mnemonicParsing="false" onAction="#switchToTasks" prefHeight="79.0" prefWidth="223.0" styleClass="backgroundEmployee" stylesheets="@st.css" text="Tasks" textFill="WHITE">
+      <Pane layoutX="246.0" layoutY="-2.0" prefHeight="46.0" prefWidth="1037.0" styleClass="header" />
+      <Button alignment="CENTER" layoutX="259.0" layoutY="101.0" mnemonicParsing="false" onAction="#switchToTasks" prefHeight="270.0" prefWidth="320.0" styleClass="backgroundEmployee" stylesheets="@st.css" text="Tasks" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="24.0" />
          </font>
       </Button>
-      <Button layoutX="559.0" layoutY="301.0" mnemonicParsing="false" onAction="#switchToATaskAssigment" prefHeight="79.0" prefWidth="223.0" styleClass="backgroundEmployee" stylesheets="@st.css" text="Assign Task" textFill="WHITE">
+      <Button layoutX="259.0" layoutY="391.0" mnemonicParsing="false" prefHeight="338.0" prefWidth="663.0" styleClass="backgroundEmployee" stylesheets="@st.css" text="Team" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="23.0" />
          </font>
       </Button>
-      <Button layoutX="336.0" layoutY="417.0" mnemonicParsing="false" onAction="#switchToTeamLeader_Requests" prefHeight="79.0" prefWidth="223.0" styleClass="backgroundEmployee" stylesheets="@st.css" text="Projects" textFill="WHITE">
+      <Button layoutX="601.0" layoutY="101.0" mnemonicParsing="false"  prefHeight="270.0" prefWidth="320.0" styleClass="backgroundEmployee" stylesheets="@st.css" text="Projects" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="23.0" />
          </font>
       </Button>
+      <Label layoutX="259.0" layoutY="31.0" prefHeight="46.0" prefWidth="411.0" text="Leader Dashboard" textFill="WHITE">
+         <font>
+            <Font name="Tahoma Bold" size="32.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

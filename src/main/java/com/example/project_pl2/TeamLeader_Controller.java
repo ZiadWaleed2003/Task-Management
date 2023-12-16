@@ -107,13 +107,8 @@ public class TeamLeader_Controller{
 
 
         }
-        public void switchToATaskAssigment(ActionEvent event) throws IOException {
-            switchScenes(event,"TaskAssigment.fxml");
-
-
-        }
-        public void switchToTeamLeader_Requests(ActionEvent event) throws IOException {
-            switchScenes(event,"TeamLeader_Requests.fxml");
+        public void switchToProjects(ActionEvent event) throws IOException {
+            switchScenes(event,"EmpProjects.fxml");
 
 
         }
