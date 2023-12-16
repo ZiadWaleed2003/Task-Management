@@ -50,42 +50,43 @@ public class Employee_DashboardController implements Initializable {
     private TableColumn<IndivTask, Integer> Project_id;
     @FXML
     private TextField tasktextfield;
-    @FXML
-    private TextField statustextfield;
 
 
 
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle){
         statusChoiceBox.setItems(FXCollections.observableArrayList(Utility.CompletionStatus.values()));
 
         try {
             ArrayList<IndivTask> tasks = Utility.UserSingle.getInstance().emp.constructTasksList();
-            taskObservableList.addAll(tasks);
+
+            if (!tasks.isEmpty()) {
+
+                taskObservableList.addAll(tasks);
 
 
+                ID.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("id"));
+                Name.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("name"));
+                Description.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("description"));
+                Status.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("status"));
+                Assigned_to.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("assigned_to"));
+                Priority.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("priority"));
+                Start_date.setCellValueFactory(new PropertyValueFactory<IndivTask, Date>("start_date"));
+                Due_date.setCellValueFactory(new PropertyValueFactory<IndivTask, Date>("due_date"));
+                Project_id.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("project"));
 
+                taskTableView.setItems(taskObservableList);
 
-            ID.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("id"));
-            Name.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("name"));
-            Description.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("description"));
-            Status.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("status"));
-            Assigned_to.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("assigned_to"));
-            Priority.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("priority"));
-            Start_date.setCellValueFactory(new PropertyValueFactory<IndivTask, Date>("start_date"));
-            Due_date.setCellValueFactory(new PropertyValueFactory<IndivTask, Date>("due_date"));
-            Project_id.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("project"));
-
-            taskTableView.setItems(taskObservableList);
+            }
 
         } catch(Exception e){
-           //alert
-        }
 
+        }
     }
 
-    public void changeStatus(ActionEvent event){
+
+    public void changeStatus(ActionEvent event) throws IOException{
         int task_id = Integer.parseInt(tasktextfield.getText());
 //        int status = Utility.CompletionStatus.valueOf(statustextfield.getText().toUpperCase()).ordinal();
         Utility.CompletionStatus selectedStatus = statusChoiceBox.getSelectionModel().getSelectedItem();
@@ -93,22 +94,25 @@ public class Employee_DashboardController implements Initializable {
 
         try {
 
-            if(Utility.UserSingle.getInstance().emp.updateTaskStatus(task_id,status)){
-
-                System.out.println("Changed Status Successfully");
-
-                switchScenes(event , "Employee_Dashboard.fxml");
-            }else{
-                throw new Exception("fe 5ara 7sl fe change status");
+            if (Utility.UserSingle.getInstance().emp.updateTaskStatus(task_id, status) && (task_id != 0)) {
+                switchScenes(event, "Employee_Dashboard.fxml");
+            } else {
+                throw new Exception();
             }
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("OPERATION FAILED");
+            alert.setContentText("PLEASE TRY AGAIN");
+            if (alert.showAndWait().get() == ButtonType.OK) {
 
-            System.out.println(e);
+                switchScenes(event, "Employee_Dashboard.fxml");
+
+            }
         }
     }
-
 
 
 

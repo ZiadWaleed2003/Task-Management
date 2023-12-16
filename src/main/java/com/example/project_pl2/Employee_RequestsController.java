@@ -25,8 +25,6 @@ public class Employee_RequestsController implements Initializable {
     private TableView<Request> requestTableView;
     @FXML
     private TableColumn<Request,Integer> ID;
-    @FXML
-    private TableColumn<Request,Integer> by_ID;
 
     @FXML
     private TableColumn<Request,String> Type;
@@ -73,22 +71,30 @@ public class Employee_RequestsController implements Initializable {
     }
 
 
-    public void addRequest(ActionEvent event){
+    public void addRequest(ActionEvent event) throws IOException{
 
         String req_type = request_Type.getText();
         String req_desc = request_Desc.getText();
 
         try{
-            if(Utility.UserSingle.getInstance().emp.SendRequest(req_desc , req_type)){
-                System.out.println("Request added Successfully");
+            if(Utility.UserSingle.getInstance().emp.SendRequest(req_desc , req_type ) && (!req_desc.isEmpty()) && (!req_type.isEmpty())){
 
                 switchScenes(event , "Employee_Requests.fxml");
             }
+            else {
+                throw new Exception();
+            }
         }catch (Exception e){
 
-            // E3mel alert hna ya nigga
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("OPERATION FAILED");
+            alert.setContentText("PLEASE TRY AGAIN");
+            if (alert.showAndWait().get() == ButtonType.OK) {
 
-            System.out.println("moseeeeba el Request mtb3tsh");
+                switchScenes(event, "Employee_Requests.fxml");
+
+            }
         }
     }
 
