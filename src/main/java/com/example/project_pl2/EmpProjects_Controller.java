@@ -65,7 +65,7 @@ public class EmpProjects_Controller implements Initializable {
 
 
         try {
-            ArrayList<Project> proj = Utility.UserSingle.getInstance().admin.showProject();
+            ArrayList<Project> proj = Utility.UserSingle.getInstance().emp.retrieveAllProjects();
 
             projectObservableList.addAll(proj);
 
@@ -121,7 +121,23 @@ public class EmpProjects_Controller implements Initializable {
     public void changeStatus(ActionEvent event){
         int proj_id = Integer.parseInt(ProjectIDTextField.getText());
         int status = Integer.parseInt(StatusTextField.getText());
-        Utility.UserSingle.getInstance().emp.updateProjStatus(proj_id, status);
+
+        try {
+
+                if(Utility.UserSingle.getInstance().emp.updateProjStatus(proj_id, status)){
+
+                    System.out.println("Changed Status Successfully");
+
+                    switchScenes(event , "EmpProjects.fxml");
+                }else{
+                    throw new Exception("fe 5ara 7sl fe change status");
+                }
+
+
+        }catch (Exception e){
+
+                System.out.println(e);
+        }
     }
 
 

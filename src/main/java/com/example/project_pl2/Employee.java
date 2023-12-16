@@ -171,18 +171,17 @@ public class Employee extends Person{
     public ArrayList<IndivTask> constructTasksList() throws SQLException{
         ArrayList<IndivTask> result =  new ArrayList<IndivTask>();
         String query;
-        Object[] args = {};
+        Object[] args = new Object[1];
 
         if (this.emp_type.get().equals("LEADER")){
 
             query = "SELECT * FROM plproject.task WHERE Project_Id IN " +
-                    "(SELECT Project_Id FROM plproject.project WHERE Assigned_To " +
-                    "= ? AND Progress_status = ?)";
-            args[0] = team_id;
-            args[1] = 1;
+                    "(SELECT Project_Id FROM plproject.project WHERE Assigned_To = ?)";
+            args[0] = team_id.get();
+
         }else{
             query = "SELECT * FROM plproject.task WHERE Assigned_To = ?";
-            args[0] = this.id;
+            args[0] = this.id.get();
         }
         try {
             ResultSet res = CRUD2.readDbDynamic(query, args);

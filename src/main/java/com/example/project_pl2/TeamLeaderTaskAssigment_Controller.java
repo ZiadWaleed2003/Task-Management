@@ -51,12 +51,10 @@ public class TeamLeaderTaskAssigment_Controller implements Initializable {
 
 
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
+        System.out.println("5ara");
 
         try{
 
@@ -68,9 +66,12 @@ public class TeamLeaderTaskAssigment_Controller implements Initializable {
 
                 Task_ID.setCellValueFactory(new PropertyValueFactory<IndivTask , Integer>("id"));
                 Project_Id.setCellValueFactory(new PropertyValueFactory<IndivTask , Integer>("project"));
+                Assigned_To.setCellValueFactory(new PropertyValueFactory<IndivTask , Integer>("assigned_to"));
                 Task_Name.setCellValueFactory(new PropertyValueFactory<IndivTask , String>("name"));
+                Priority.setCellValueFactory(new PropertyValueFactory<IndivTask , String>("priority"));
                 Task_Desc.setCellValueFactory(new PropertyValueFactory<IndivTask , String>("description"));
                 Task_Status.setCellValueFactory(new PropertyValueFactory<IndivTask , String>("status"));
+
 
                 TaskTableView.setItems(TasksObservableList);
 
@@ -135,7 +136,7 @@ public class TeamLeaderTaskAssigment_Controller implements Initializable {
 
 
     public void switchToTeamLeader_Requests(ActionEvent event) throws IOException {
-        switchScenes(event,"TeamLeader_Requests.fxml");
+        switchScenes(event,"EmpProjects.fxml");
 
 
     }

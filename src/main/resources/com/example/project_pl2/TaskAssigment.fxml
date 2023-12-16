@@ -20,7 +20,7 @@
                         <Font name="Arial Black" size="23.0" />
                      </font>
                   </Button>
-                  <Button layoutX="14.0" layoutY="197.0" mnemonicParsing="false" onAction="#switchToTeamLeader_Requests" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #212121;" styleClass="AdminButtons" stylesheets="@st.css" text="Requests" textFill="WHITE">
+                  <Button layoutX="14.0" layoutY="197.0" mnemonicParsing="false" onAction="#switchToTeamLeader_Requests" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #212121;" styleClass="AdminButtons" stylesheets="@st.css" text="Project" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="23.0" />
                      </font>
@@ -49,17 +49,15 @@
             </Label>
          </children>
       </Pane>
-      <TableView layoutX="252.0" layoutY="76.0" prefHeight="337.0" prefWidth="678.0" style="-fx-background-color: #FFFCFC;" stylesheets="@st.css">
+      <TableView fx:id="TaskTableView" layoutX="252.0" layoutY="76.0" prefHeight="337.0" prefWidth="678.0" style="-fx-background-color: #FFFCFC;" stylesheets="@st.css">
          <columns>
-            <TableColumn prefWidth="36.79998779296875" style="-fx-background-color: #4D4476;" text="ID" />
-            <TableColumn prefWidth="81.5999755859375" style="-fx-background-color: #2C5776;" text="Name" />
-            <TableColumn prefWidth="124.0" style="-fx-background-color: #4D4476;" text="Task_Description" />
-            <TableColumn prefWidth="74.39999389648438" style="-fx-background-color: #2C5776;" text="Status" />
-            <TableColumn prefWidth="76.79998779296875" style="-fx-background-color: #4D4476;" text="Assigned_To" />
-            <TableColumn prefWidth="75.20001220703125" style="-fx-background-color: #2C5776;" text="Priority" />
-            <TableColumn prefWidth="72.00006103515625" style="-fx-background-color: #4D4476;" text="Start_Dtae" />
-            <TableColumn prefWidth="67.2000732421875" style="-fx-background-color: #2C5776;" text="Due_Date" />
-            <TableColumn prefWidth="69.5999755859375" style="-fx-background-color: #4D4476;" text="Project_ID" />
+            <TableColumn fx:id="Task_ID" prefWidth="74.00001525878906" text="ID" />
+            <TableColumn fx:id="Task_Name" prefWidth="92.6666259765625" text="Name" />
+            <TableColumn fx:id="Task_Desc" prefWidth="129.99996948242188" text="Task_Description" />
+            <TableColumn fx:id="Task_Status" prefWidth="66.66668701171875" text="Status" />
+            <TableColumn fx:id="Assigned_To" prefWidth="106.6666259765625" text="Assigned_To" />
+            <TableColumn fx:id="Priority" prefWidth="96.6666259765625" text="Priority" />
+            <TableColumn fx:id="Project_Id" prefWidth="111.3333740234375" text="Project_ID" />
          </columns>
       </TableView>
       <Label layoutX="262.0" layoutY="438.0" prefHeight="20.0" prefWidth="106.0" text="Assign To" textFill="WHITE">

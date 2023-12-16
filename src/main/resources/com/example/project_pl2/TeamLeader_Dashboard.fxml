@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="935.0" style="-fx-background-color: #212121;" stylesheets="@st.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_pl2.TeamLeader_Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="935.0" style="-fx-background-color: #212121;" stylesheets="@st.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_pl2.TeamLeader_Controller">
    <children>
       <Pane layoutX="-1.0" prefHeight="744.0" prefWidth="246.0" styleClass="backgroundEmployee" stylesheets="@st.css">
          <children>
@@ -42,7 +42,7 @@
             <Font name="Arial Black" size="23.0" />
          </font>
       </Button>
-      <Button layoutX="336.0" layoutY="417.0" mnemonicParsing="false" onAction="#switchToTeamLeader_Requests" prefHeight="79.0" prefWidth="223.0" styleClass="backgroundEmployee" stylesheets="@st.css" text="Requests" textFill="WHITE">
+      <Button layoutX="336.0" layoutY="417.0" mnemonicParsing="false" onAction="#switchToTeamLeader_Requests" prefHeight="79.0" prefWidth="223.0" styleClass="backgroundEmployee" stylesheets="@st.css" text="Projects" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="23.0" />
          </font>
