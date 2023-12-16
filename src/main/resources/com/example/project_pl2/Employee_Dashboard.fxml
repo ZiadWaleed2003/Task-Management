@@ -29,7 +29,7 @@
                   <Font name="Arial Black" size="23.0" />
                </font>
             </Button>
-            <Button layoutX="12.0" layoutY="362.0" mnemonicParsing="false" onAction="#switchToModify_Emp_Profile" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #212121;" stylesheets="@st.css" text="Modify Profile" textFill="WHITE">
+            <Button layoutX="12.0" layoutY="362.0" mnemonicParsing="false" onAction="#switchToModify_Emp_Profile" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #212121;" stylesheets="@st.css" text="Profile" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="23.0" />
                </font>
@@ -47,15 +47,15 @@
       </Pane>
       <TableView fx:id="taskTableView" layoutX="253.0" layoutY="203.0" prefHeight="264.0" prefWidth="678.0">
         <columns>
-          <TableColumn fx:id="ID" prefWidth="45.5999755859375" text="ID" />
-          <TableColumn fx:id="Name" prefWidth="104.79998779296875" text="Name" />
-            <TableColumn fx:id="Description" prefWidth="104.00006103515625" text="Task Description" />
-            <TableColumn fx:id="Status" prefWidth="46.399932861328125" text="Status" />
-            <TableColumn fx:id="Assigned_to" prefWidth="75.0" text="Assigned To" />
-            <TableColumn fx:id="Priority" prefWidth="75.0" text="Priority" />
+          <TableColumn fx:id="ID" prefWidth="34.39996337890625" text="ID" />
+          <TableColumn fx:id="Name" prefWidth="92.0" text="Name" />
+            <TableColumn fx:id="Description" prefWidth="116.00006103515625" text="Task Description" />
+            <TableColumn fx:id="Status" prefWidth="79.99990844726562" text="Status" />
+            <TableColumn fx:id="Assigned_to" prefWidth="81.5999755859375" text="Assigned To" />
+            <TableColumn fx:id="Priority" prefWidth="64.0" text="Priority" />
+            <TableColumn fx:id="Project_id" prefWidth="60.79998779296875" text="Project ID" />
             <TableColumn fx:id="Start_date" prefWidth="75.0" text="Start Date" />
             <TableColumn fx:id="Due_date" prefWidth="75.0" text="Due Date" />
-            <TableColumn fx:id="Project_id" prefWidth="75.0" text="Project ID" />
         </columns>
       </TableView>
       <Label layoutX="495.0" layoutY="160.0" prefHeight="32.0" prefWidth="160.0" text="Tasks Table" textFill="WHITE">
@@ -63,17 +63,17 @@
             <Font name="Tahoma Bold" size="25.0" />
          </font>
       </Label>
-      <TextField layoutX="319.0" layoutY="534.0" promptText="Task ID">
+      <TextField fx:id="tasktextfield" layoutX="319.0" layoutY="534.0" promptText="Task ID">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="320.0" layoutY="625.0" promptText="Change Status">
+      <TextField fx:id="statustextfield" layoutX="320.0" layoutY="625.0" promptText="Change Status">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="655.0" layoutY="580.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="109.0" text="Change">
+      <Button layoutX="655.0" layoutY="580.0" mnemonicParsing="false" onAction="#changeStatus" prefHeight="28.0" prefWidth="109.0" text="Change">
          <font>
             <Font name="Tahoma Bold" size="16.0" />
          </font>
