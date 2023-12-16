@@ -59,10 +59,6 @@ public class AfterLoginAdminController{
 
 
 
-             public void switchToAddEmployee(ActionEvent event) throws IOException {
-             switchScenes(event, "AddEmployee.fxml");
-            }
-
 
         public void switchScenes(ActionEvent event , String fxml) throws IOException {
 
