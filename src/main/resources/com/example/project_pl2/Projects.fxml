@@ -15,12 +15,12 @@
          <children>
             <Pane layoutY="46.0" prefHeight="276.0" prefWidth="223.0" styleClass="button1">
                <children>
-                  <Button layoutX="14.0" layoutY="71.0" mnemonicParsing="false" onAction="#switchToEmployees" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #F1E5E5;" styleClass="AdminButtons" stylesheets="@st.css" text="Employees">
+                  <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#switchToEmployees" prefHeight="154.0" prefWidth="223.0" style="-fx-background-color: #F1E5E5;" styleClass="AdminButtons" stylesheets="@st.css" text="Employees">
                      <font>
                         <Font name="Arial Black" size="23.0" />
                      </font>
                   </Button>
-                  <Button layoutX="14.0" layoutY="197.0" mnemonicParsing="false" onAction="#switchToRequests" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #F1E5E5;" styleClass="AdminButtons" stylesheets="@st.css" text="Requests">
+                  <Button layoutX="14.0" layoutY="197.0" mnemonicParsing="false" onAction="#switchToRequests" prefHeight="154.0" prefWidth="223.0" style="-fx-background-color: #F1E5E5;" styleClass="AdminButtons" stylesheets="@st.css" text="Requests">
                      <font>
                         <Font name="Arial Black" size="23.0" />
                      </font>
@@ -36,11 +36,6 @@
             <Button fx:id="LogoutButton" layoutX="80.0" layoutY="618.0" mnemonicParsing="false" onAction="#Logout" styleClass="backgroundAdmin" stylesheets="@st.css" text="Logout" textFill="WHITE">
                <font>
                   <Font name="Tahoma Bold" size="13.0" />
-               </font>
-            </Button>
-            <Button layoutX="14.0" layoutY="372.0" mnemonicParsing="false" onAction="#switchToAddProjects" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #F1E5E5;" styleClass="AdminButtons" stylesheets="@st.css" text="ADD Project">
-               <font>
-                  <Font name="Arial Black" size="23.0" />
                </font>
             </Button>
          </children>
@@ -63,27 +58,57 @@
             <TableColumn fx:id="Assigned_to" prefWidth="131.199951171875" text="Assigned To" />
          </columns>
       </TableView>
-      <Button layoutX="267.0" layoutY="564.0" mnemonicParsing="false" onAction="#deleteProject" prefHeight="32.0" prefWidth="88.0" text="Delete">
+      <Button layoutX="616.0" layoutY="589.0" mnemonicParsing="false" onAction="#deleteProject" prefHeight="28.0" prefWidth="82.0" text="Delete">
          <font>
-            <Font name="Tahoma Bold" size="18.0" />
+            <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="delete_project_id" layoutX="396.0" layoutY="568.0" prefHeight="26.0" prefWidth="174.0" promptText="Project ID">
+      <TextField fx:id="delete_project_id" layoutX="616.0" layoutY="554.0" prefHeight="26.0" prefWidth="174.0" promptText="Project ID">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="267.0" layoutY="648.0" mnemonicParsing="false" onAction="#reAssignProject" prefHeight="36.0" prefWidth="200.0" text="ReAssign Project">
+      <Button layoutX="616.0" layoutY="694.0" mnemonicParsing="false" onAction="#reAssignProject" prefHeight="36.0" prefWidth="174.0" text="Reassign Project">
          <font>
-            <Font name="Tahoma Bold" size="18.0" />
+            <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="update_project_id" layoutX="524.0" layoutY="652.0" prefHeight="26.0" prefWidth="174.0" promptText="Project ID">
+      <TextField fx:id="update_project_id" layoutX="616.0" layoutY="627.0" prefHeight="28.0" prefWidth="174.0" promptText="Project ID">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="update_team_id" layoutX="732.0" layoutY="652.0" prefHeight="26.0" prefWidth="174.0" promptText="Team ID">
+      <TextField fx:id="update_team_id" layoutX="616.0" layoutY="662.0" prefHeight="26.0" prefWidth="174.0" promptText="Team ID">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="IdTextField" layoutX="254.0" layoutY="554.0" prefHeight="28.0" prefWidth="118.0" promptText="ID">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </TextField>
+      <Button layoutX="508.0" layoutY="554.0" mnemonicParsing="false" onAction="#addProject" prefHeight="24.0" prefWidth="82.0" text="Create">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="TitleIdTextField" layoutX="254.0" layoutY="589.0" prefHeight="28.0" prefWidth="240.0" promptText="Title">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="DescTextField" layoutX="252.0" layoutY="662.0" prefHeight="64.0" prefWidth="240.0" promptText="Description">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="TeamIdTextField" layoutX="375.0" layoutY="554.0" prefHeight="28.0" prefWidth="118.0" promptText="Team ID">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="StatusTextField" layoutX="252.0" layoutY="627.0" prefHeight="28.0" prefWidth="240.0" promptText="Status">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>

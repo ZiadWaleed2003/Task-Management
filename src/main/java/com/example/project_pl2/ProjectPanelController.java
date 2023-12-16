@@ -166,6 +166,68 @@ public class ProjectPanelController implements Initializable {
         }
     }
 
+    @FXML
+    private TextField DescTextField;
+
+    @FXML
+    private TextField IdTextField;
+
+    @FXML
+    private TextField StatusTextField;
+
+    @FXML
+    private TextField TeamIdTextField;
+
+    @FXML
+    private TextField TitleIdTextField;
+
+
+    public void addProject(ActionEvent event) throws IOException {
+
+        int project_id = Integer.parseInt(IdTextField.getText());
+        int team_id    = Integer.parseInt(TeamIdTextField.getText());
+        String desc    = DescTextField.getText();
+        String title   = TitleIdTextField.getText();
+        Utility.CompletionStatus status  = Utility.CompletionStatus.valueOf(StatusTextField.getText());
+
+
+        try{
+            if(Utility.UserSingle.getInstance().admin.createProject(project_id , team_id , desc , title ,
+                    status) && Utility.UserSingle.getInstance().admin.addProjectFile(project_id)){
+
+                switchScenes(event , "Projects.fxml");
+
+//                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//                alert.setTitle("Successful Operation");
+//                alert.setHeaderText("Project with ID : " + project_id + " has been Deleted");
+//                System.out.println(" Hell yeah !");
+
+
+
+
+
+            }else{
+                throw new Exception("Operation failed");
+            }
+
+
+        }catch (Exception e){
+
+//            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//            alert.setTitle("Failed Operation");
+//            alert.setHeaderText(e + " please try again !");
+//            alert.setContentText("You Will Be Redirected To the Main Page");
+//            if (alert.showAndWait().get()== ButtonType.OK)
+
+
+            System.out.println("Failed tany ahhhhhhhh");
+            switchScenes(event , "Projects.fxml");
+
+        }
+
+
+    }
+
 
 
     public void Logout(ActionEvent event)throws IOException{
@@ -191,9 +253,6 @@ public class ProjectPanelController implements Initializable {
         switchScenes(event,"EmployeesView.fxml");
     }
 
-    public void switchToAddProjects(ActionEvent event) throws IOException {
-        switchScenes(event,"AddProject.fxml");
-    }
 
     public void switchScenes(ActionEvent event , String fxml) throws IOException {
 

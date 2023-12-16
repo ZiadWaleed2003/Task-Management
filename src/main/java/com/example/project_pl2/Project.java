@@ -36,12 +36,13 @@ public class Project {
     }
 
     public Project(ResultSet res) throws SQLException {
+        Utility.CompletionStatus stat = Utility.CompletionStatus.values()[res.getInt("Progress_status")];
 
         this.project_description = new SimpleStringProperty(res.getString("Project_desc"));
         this.project_title       = new SimpleStringProperty(res.getString("Project_Title"));
         this.project_id          = new SimpleIntegerProperty(res.getInt("Project_Id"));
         this.team_id             = new SimpleIntegerProperty(res.getInt("Assigned_To"));
-        this.current_status      = new SimpleStringProperty(res.getString("Progress_status"));
+        this.current_status      = new SimpleStringProperty(stat.name());
 
 
     }
