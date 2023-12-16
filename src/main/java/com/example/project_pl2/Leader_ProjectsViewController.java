@@ -46,21 +46,24 @@ public class Leader_ProjectsViewController implements Initializable {
     private TableColumn<Project, String> Description;
     @FXML
     private TableColumn<Project, Integer> Assigned_to;
+    @FXML
+    private  ChoiceBox<Utility.CompletionStatus> statusChoiceBox;
 
-    public Leader_ProjectsViewController() {
-
-        projectTableView = new TableView<Project>();
-        ID              = new TableColumn<Project , Integer>("project_id");
-        Title           = new TableColumn<Project , String>("project_title");
-        status          = new TableColumn<Project , String>("current_status");
-        Description = new TableColumn<Project , String>("project_description");
-        Assigned_to     = new TableColumn<Project , Integer>("team_id");
-
-    }
+//    public Leader_ProjectsViewController() {
+//
+//        projectTableView = new TableView<Project>();
+//        ID              = new TableColumn<Project , Integer>("project_id");
+//        Title           = new TableColumn<Project , String>("project_title");
+//        status          = new TableColumn<Project , String>("current_status");
+//        Description = new TableColumn<Project , String>("project_description");
+//        Assigned_to     = new TableColumn<Project , Integer>("team_id");
+//
+//    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        statusChoiceBox.setItems(FXCollections.observableArrayList(Utility.CompletionStatus.values()));
 
 
         try {
@@ -111,7 +114,10 @@ public class Leader_ProjectsViewController implements Initializable {
 
     public void changeStatus(ActionEvent event){
         int proj_id = Integer.parseInt(ProjectIDTextField.getText());
-        int status = Utility.CompletionStatus.valueOf(StatusTextField.getText().toUpperCase()).ordinal();
+//        int status = Utility.CompletionStatus.valueOf(StatusTextField.getText().toUpperCase()).ordinal();
+        Utility.CompletionStatus selectedStatus = statusChoiceBox.getSelectionModel().getSelectedItem();
+        int status = selectedStatus.ordinal();
+
 
 
         try {

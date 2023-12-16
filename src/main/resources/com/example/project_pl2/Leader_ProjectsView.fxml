@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -65,10 +66,11 @@
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="StatusTextField" layoutX="718.0" layoutY="670.0" prefHeight="26.0" prefWidth="174.0" promptText="Status">
+      <ChoiceBox fx:id="statusChoiceBox" layoutX="744.0" layoutY="671.0" prefWidth="150.0" />
+      <Label layoutX="744.0" layoutY="649.0" text="Status" textFill="WHITE">
          <font>
-            <Font name="Tahoma Bold" size="14.0" />
+            <Font name="Tahoma Bold" size="15.0" />
          </font>
-      </TextField>
+      </Label>
    </children>
 </AnchorPane>

@@ -25,6 +25,8 @@ public class Employee_DashboardController implements Initializable {
     private Parent root;
 
     ObservableList<IndivTask> taskObservableList  = FXCollections.observableArrayList();
+    @FXML
+    private ChoiceBox<Utility.CompletionStatus> statusChoiceBox;
 
     @FXML
     private TableView<IndivTask> taskTableView;
@@ -56,6 +58,7 @@ public class Employee_DashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        statusChoiceBox.setItems(FXCollections.observableArrayList(Utility.CompletionStatus.values()));
 
         try {
             ArrayList<IndivTask> tasks = Utility.UserSingle.getInstance().emp.constructTasksList();
@@ -84,8 +87,9 @@ public class Employee_DashboardController implements Initializable {
 
     public void changeStatus(ActionEvent event){
         int task_id = Integer.parseInt(tasktextfield.getText());
-        int status = Utility.CompletionStatus.valueOf(statustextfield.getText().toUpperCase()).ordinal();
-
+//        int status = Utility.CompletionStatus.valueOf(statustextfield.getText().toUpperCase()).ordinal();
+        Utility.CompletionStatus selectedStatus = statusChoiceBox.getSelectionModel().getSelectedItem();
+        int status = selectedStatus.ordinal();
 
         try {
 

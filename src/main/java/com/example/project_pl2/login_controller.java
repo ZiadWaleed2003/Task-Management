@@ -75,6 +75,10 @@ public class login_controller {
         if(Admin.login(email , password)){
             switchScenes(event , "Admin_Dashboard.fxml");
         }
+        else {
+            err_message_label.setText("Invalid Username or Password\n");
+            err_message_label.setVisible(true);
+        }
     }
 
 
