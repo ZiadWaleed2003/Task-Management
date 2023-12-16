@@ -120,7 +120,7 @@ public class Leader_TasksViewController implements Initializable {
         }
     }
 
-    public void createTask(ActionEvent event){
+    public void createTask(ActionEvent event) throws IOException {
         String name = crTaskNameTextField.getText();
         String description = crTaskDescTextField.getText();
         Utility.CompletionStatus status = Utility.CompletionStatus.valueOf(crTaskStatusTextField.getText());
@@ -133,7 +133,12 @@ public class Leader_TasksViewController implements Initializable {
                     priority, start_date, due_date);
             switchScenes(event,"Leader_TasksView.fxml");
         }catch (SQLException | IOException e){
-            //TODO @ATEF add alert.
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("OPERATION FAILED");
+            alert.setContentText("PLEASE TRY AGAIN");
+            if (alert.showAndWait().get()== ButtonType.OK){
+                switchToTasks(event);}
         }
     }
     public void Logout(ActionEvent event)throws IOException {
@@ -156,6 +161,9 @@ public class Leader_TasksViewController implements Initializable {
 
     public void switchToTeam(ActionEvent event) throws IOException {
         switchScenes(event,"Leader_TeamView.fxml");
+    }
+    public void switchToTasks(ActionEvent event)throws IOException{
+        switchScenes(event,"Leader_TasksView");
     }
     public void switchScenes(ActionEvent event , String fxml) throws IOException {
 
