@@ -128,17 +128,30 @@ public class Leader_TasksViewController implements Initializable {
         String priority = crTaskPrioTextField.getText(); // TODO: Where the fuck is the enum?
         LocalDate start_date = crTaskStartField.getValue();
         LocalDate due_date = crTaskDueField.getValue();
+
+
+
         try {
-            Utility.UserSingle.getInstance().emp.addTask(name, description, status, project,
-                    priority, start_date, due_date);
-            switchScenes(event,"Leader_TasksView.fxml");
-        }catch (SQLException | IOException e){
+            if(Utility.UserSingle.getInstance().emp.addTask(name, description, status, project,
+                    priority, start_date, due_date)){
+
+                switchScenes(event,"Leader_TasksView.fxml");
+
+            }else{
+
+                throw new Exception();
+            }
+
+        }catch (Exception e){
+
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("ERROR");
             alert.setHeaderText("OPERATION FAILED");
             alert.setContentText("PLEASE TRY AGAIN");
             if (alert.showAndWait().get()== ButtonType.OK){
-                switchToTasks(event);}
+
+                switchScenes(event , "Leader_TasksView.fxml");
+            }
         }
     }
     public void Logout(ActionEvent event)throws IOException {
