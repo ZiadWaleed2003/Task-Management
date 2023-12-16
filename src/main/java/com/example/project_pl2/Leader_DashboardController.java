@@ -48,7 +48,7 @@ public class Leader_DashboardController {
             switchScenes(event,"Leader_TasksView.fxml");
         }
         public void switchToTeam(ActionEvent event) throws IOException {
-            switchScenes(event,".fxml");
+            switchScenes(event,"Leader_TeamView.fxml");
         }
 
 

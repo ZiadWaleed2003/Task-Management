@@ -26,17 +26,6 @@ public class IndivTask {
 
 
 
- /*   public IndivTask(){
-        this.id = 0;
-        this.name = null;
-        this.description = null;
-        this.status = Utility.CompletionStatus.valueOf("PENDING");
-        this.assigned_to = 0;
-        this.project = 0;
-        this.priority = Priority.valueOf("LOW");
-        this.start_date = new Date();
-        this.due_date = null;
-    }*/
  // [TODO 12]Change Contructor to variable have property or change in employee to take variable direct not from constructor
 
     public IndivTask(ResultSet res) throws SQLException{
@@ -46,6 +35,7 @@ public class IndivTask {
         this.id = new SimpleIntegerProperty(res.getInt("Task_Id"));
         this.name = new SimpleStringProperty(res.getNString("Task_Name"));
         this.description = new SimpleStringProperty(res.getNString("Task_Desc"));
+
         this.status      = new SimpleStringProperty(stat.name());
         this.assigned_to = new SimpleIntegerProperty(res.getInt(("Assigned_To")));
         this.project = new SimpleIntegerProperty(res.getInt("Project_Id"));

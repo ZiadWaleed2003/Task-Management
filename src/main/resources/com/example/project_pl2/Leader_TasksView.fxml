@@ -21,7 +21,7 @@
                         <Font name="Arial Black" size="23.0" />
                      </font>
                   </Button>
-                  <Button layoutX="14.0" layoutY="153.0" mnemonicParsing="false" prefHeight="145.0" prefWidth="223.0" style="-fx-background-color: #212121;" styleClass="AdminButtons" stylesheets="@st.css" text="Employees" textFill="WHITE">
+                  <Button layoutX="14.0" layoutY="153.0" mnemonicParsing="false" onAction="#switchToTeam" prefHeight="145.0" prefWidth="223.0" style="-fx-background-color: #212121;" styleClass="AdminButtons" stylesheets="@st.css" text="Team" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="23.0" />
                      </font>

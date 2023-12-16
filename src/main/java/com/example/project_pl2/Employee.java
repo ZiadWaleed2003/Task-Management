@@ -271,6 +271,32 @@ public class Employee extends Person{
     }
 
 
+    public ArrayList<Employee> ShowTeam () throws SQLException {
+
+        String query     = "SELECT * FROM Employee INNER JOIN Team ON Employee.Team_Id = Team.Team_Id WHERE Employee.Team_Id = ?";
+
+        Object [] args   = {this.team_id.get()};
+
+        ArrayList<Employee> Employees = new ArrayList<Employee>();
+
+        ResultSet result = CRUD2.readDbDynamic(query , args);
+
+        if(result.isBeforeFirst()){
+
+            while(result.next()){
+
+                Employee emp = new Employee(result);
+
+                Employees.add(emp);
+
+
+            }
+        }
+
+        return Employees;
+    }
+
+
     public boolean deleteTask(int required_task_id){
 
         String deleteTaskQuery = "DELETE FROM task WHERE Task_Id = ?";

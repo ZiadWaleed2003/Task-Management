@@ -61,7 +61,8 @@ public class Leader_ProjectsViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("test");
+
+
         try {
             ArrayList<Project> proj = Utility.UserSingle.getInstance().emp.retrieveAllProjects();
 
@@ -103,6 +104,10 @@ public class Leader_ProjectsViewController implements Initializable {
 
     public void switchToMainPage(ActionEvent event) throws IOException {
         switchScenes(event,"MainPage.fxml");
+    }
+
+    public void switchToTeam(ActionEvent event) throws IOException {
+        switchScenes(event,"Leader_TeamView.fxml");
     }
 
 
