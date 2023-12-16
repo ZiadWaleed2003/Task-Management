@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="935.0" style="-fx-background-color: #212121;" stylesheets="@st.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_pl2.Employee_Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="935.0" style="-fx-background-color: #212121;" stylesheets="@st.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_pl2.Employee_Controller">
    <children>
       <Pane prefHeight="744.0" prefWidth="246.0" styleClass="backgroundEmployee" stylesheets="@st.css">
          <children>
@@ -45,17 +45,17 @@
             </Label>
          </children>
       </Pane>
-      <TableView layoutX="253.0" layoutY="203.0" prefHeight="264.0" prefWidth="678.0">
+      <TableView fx:id="taskTableView" layoutX="253.0" layoutY="203.0" prefHeight="264.0" prefWidth="678.0">
         <columns>
-          <TableColumn prefWidth="45.5999755859375" text="ID" />
-          <TableColumn prefWidth="104.79998779296875" text="Name" />
-            <TableColumn prefWidth="104.00006103515625" text="Task Description" />
-            <TableColumn prefWidth="46.399932861328125" text="Status" />
-            <TableColumn prefWidth="75.0" text="Assigned To" />
-            <TableColumn prefWidth="75.0" text="Priority" />
-            <TableColumn prefWidth="75.0" text="Start Date" />
-            <TableColumn prefWidth="75.0" text="Due Date" />
-            <TableColumn prefWidth="75.0" text="Project ID" />
+          <TableColumn fx:id="ID" prefWidth="45.5999755859375" text="ID" />
+          <TableColumn fx:id="Name" prefWidth="104.79998779296875" text="Name" />
+            <TableColumn fx:id="Description" prefWidth="104.00006103515625" text="Task Description" />
+            <TableColumn fx:id="Status" prefWidth="46.399932861328125" text="Status" />
+            <TableColumn fx:id="Assigned_to" prefWidth="75.0" text="Assigned To" />
+            <TableColumn fx:id="Priority" prefWidth="75.0" text="Priority" />
+            <TableColumn fx:id="Start_date" prefWidth="75.0" text="Start Date" />
+            <TableColumn fx:id="Due_date" prefWidth="75.0" text="Due Date" />
+            <TableColumn fx:id="Project_id" prefWidth="75.0" text="Project ID" />
         </columns>
       </TableView>
       <Label layoutX="495.0" layoutY="160.0" prefHeight="32.0" prefWidth="160.0" text="Tasks Table" textFill="WHITE">
