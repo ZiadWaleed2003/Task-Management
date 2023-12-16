@@ -50,6 +50,8 @@ public class Leader_TasksViewController implements Initializable {
 
 
     ObservableList<IndivTask> TasksObservableList = FXCollections.observableArrayList();
+    @FXML
+    private ChoiceBox<Utility.CompletionStatus> statusChoiceBox;
 
     @FXML
     private TableView<IndivTask> TaskTableView;
@@ -70,6 +72,7 @@ public class Leader_TasksViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        statusChoiceBox.setItems(FXCollections.observableArrayList(Utility.CompletionStatus.values()));
 
 
 
@@ -123,7 +126,9 @@ public class Leader_TasksViewController implements Initializable {
     public void createTask(ActionEvent event) throws IOException {
         String name = crTaskNameTextField.getText();
         String description = crTaskDescTextField.getText();
-        Utility.CompletionStatus status = Utility.CompletionStatus.valueOf(crTaskStatusTextField.getText());
+//        Utility.CompletionStatus status = Utility.CompletionStatus.valueOf(crTaskStatusTextField.getText());
+        Utility.CompletionStatus selectedStatus = statusChoiceBox.getSelectionModel().getSelectedItem();
+        String status = selectedStatus.name();
         int project = Integer.parseInt(crTaskProjectIDTextField.getText());
         String priority = crTaskPrioTextField.getText(); // TODO: Where the fuck is the enum?
         LocalDate start_date = crTaskStartField.getValue();

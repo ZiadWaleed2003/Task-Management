@@ -233,8 +233,21 @@ public class Employee extends Person{
 
 
 
-    public boolean addTask(String name, String description, Utility.CompletionStatus status, int project,
+    public boolean addTask(String name, String description, String status, int project,
                            String priority, LocalDate start_date, LocalDate due_date) throws SQLException{
+        int stat;
+
+        if(status.equals("PENDING")){
+            stat = 0;
+        }else if (status.equals("IN_PROGRESS")){
+            stat = 1;
+        }else if(status.equals("COMPLETED")){
+            stat = 2;
+        } else {
+            stat = 3;
+        }
+
+
         if(this.emp_type.get().equals("LEADER")){
 
             String addTaskQuery = "INSERT INTO task (Due_date, Priority, Project_Id, Start_Date, " +
@@ -242,7 +255,7 @@ public class Employee extends Person{
 
 
             Object[] args = {due_date , priority , project , start_date , description , name ,
-                    status.ordinal() };
+                    stat };
 
             Pair<Boolean, Integer> res = CRUD2.updateDbDynamic(addTaskQuery, args);
 
