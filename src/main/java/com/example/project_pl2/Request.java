@@ -50,15 +50,7 @@ public class Request {
             return false;
     }
 
-    public Pair<Boolean , Integer> SendRequest(String request_description, String request_type ) {
-        String query = "insert into request (Request_By, Request_Desc, Request_Status, Request_Type,) " +
-                "values(?, ?, ?, ?)";
-        Object[] args = {Utility.UserSingle.getInstance().emp,request_description, request_type,false};
 
-        Pair<Boolean , Integer> check_insert = CRUD2.updateDbDynamic(query);
-
-        return check_insert;
-    }
 
 
     public int getRequested_by() {

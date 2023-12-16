@@ -34,8 +34,12 @@ public class Employee_RequestsController implements Initializable {
     private TableColumn<Request,String> request_desc;
     @FXML
     private TableColumn<Request,Boolean> status;
+
     @FXML
-    private TextField request_id;
+    private TextField request_Desc;
+
+    @FXML
+    private TextField request_Type;
 
     private Scene scene;
     private Stage stage;
@@ -46,14 +50,14 @@ public class Employee_RequestsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        System.out.println("Ha5a");
+
         try {
             ArrayList<Request> requests = Utility.UserSingle.getInstance().emp.retrieveAllRequests();
 
             requestObservableList.addAll(requests);
 
             ID.setCellValueFactory(new PropertyValueFactory<Request,Integer>("request_id"));
-            by_ID.setCellValueFactory(new PropertyValueFactory<Request,Integer>("requested_by"));
+//            by_ID.setCellValueFactory(new PropertyValueFactory<Request,Integer>("requested_by"));
             Type.setCellValueFactory(new PropertyValueFactory<Request,String>("request_type"));
             request_desc.setCellValueFactory(new PropertyValueFactory<Request,String>("request_description"));
             status.setCellValueFactory(new PropertyValueFactory<Request,Boolean>("request_status"));
@@ -67,6 +71,26 @@ public class Employee_RequestsController implements Initializable {
 
 
 
+    }
+
+
+    public void addRequest(ActionEvent event){
+
+        String req_type = request_Type.getText();
+        String req_desc = request_Desc.getText();
+
+        try{
+            if(Utility.UserSingle.getInstance().emp.SendRequest(req_desc , req_type)){
+                System.out.println("Request added Successfully");
+
+                switchScenes(event , "Employee_Requests.fxml");
+            }
+        }catch (Exception e){
+
+            // E3mel alert hna ya nigga
+
+            System.out.println("moseeeeba el Request mtb3tsh");
+        }
     }
 
 

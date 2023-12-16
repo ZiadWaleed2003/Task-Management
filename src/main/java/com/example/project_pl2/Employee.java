@@ -198,7 +198,9 @@ public class Employee extends Person{
     }
     public ArrayList<Request> retrieveAllRequests() throws SQLException{
         ArrayList<Request> result =  new ArrayList<Request>();
-        String query = "SELECT * FROM plproject.request WHERE Request_by = ?";
+
+        String query = "SELECT * FROM plproject.request WHERE Requested_By = ?";
+
         Integer[] args = {Utility.UserSingle.getInstance().emp.getId()};
 
         try {
@@ -311,5 +313,17 @@ public class Employee extends Person{
         Object [] args = {status, proj_id};
         boolean result = CRUD2.updateDbDynamic( query , args).getKey();
         return result;
+    }
+
+
+    public boolean SendRequest(String request_description, String request_type ) {
+
+        String query = "INSERT INTO request (Requested_By, Request_Desc,Request_Type) Values (?, ?, ?)";
+
+        Object[] args = {Utility.UserSingle.getInstance().emp.getId() ,request_description,request_type};
+
+        boolean check_insert = CRUD2.updateDbDynamic(query , args).getKey();
+
+        return check_insert;
     }
 }
