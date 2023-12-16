@@ -16,10 +16,20 @@ public class Request {
 
     public Request(ResultSet resultSet) throws SQLException {
 
+        int req_stat = resultSet.getInt("Request_Status");
+        boolean status;
+
+        if(req_stat != 0){
+            status = true;
+        }else {
+            status = false;
+        }
+
+
         this.request_id          = new SimpleIntegerProperty(resultSet.getInt("Request_Id"));
-        this.requested_by        = new SimpleIntegerProperty(resultSet.getInt("Request_By"));
+        this.requested_by        = new SimpleIntegerProperty(resultSet.getInt("Requested_By"));
         this.request_description = new SimpleStringProperty(resultSet.getString("Request_Desc"));
-        this.request_status      = new SimpleBooleanProperty(resultSet.getBoolean("Request_Status"));
+        this.request_status      = new SimpleBooleanProperty(status);
         this.request_type        = new SimpleStringProperty(resultSet.getString("Request_Type"));
 
     }

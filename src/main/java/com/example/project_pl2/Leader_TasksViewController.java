@@ -131,7 +131,7 @@ public class Leader_TasksViewController implements Initializable {
         try {
             Utility.UserSingle.getInstance().emp.addTask(name, description, status, project,
                     priority, start_date, due_date);
-            switchScenes(event,"tasks.fxml");
+            switchScenes(event,"Leader_TasksView.fxml");
         }catch (SQLException | IOException e){
             //TODO @ATEF add alert.
         }

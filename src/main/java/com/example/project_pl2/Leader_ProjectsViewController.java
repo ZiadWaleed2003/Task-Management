@@ -114,7 +114,7 @@ public class Leader_ProjectsViewController implements Initializable {
 
     public void changeStatus(ActionEvent event){
         int proj_id = Integer.parseInt(ProjectIDTextField.getText());
-        int status = Utility.CompletionStatus.valueOf(StatusTextField.getText()).ordinal();
+        int status = Utility.CompletionStatus.valueOf(StatusTextField.getText().toUpperCase()).ordinal();
 
 
         try {
