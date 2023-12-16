@@ -29,7 +29,7 @@
                   <Font name="Arial Black" size="23.0" />
                </font>
             </Button>
-            <Button layoutX="12.0" layoutY="362.0" mnemonicParsing="false" onAction="#switchToModify_Emp_Profile" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #212121;" stylesheets="@st.css" text="Modify Profile" textFill="WHITE">
+            <Button layoutX="12.0" layoutY="362.0" mnemonicParsing="false" onAction="#switchToModify_Emp_Profile" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #212121;" stylesheets="@st.css" text="Profile" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="23.0" />
                </font>
