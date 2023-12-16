@@ -32,6 +32,23 @@ public class AdminEmployees_Controller  implements Initializable {
         @FXML
         private Label Selection;
 
+    @FXML
+    private TextField Emp_email;
+
+
+    @FXML
+    private TextField emp_name;
+    @FXML
+    private TextField emp_password;
+    @FXML
+    private TextField emp_team;
+    @FXML
+    private TextField emp_type;
+    @FXML
+    private TextField employee_id;
+    @FXML
+    private TextField emp_role;
+
     ObservableList<Employee> EmployeeObservableList = FXCollections.observableArrayList();
 
     @FXML
@@ -97,6 +114,32 @@ public class AdminEmployees_Controller  implements Initializable {
 
     }
 
+    public void addEmployee(ActionEvent event){
+
+        int Emp_Id          = Integer.parseInt(employee_id.getText());
+        String Emp_Name     = emp_name.getText();
+        String Emp_Email    = Emp_email.getText();
+        String Emp_Password = emp_password.getText();
+        int    Emp_Team     = Integer.parseInt(emp_team.getText());
+        String Emp_Type     = emp_type.getText();
+        String Emp_Role     = emp_role.getText();
+
+
+        try {
+            if(Utility.UserSingle.getInstance().admin.addEmployee(Emp_Id , Emp_Email , Emp_Name , Emp_Password , Emp_Role ,Emp_Type , Emp_Team)){
+
+                System.out.println("Employee has been Added Successfully");
+                switchScenes(event ,"EmployeesView.fxml");
+            }else{
+                throw new Exception("el72oooona el Employee md5lsh ");
+            }
+        }catch (Exception e){
+
+            System.out.println(e);
+        }
+
+    }
+
 
         public void Logout(ActionEvent event)throws IOException {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -109,10 +152,6 @@ public class AdminEmployees_Controller  implements Initializable {
 
         public void switchToMainPage(ActionEvent event) throws IOException {
             switchScenes(event,"MainPage.fxml");
-        }
-
-        public void switchToAddEmployees(ActionEvent event) throws IOException {
-            switchScenes(event,"AddEmployee.fxml");
         }
 
         public void switchToProjects(ActionEvent event) throws IOException {
