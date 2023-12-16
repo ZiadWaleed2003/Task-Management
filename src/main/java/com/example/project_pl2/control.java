@@ -29,7 +29,7 @@
 //    }
 //
 //    public void switchTorequests(ActionEvent event) throws IOException {
-//        switchScenes(event,"Requests.fxml");
+//        switchScenes(event,"Admin_RequestsView.fxml");
 //    }
 //
 //
@@ -38,10 +38,10 @@
 //
 //    }
 //    public void switchToemployees(ActionEvent event) throws IOException {
-//        switchScenes(event,"EmployeesView.fxml");
+//        switchScenes(event,"Admin_EmployeesView.fxml");
 //    }
 //    public void switchToprojects(ActionEvent event) throws IOException {
-//        switchScenes(event,"Projects.fxml");
+//        switchScenes(event,"Admin_ProjectsView.fxml");
 //    }
 //    public void switchScenes(ActionEvent event , String fxml) throws IOException {
 //

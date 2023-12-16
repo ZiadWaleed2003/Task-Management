@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ProjectPanelController implements Initializable {
+public class Admin_ProjectsViewController implements Initializable {
 
     public Button LogoutButton;
     // Use the ObservableList to store data
@@ -48,7 +48,7 @@ public class ProjectPanelController implements Initializable {
     private TextField delete_project_id;
 
 
-    public ProjectPanelController() {
+    public Admin_ProjectsViewController() {
 
         projectTableView = new TableView<Project>();
         ID              = new TableColumn<Project , Integer>("project_id");
@@ -105,7 +105,7 @@ public class ProjectPanelController implements Initializable {
 
             if(Utility.UserSingle.getInstance().admin.deleteProject(project_id) && Utility.UserSingle.getInstance().admin.deleteProjectFile(project_id)){
 
-                switchScenes(event , "Projects.fxml");
+                switchScenes(event , "Admin_ProjectsView.fxml");
 
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Successful Operation");
@@ -131,7 +131,7 @@ public class ProjectPanelController implements Initializable {
 
 
             System.out.println("Failed tany ahhhhhhhh");
-            switchScenes(event , "Projects.fxml");
+            switchScenes(event , "Admin_ProjectsView.fxml");
 
         }
 
@@ -148,7 +148,7 @@ public class ProjectPanelController implements Initializable {
             if(Utility.UserSingle.getInstance().admin.reassignProject(proj_id , team_id)){
                 System.out.println("ReAssigned Successfully");
 
-                    switchScenes(event , "Projects.fxml");
+                    switchScenes(event , "Admin_ProjectsView.fxml");
 
 //                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 //                alert.setTitle("Successful Operation");
@@ -195,7 +195,7 @@ public class ProjectPanelController implements Initializable {
             if(Utility.UserSingle.getInstance().admin.createProject(project_id , team_id , desc , title ,
                     status) && Utility.UserSingle.getInstance().admin.addProjectFile(project_id)){
 
-                switchScenes(event , "Projects.fxml");
+                switchScenes(event , "Admin_ProjectsView.fxml");
 
 //                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 //                alert.setTitle("Successful Operation");
@@ -221,7 +221,7 @@ public class ProjectPanelController implements Initializable {
 
 
             System.out.println("Failed tany ahhhhhhhh");
-            switchScenes(event , "Projects.fxml");
+            switchScenes(event , "Admin_ProjectsView.fxml");
 
         }
 
@@ -246,11 +246,11 @@ public class ProjectPanelController implements Initializable {
     }
 
     public void switchToRequests(ActionEvent event) throws IOException {
-        switchScenes(event,"Requests.fxml");
+        switchScenes(event,"Admin_RequestsView.fxml");
     }
 
     public void switchToEmployees(ActionEvent event) throws IOException {
-        switchScenes(event,"EmployeesView.fxml");
+        switchScenes(event,"Admin_EmployeesView.fxml");
     }
 
 

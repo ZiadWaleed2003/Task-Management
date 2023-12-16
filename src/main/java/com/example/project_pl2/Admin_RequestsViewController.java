@@ -1,7 +1,6 @@
 package com.example.project_pl2;
 
 
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,11 +17,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-public class AdminRequests_Controller implements  Initializable{
+public class Admin_RequestsViewController implements  Initializable{
     @FXML
     private Button LogoutButton;
     ObservableList<Request> requestObservableList = FXCollections.observableArrayList();
@@ -82,7 +80,7 @@ public class AdminRequests_Controller implements  Initializable{
             if(Utility.UserSingle.getInstance().admin.requestResponse(req_id , 1)){
                 System.out.println("Request Accepted");
 
-                switchScenes(event , "Requests.fxml");
+                switchScenes(event , "Admin_RequestsView.fxml");
 
             }else{
 
@@ -98,7 +96,7 @@ public class AdminRequests_Controller implements  Initializable{
         int req_id = Integer.parseInt(request_id.getText());
         try{
             Utility.UserSingle.getInstance().admin.requestResponse(req_id, 0);
-            switchScenes(event, "Requests.fxml");
+            switchScenes(event, "Admin_RequestsView.fxml");
         }catch (SQLException | IOException e){
             //enta brdo hena
 
@@ -126,11 +124,11 @@ public class AdminRequests_Controller implements  Initializable{
             }
 
             public void switchToEmployees(ActionEvent event) throws IOException {
-                switchScenes(event,"EmployeesView.fxml");
+                switchScenes(event,"Admin_EmployeesView.fxml");
             }
 
             public void switchToProjects(ActionEvent event) throws IOException {
-                switchScenes(event,"Projects.fxml");
+                switchScenes(event,"Admin_ProjectsView.fxml");
                    }
 
 

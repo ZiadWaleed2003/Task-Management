@@ -16,12 +16,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
-public class AdminEmployees_Controller  implements Initializable {
+public class Admin_EmployeesViewController implements Initializable {
 
         @FXML
         private Button LogoutButton;
@@ -129,7 +128,7 @@ public class AdminEmployees_Controller  implements Initializable {
             if(Utility.UserSingle.getInstance().admin.addEmployee(Emp_Id , Emp_Email , Emp_Name , Emp_Password , Emp_Role ,Emp_Type , Emp_Team)){
 
                 System.out.println("Employee has been Added Successfully");
-                switchScenes(event ,"EmployeesView.fxml");
+                switchScenes(event ,"Admin_EmployeesView.fxml");
             }else{
                 throw new Exception("el72oooona el Employee md5lsh ");
             }
@@ -155,11 +154,11 @@ public class AdminEmployees_Controller  implements Initializable {
         }
 
         public void switchToProjects(ActionEvent event) throws IOException {
-            switchScenes(event,"Projects.fxml");
+            switchScenes(event,"Admin_ProjectsView.fxml");
         }
 
         public void switchToRequests(ActionEvent event) throws IOException {
-        switchScenes(event,"Requests.fxml");
+        switchScenes(event,"Admin_RequestsView.fxml");
         }
 
 
@@ -178,7 +177,7 @@ public class AdminEmployees_Controller  implements Initializable {
         try{
             int emp_id = Integer.parseInt(IdTextFieldDel.getText());
             Utility.UserSingle.getInstance().admin.deleteEmployee((emp_id));
-            switchScenes(actionEvent, "EmployeesView.fxml");
+            switchScenes(actionEvent, "Admin_EmployeesView.fxml");
         }catch(IOException e){
             System.out.print("kosom 7ayty");
         }
@@ -190,7 +189,7 @@ public class AdminEmployees_Controller  implements Initializable {
             int emp_id = Integer.parseInt(IdTextFieldUp.getText());
             String emp_type = IdTextFieldUp1.getText();
             Utility.UserSingle.getInstance().admin.editEmployeeType(emp_id, emp_type);
-            switchScenes(actionEvent, "EmployeesView.fxml");
+            switchScenes(actionEvent, "Admin_EmployeesView.fxml");
         }catch(IOException e){
             System.out.print("kosom 7ayty");
         }

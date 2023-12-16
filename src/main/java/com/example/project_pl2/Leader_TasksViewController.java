@@ -20,7 +20,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class CreateTask_Controller implements Initializable {
+public class Leader_TasksViewController implements Initializable {
 
     @FXML
         private TextField EmpIdTextField;
@@ -110,7 +110,7 @@ public class CreateTask_Controller implements Initializable {
             if(Utility.UserSingle.getInstance().emp.reassignTask(task_id , emp_id)){
 
                 System.out.println("Task Reassigned Successfully");
-                switchScenes(event , "Tasks.fxml");
+                switchScenes(event , "Leader_TasksView.fxml");
             }else{
                 throw new Exception("yalahwyyyy");
             }
@@ -150,7 +150,7 @@ public class CreateTask_Controller implements Initializable {
     }
 
     public void switchToProjects(ActionEvent event) throws IOException {
-        switchScenes(event,"EmpProjects.fxml");
+        switchScenes(event,"Leader_ProjectsView.fxml");
 
     }
     public void switchScenes(ActionEvent event , String fxml) throws IOException {

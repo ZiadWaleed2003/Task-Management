@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class EmployeeProfile_Controller {
+public class Employee_DataController {
     private Scene scene;
     private Stage stage;
     private Parent root;
@@ -41,7 +41,7 @@ public class EmployeeProfile_Controller {
     }
 
     public void switchToRequests(ActionEvent event) throws IOException {
-        switchScenes(event,"EmployeeRequests.fxml");
+        switchScenes(event,"Employee_Requests.fxml");
     }
 
 

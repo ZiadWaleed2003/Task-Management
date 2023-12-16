@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,7 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class Employee_Controller implements Initializable {
+public class Employee_DashboardController implements Initializable {
     //TODO implement a method that takes task id and changes its status
     //this is the employees dashboard when they login
     private Scene scene;
@@ -128,7 +127,7 @@ public class Employee_Controller implements Initializable {
 
     }
     public void switchToModify_Emp_Profile(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Modify_Employee_Profile.fxml"));
+        root = FXMLLoader.load(getClass().getResource("Employee_Data.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

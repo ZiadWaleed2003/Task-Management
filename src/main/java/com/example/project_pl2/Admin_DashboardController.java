@@ -1,27 +1,19 @@
 package com.example.project_pl2;
 
 
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
-public class AfterLoginAdminController{
+
+public class Admin_DashboardController {
     @FXML
     private Button LogoutButton;
 
@@ -46,15 +38,15 @@ public class AfterLoginAdminController{
             }
 
             public void switchToRequests(ActionEvent event) throws IOException {
-                switchScenes(event,"Requests.fxml");
+                switchScenes(event,"Admin_RequestsView.fxml");
             }
 
             public void switchToEmployees(ActionEvent event) throws IOException {
-                switchScenes(event,"EmployeesView.fxml");
+                switchScenes(event,"Admin_EmployeesView.fxml");
             }
 
             public void switchToProjects(ActionEvent event) throws IOException {
-                switchScenes(event,"Projects.fxml");
+                switchScenes(event,"Admin_ProjectsView.fxml");
                    }
 
 

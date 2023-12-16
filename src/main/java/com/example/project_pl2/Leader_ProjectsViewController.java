@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class EmpProjects_Controller implements Initializable {
+public class Leader_ProjectsViewController implements Initializable {
 
     @FXML
         public Button LogoutButton;
@@ -47,7 +47,7 @@ public class EmpProjects_Controller implements Initializable {
     @FXML
     private TableColumn<Project, Integer> Assigned_to;
 
-    public EmpProjects_Controller() {
+    public Leader_ProjectsViewController() {
 
         projectTableView = new TableView<Project>();
         ID              = new TableColumn<Project , Integer>("project_id");
@@ -108,7 +108,7 @@ public class EmpProjects_Controller implements Initializable {
 
 
     public void switchToTasks(ActionEvent event) throws IOException {
-        switchScenes(event,"Tasks.fxml");
+        switchScenes(event,"Leader_TasksView.fxml");
     }
 
 
@@ -123,7 +123,7 @@ public class EmpProjects_Controller implements Initializable {
 
                     System.out.println("Changed Status Successfully");
 
-                    switchScenes(event , "EmpProjects.fxml");
+                    switchScenes(event , "Leader_ProjectsView.fxml");
                 }else{
                     throw new Exception("fe 5ara 7sl fe change status");
                 }
