@@ -132,12 +132,26 @@ public class Admin extends Person implements File{
 
 
     public boolean createProject (int proj_id , int team_id ,String proj_desc , String proj_Title ,
-                                  Utility.CompletionStatus status ){
+                                  String status ){
+
+        int stat;
+
+        if(status.equals("PENDING")){
+            stat = 0;
+        }else if (status.equals("IN_PROGRESS")){
+            stat = 1;
+        }else if(status.equals("COMPLETED")){
+            stat = 2;
+        } else {
+            stat = 3;
+        }
 
         String query = "INSERT INTO Project (Project_Id , Assigned_To , Project_desc , Project_Title , Progress_status) " +
                 "VALUES (?,?,?,?,?)";
 
-        Object [] args = { proj_id ,team_id ,proj_desc,proj_Title,status.ordinal()};
+
+
+        Object [] args = { proj_id ,team_id ,proj_desc,proj_Title,stat};
 
         Pair <Boolean , Integer> result = CRUD2.updateDbDynamic(query , args);
 
