@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -71,12 +72,12 @@
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="crTaskDescTextField" alignment="TOP_LEFT" layoutX="252.0" layoutY="581.0" prefHeight="95.0" prefWidth="340.0" promptText="Description">
+      <TextField fx:id="crTaskDescTextField" alignment="TOP_LEFT" layoutX="257.0" layoutY="634.0" prefHeight="95.0" prefWidth="340.0" promptText="Description">
          <font>
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </TextField>
-      <Button fx:id="createTaskButton" layoutX="517.0" layoutY="688.0" mnemonicParsing="false" onAction="#createTask" prefHeight="33.0" prefWidth="69.0" text="Create">
+      <Button fx:id="createTaskButton" layoutX="601.0" layoutY="688.0" mnemonicParsing="false" onAction="#createTask" prefHeight="33.0" prefWidth="69.0" text="Create">
          <font>
             <Font name="Tahoma Bold" size="12.0" />
          </font>
@@ -86,37 +87,38 @@
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="crTaskStatusTextField" layoutX="252.0" layoutY="501.0" prefHeight="26.0" prefWidth="163.0" promptText="Status">
-         <font>
-            <Font name="Tahoma Bold" size="12.0" />
-         </font>
-      </TextField>
       <TextField fx:id="crTaskPrioTextField" layoutX="427.0" layoutY="501.0" prefHeight="26.0" prefWidth="163.0" promptText="Priority">
          <font>
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </TextField>
-      <Label layoutX="613.0" layoutY="425.0" prefHeight="20.0" prefWidth="106.0" text="Assign To" textFill="WHITE">
+      <Label layoutX="764.0" layoutY="425.0" prefHeight="20.0" prefWidth="106.0" text="Assign To" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="EmpIdTextField" layoutX="613.0" layoutY="462.0" prefHeight="26.0" prefWidth="163.0" promptText="Employee Id">
+      <TextField fx:id="EmpIdTextField" layoutX="764.0" layoutY="451.0" prefHeight="26.0" prefWidth="163.0" promptText="Employee Id">
          <font>
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="TaskIdTextField" layoutX="613.0" layoutY="502.0" promptText="Task Id">
+      <TextField fx:id="TaskIdTextField" layoutX="764.0" layoutY="489.0" promptText="Task Id">
          <font>
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </TextField>
-      <Button fx:id="reassignTaskButton" layoutX="613.0" layoutY="537.0" mnemonicParsing="false" onAction="#reAssignTask" prefHeight="33.0" prefWidth="69.0" text="Assign">
+      <Button fx:id="reassignTaskButton" layoutX="857.0" layoutY="524.0" mnemonicParsing="false" onAction="#reAssignTask" prefHeight="33.0" prefWidth="69.0" text="Assign">
          <font>
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </Button>
-      <DatePicker fx:id="crTaskStartField" layoutX="252.0" layoutY="541.0" prefHeight="26.0" prefWidth="163.0" promptText="Start Date" />
+      <DatePicker fx:id="crTaskStartField" layoutX="427.0" layoutY="587.0" prefHeight="26.0" prefWidth="163.0" promptText="Start Date" />
       <DatePicker fx:id="crTaskDueField" layoutX="427.0" layoutY="541.0" prefHeight="26.0" prefWidth="163.0" promptText="End Date" />
+      <Label layoutX="252.0" layoutY="501.0" text="Status" textFill="WHITE">
+         <font>
+            <Font name="Tahoma Bold" size="17.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="statusChoiceBox" layoutX="252.0" layoutY="528.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
