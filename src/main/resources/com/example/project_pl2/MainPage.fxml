@@ -19,17 +19,17 @@
             <Image url="@Images/login_background.jpg" />
          </image>
       </ImageView>
-      <Label alignment="TOP_CENTER" layoutX="286.0" layoutY="191.0" prefHeight="32.0" prefWidth="355.0" text="Welome to ZozManager V69" textAlignment="CENTER" textFill="#f2f2f2">
+      <Label alignment="TOP_CENTER" layoutX="256.0" layoutY="192.0" prefHeight="32.0" prefWidth="411.0" text="Welcome to Zoz  And B Manager" textAlignment="CENTER" textFill="#f2f2f2">
          <font>
             <Font name="Tahoma Bold" size="25.0" />
          </font>
       </Label>
-      <Button fx:id="LoginAsEmployee" layoutX="286.0" layoutY="245.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToEmployee" prefHeight="318.0" prefWidth="173.0" style="-fx-background-color: #FFFFFF;" stylesheets="@st.css" text="Login As Employee" textFill="#8e2a2a">
+      <Button fx:id="LoginAsEmployee" layoutX="262.0" layoutY="293.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToEmployee" prefHeight="194.0" prefWidth="173.0" style="-fx-background-color: #FFFFFF;" stylesheets="@st.css" text="Login As Employee" textFill="#8e2a2a">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="LoginAsAdmin" alignment="CENTER" layoutX="467.0" layoutY="245.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#switchToAdmin" prefHeight="318.0" prefWidth="174.0" style="-fx-background-color: #FFFFFF;" stylesheets="@st.css" text="Login As Admin" textFill="#8e2a2a">
+      <Button fx:id="LoginAsAdmin" alignment="CENTER" layoutX="496.0" layoutY="293.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#switchToAdmin" prefHeight="194.0" prefWidth="174.0" style="-fx-background-color: #FFFFFF;" stylesheets="@st.css" text="Login As Admin" textFill="#8e2a2a">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>

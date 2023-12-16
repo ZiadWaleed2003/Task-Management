@@ -34,7 +34,7 @@
             <Font name="Arial Black" size="23.0" />
          </font>
       </Button>
-      <Button layoutX="601.0" layoutY="101.0" mnemonicParsing="false"  prefHeight="270.0" prefWidth="320.0" styleClass="backgroundEmployee" stylesheets="@st.css" text="Projects" textFill="WHITE">
+      <Button layoutX="601.0" layoutY="101.0" mnemonicParsing="false" onAction="#switchToProjects" prefHeight="270.0" prefWidth="320.0" styleClass="backgroundEmployee" stylesheets="@st.css" text="Projects" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="23.0" />
          </font>

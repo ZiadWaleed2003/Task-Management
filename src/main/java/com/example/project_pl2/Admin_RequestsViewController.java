@@ -50,6 +50,7 @@ public class Admin_RequestsViewController implements  Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        System.out.println("Ha5a");
         try {
             ArrayList<Request> requests = Utility.UserSingle.getInstance().admin.reviewRequests();
 

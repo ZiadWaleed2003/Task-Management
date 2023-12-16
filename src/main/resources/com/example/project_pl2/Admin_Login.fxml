@@ -17,7 +17,7 @@
             </image>
         </ImageView>
         <AnchorPane layoutX="402.0" layoutY="255.0" prefHeight="11.0" prefWidth="114.0" style="-fx-background-color: #F4A773;" />
-        <TextField fx:id="emailtextfield" layoutX="371.0" layoutY="291.0" promptText="Email" style="-fx-background-color: #212121;" text="Email">
+        <TextField fx:id="emailtextfield" layoutX="371.0" layoutY="291.0" promptText="Email" style="-fx-background-color: #212121;">
             <font>
                 <Font name="Tahoma Bold" size="13.0" />
             </font>
