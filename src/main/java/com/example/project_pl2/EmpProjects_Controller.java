@@ -24,7 +24,7 @@ public class EmpProjects_Controller implements Initializable {
     @FXML
         public Button LogoutButton;
         public Button TasksView;
-        public Button ModifyProfile;
+        public Button Ass;
         public Button ChangeStatus;
 
     @FXML
@@ -61,9 +61,7 @@ public class EmpProjects_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
-
+        System.out.println("test");
         try {
             ArrayList<Project> proj = Utility.UserSingle.getInstance().emp.retrieveAllProjects();
 
@@ -109,18 +107,15 @@ public class EmpProjects_Controller implements Initializable {
 
 
 
-    public void switchToEmpDashboard(ActionEvent event) throws IOException {
-        switchScenes(event,"Employee_Dashboard.fxml");
-    }
-
-    public void switchToRequests(ActionEvent event) throws IOException {
-        switchScenes(event,"EmployeeRequests.fxml");
+    public void switchToTasks(ActionEvent event) throws IOException {
+        switchScenes(event,"Tasks.fxml");
     }
 
 
     public void changeStatus(ActionEvent event){
         int proj_id = Integer.parseInt(ProjectIDTextField.getText());
-        int status = Integer.parseInt(StatusTextField.getText());
+        int status = Utility.CompletionStatus.valueOf(StatusTextField.getText()).ordinal();
+
 
         try {
 

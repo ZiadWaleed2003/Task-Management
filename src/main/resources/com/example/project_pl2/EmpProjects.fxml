@@ -25,12 +25,12 @@
                   <Font name="Tahoma Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="TasksView" layoutX="12.0" layoutY="241.0" mnemonicParsing="false" onAction="#switchToEmpDashboard" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #212121;" stylesheets="@st.css" text="Tasks" textFill="WHITE">
+            <Button fx:id="TasksView" layoutX="12.0" layoutY="51.0" mnemonicParsing="false" onAction="#switchToTasks" prefHeight="162.0" prefWidth="223.0" style="-fx-background-color: #212121;" stylesheets="@st.css" text="Tasks" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="23.0" />
                </font>
             </Button>
-            <Button fx:id="ModifyProfile" layoutX="12.0" layoutY="362.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="223.0" style="-fx-background-color: #212121;" stylesheets="@st.css" text="Modify Profile" textFill="WHITE">
+            <Button fx:id="Ass" layoutX="12.0" layoutY="235.0" mnemonicParsing="false" prefHeight="162.0" prefWidth="223.0" style="-fx-background-color: #212121;" stylesheets="@st.css" text="Employees" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="23.0" />
                </font>
