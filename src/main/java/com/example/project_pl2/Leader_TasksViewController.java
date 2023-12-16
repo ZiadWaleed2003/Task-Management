@@ -71,7 +71,7 @@ public class Leader_TasksViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        System.out.println("5ara");
+
 
         try{
 
@@ -152,6 +152,10 @@ public class Leader_TasksViewController implements Initializable {
     public void switchToProjects(ActionEvent event) throws IOException {
         switchScenes(event,"Leader_ProjectsView.fxml");
 
+    }
+
+    public void switchToTeam(ActionEvent event) throws IOException {
+        switchScenes(event,"Leader_TeamView.fxml");
     }
     public void switchScenes(ActionEvent event , String fxml) throws IOException {
 
