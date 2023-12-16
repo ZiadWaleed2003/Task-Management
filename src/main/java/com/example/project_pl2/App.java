@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.*;
 import java.sql.*;
 import  javafx.fxml.FXMLLoader.*;
-import javafx.util.Pair;
+
 
 
 public class App extends Application{
@@ -31,8 +31,7 @@ public class App extends Application{
     public static void main(String[] args) throws SQLException {
 
          launch();
-         //Zyad atef is a nigga
-        //zyad waleed bya5od feha
+
 
 
     }

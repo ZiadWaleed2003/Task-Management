@@ -47,12 +47,12 @@
             <Font name="Tahoma Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="583.0" layoutY="221.0" prefHeight="46.0" prefWidth="290.0" text="DISPLAY NAME" textFill="WHITE">
+      <Label fx:id="Emp_Name" layoutX="583.0" layoutY="221.0" prefHeight="46.0" prefWidth="290.0" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="585.0" layoutY="331.0" prefHeight="46.0" prefWidth="274.0" text="DISPLAY ID" textFill="WHITE">
+      <Label fx:id="Emp_Id" layoutX="585.0" layoutY="331.0" prefHeight="46.0" prefWidth="274.0" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="16.0" />
          </font>
@@ -67,7 +67,7 @@
             <Font name="Tahoma Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="595.0" layoutY="427.0" prefHeight="46.0" prefWidth="307.0" text="Display" textFill="WHITE">
+      <Label fx:id="Emp_Email" layoutX="595.0" layoutY="427.0" prefHeight="46.0" prefWidth="307.0" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="16.0" />
          </font>
@@ -77,12 +77,12 @@
             <Font name="Tahoma Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="595.0" layoutY="516.0" prefHeight="46.0" prefWidth="281.0" text="display" textFill="WHITE">
+      <Label fx:id="Emp_Password" layoutX="595.0" layoutY="516.0" prefHeight="46.0" prefWidth="281.0" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="595.0" layoutY="587.0" prefHeight="46.0" prefWidth="307.0" text="Display" textFill="WHITE">
+      <Label fx:id="Emp_Role" layoutX="595.0" layoutY="587.0" prefHeight="46.0" prefWidth="307.0" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="16.0" />
          </font>
@@ -92,7 +92,7 @@
             <Font name="Tahoma Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="595.0" layoutY="655.0" prefHeight="46.0" prefWidth="290.0" text="Display" textFill="WHITE">
+      <Label fx:id="Emp_TeamId" layoutX="595.0" layoutY="655.0" prefHeight="46.0" prefWidth="290.0" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="16.0" />
          </font>
