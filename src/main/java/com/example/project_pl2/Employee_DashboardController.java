@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class Employee_DashboardController implements Initializable {
@@ -42,11 +43,15 @@ public class Employee_DashboardController implements Initializable {
     @FXML
     private TableColumn<IndivTask, String> Priority;
     @FXML
-    private TableColumn<IndivTask, String> Start_date;
+    private TableColumn<IndivTask, Date> Start_date;
     @FXML
-    private TableColumn<IndivTask, String> Due_date;
+    private TableColumn<IndivTask, Date> Due_date;
     @FXML
     private TableColumn<IndivTask, Integer> Project_id;
+    @FXML
+    private TextField tasktextfield;
+    @FXML
+    private TextField statustextfield;
 
 
 
@@ -58,15 +63,17 @@ public class Employee_DashboardController implements Initializable {
             ArrayList<IndivTask> tasks = Utility.UserSingle.getInstance().emp.constructTasksList();
             taskObservableList.addAll(tasks);
 
-            taskTableView = new TableView<>();
+
+
+//            taskTableView = new TableView<>();
             ID.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("id"));
             Name.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("name"));
             Description.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("description"));
-            Status.setCellValueFactory(new PropertyValueFactory<IndivTask,String>("status"));
+            Status.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("status"));
             Assigned_to.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("assigned_to"));
             Priority.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("priority"));
-            Start_date.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("start_date"));
-            Due_date.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("due_date"));
+            Start_date.setCellValueFactory(new PropertyValueFactory<IndivTask, Date>("start_date"));
+            Due_date.setCellValueFactory(new PropertyValueFactory<IndivTask, Date>("due_date"));
             Project_id.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("project"));
 
             taskTableView.setItems(taskObservableList);
@@ -76,6 +83,30 @@ public class Employee_DashboardController implements Initializable {
         }
 
     }
+
+    public void changeStatus(ActionEvent event){
+        int task_id = Integer.parseInt(tasktextfield.getText());
+        int status = Utility.CompletionStatus.valueOf(statustextfield.getText().toUpperCase()).ordinal();
+
+
+        try {
+
+            if(Utility.UserSingle.getInstance().emp.updateTaskStatus(task_id,status)){
+
+                System.out.println("Changed Status Successfully");
+
+                switchScenes(event , "Employee_Dashboard.fxml");
+            }else{
+                throw new Exception("fe 5ara 7sl fe change status");
+            }
+
+
+        }catch (Exception e){
+
+            System.out.println(e);
+        }
+    }
+
 
 
 
@@ -99,11 +130,7 @@ public class Employee_DashboardController implements Initializable {
 
 
     public void switchToMainPage(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        switchScenes(event,"MainPage.fxml");
 
     }
 
@@ -111,23 +138,20 @@ public class Employee_DashboardController implements Initializable {
 
 
     public void switchToEmpRequests(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Employee_Requests.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        switchScenes(event,"Employee_Requests.fxml");
 
     }
     public void switchToEmp_Dasboard(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Employee_Dashboard.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        switchScenes(event,"Employee_Dashboard.fxml");
 
     }
     public void switchToModify_Emp_Profile(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Employee_Data.fxml"));
+        switchScenes(event,"Employee_Data.fxml");
+
+    }
+    public void switchScenes(ActionEvent event , String fxml) throws IOException {
+
+        root = FXMLLoader.load(getClass().getResource(fxml));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

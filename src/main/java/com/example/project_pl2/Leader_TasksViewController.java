@@ -71,7 +71,7 @@ public class Leader_TasksViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        System.out.println("5ara");
+//        System.out.println("5ara");
 
         try{
 
@@ -88,6 +88,7 @@ public class Leader_TasksViewController implements Initializable {
                 Priority.setCellValueFactory(new PropertyValueFactory<IndivTask , String>("priority"));
                 Task_Desc.setCellValueFactory(new PropertyValueFactory<IndivTask , String>("description"));
                 Task_Status.setCellValueFactory(new PropertyValueFactory<IndivTask , String>("status"));
+
 
 
                 TaskTableView.setItems(TasksObservableList);

@@ -199,7 +199,8 @@ public class Employee extends Person{
     public ArrayList<Request> retrieveAllRequests() throws SQLException{
         ArrayList<Request> result =  new ArrayList<Request>();
         String query = "SELECT * FROM plproject.request WHERE Request_by = ?";
-        Integer[] args = {getId()};
+        Integer[] args = {Utility.UserSingle.getInstance().emp.getId()};
+
         try {
             ResultSet res = CRUD2.readDbDynamic(query, args);
             if (res.isBeforeFirst()) {
