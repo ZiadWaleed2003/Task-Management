@@ -1,0 +1,16 @@
+2023-12-15T23:34:55.648071Z 0 [System] [MY-010116] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe (mysqld 8.0.35) starting as process 21972
+2023-12-15T23:34:55.677131Z 0 [Warning] [MY-010075] [Server] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: 8d8b03eb-9ba2-11ee-b8e3-6c02e07ba935.
+2023-12-15T23:34:55.686436Z 1 [ERROR] [MY-011011] [Server] Failed to find valid data directory.
+2023-12-15T23:34:55.688558Z 0 [ERROR] [MY-010020] [Server] Data Dictionary initialization failed.
+2023-12-15T23:34:55.689762Z 0 [ERROR] [MY-010119] [Server] Aborting
+2023-12-15T23:34:55.691093Z 0 [System] [MY-010910] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe: Shutdown complete (mysqld 8.0.35)  MySQL Community Server - GPL.
+2023-12-15T23:35:01.163182Z 0 [System] [MY-010116] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe (mysqld 8.0.35) starting as process 7364
+2023-12-15T23:35:01.187444Z 1 [ERROR] [MY-011011] [Server] Failed to find valid data directory.
+2023-12-15T23:35:01.188520Z 0 [ERROR] [MY-010020] [Server] Data Dictionary initialization failed.
+2023-12-15T23:35:01.188957Z 0 [ERROR] [MY-010119] [Server] Aborting
+2023-12-15T23:35:01.189624Z 0 [System] [MY-010910] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe: Shutdown complete (mysqld 8.0.35)  MySQL Community Server - GPL.
+2023-12-15T23:35:18.156945Z 0 [System] [MY-010116] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe (mysqld 8.0.35) starting as process 1648
+2023-12-15T23:35:18.179643Z 1 [ERROR] [MY-011011] [Server] Failed to find valid data directory.
+2023-12-15T23:35:18.180907Z 0 [ERROR] [MY-010020] [Server] Data Dictionary initialization failed.
+2023-12-15T23:35:18.181369Z 0 [ERROR] [MY-010119] [Server] Aborting
+2023-12-15T23:35:18.182048Z 0 [System] [MY-010910] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe: Shutdown complete (mysqld 8.0.35)  MySQL Community Server - GPL.

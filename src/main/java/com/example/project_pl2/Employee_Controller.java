@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Employee_Controller implements Initializable {
@@ -53,21 +54,26 @@ public class Employee_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        System.out.println("adsa");
         try {
-            taskTableView = new TableView<>();
+            ArrayList<IndivTask> tasks = Utility.UserSingle.getInstance().emp.constructTasksList();
+            taskObservableList.addAll(tasks);
 
+            taskTableView = new TableView<>();
             ID.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("id"));
             Name.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("name"));
             Description.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("description"));
-//        Status.setCellValueFactory(new PropertyValueFactory<IndivTask,String>("status"));
+            Status.setCellValueFactory(new PropertyValueFactory<IndivTask,String>("status"));
             Assigned_to.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("assigned_to"));
             Priority.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("priority"));
             Start_date.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("start_date"));
             Due_date.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("due_date"));
-            Project_id.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("project_id"));
-        } catch(Exception e){
+            Project_id.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("project"));
 
+            taskTableView.setItems(taskObservableList);
+
+        } catch(Exception e){
+            System.out.println("moshkla");
         }
 
     }
