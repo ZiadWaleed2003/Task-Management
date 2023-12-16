@@ -13,19 +13,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="d83c7348-baeb-4210-9231-5a55901a9fed">
-      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[insert into project (
-    `Project_Id`,
-    `Assigned_To`,
-    `Progress_status`,
-    `Project_desc`,
-    `Project_Title`)
-values (
-    26,
-    1,
-    'pending',
-    '5ara',
-    'Niggas')
-;]]></console>
+      <console name="MySQL Connection" type="STANDARD" schema="plproject" session="Main"><![CDATA[ALTER TABLE plproject.project MODIFY COLUMN Progress_status int(10);]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -34,7 +22,9 @@ values (
     </last-used-providers>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" object-ref="schemas/plproject/tables/employee" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="d83c7348-baeb-4210-9231-5a55901a9fed" dataset="plproject.team" active-filter-id="EMPTY_FILTER" />
@@ -560,8 +550,8 @@ values (
   <component name="DBNavigator.Project.StatementExecutionManager">
     <execution-variables>
       <file file-url="db://d83c7348-baeb-4210-9231-5a55901a9fed/consoles/MySQL Connection">
-        <variable name="2" data-type="LITERAL" />
         <variable name="it" data-type="LITERAL" />
+        <variable name="2" data-type="LITERAL" />
       </file>
     </execution-variables>
     <execution-variable-types>

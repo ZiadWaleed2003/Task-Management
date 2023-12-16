@@ -5,50 +5,31 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="738.0" prefWidth="929.0" styleClass="background" stylesheets="@st.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_pl2.switchscenes_controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="738.0" prefWidth="929.0" styleClass="background" stylesheets="@st.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_pl2.MainPage_Controller">
    <children>
       <AnchorPane layoutX="462.0" layoutY="378.0" prefHeight="46.0" prefWidth="163.0" style="-fx-background-color: #212121; -fx-opacity: 60%;">
          <children>
             <AnchorPane layoutY="41.0" prefHeight="10.0" prefWidth="163.0" style="-fx-background-color: #1A00A9;" />
          </children>
       </AnchorPane>
-      <ImageView fitHeight="744.0" fitWidth="935.0" layoutX="-2.0" layoutY="-3.0">
+      <ImageView fitHeight="757.0" fitWidth="953.0" layoutX="-22.0" layoutY="-16.0">
          <image>
             <Image url="@Images/login_background.jpg" />
          </image>
       </ImageView>
-      <Label alignment="TOP_CENTER" layoutX="399.0" layoutY="184.0" prefHeight="30.0" prefWidth="132.0" text="Hello User" textAlignment="CENTER">
-         <textFill>
-            <LinearGradient endX="0.3371212112181115" endY="1.0" startX="1.0" startY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.35815465450286865" green="0.192592591047287" blue="0.5473684072494507" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.9578947424888611" green="0.9578947424888611" blue="0.9578947424888611" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
+      <Label alignment="TOP_CENTER" layoutX="286.0" layoutY="191.0" prefHeight="32.0" prefWidth="355.0" text="Welome to ZozManager V69" textAlignment="CENTER" textFill="#f2f2f2">
          <font>
             <Font name="Tahoma Bold" size="25.0" />
          </font>
       </Label>
-      <Button fx:id="LoginAsEmployee" layoutX="188.0" layoutY="388.0" mnemonicParsing="false" onAction="#switchToEmployee" style="-fx-background-color: #FFFFFF;" stylesheets="@st.css" text="Login As Employee" textFill="#8e2a2a">
+      <Button fx:id="LoginAsEmployee" layoutX="286.0" layoutY="245.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToEmployee" prefHeight="318.0" prefWidth="173.0" style="-fx-background-color: #FFFFFF;" stylesheets="@st.css" text="Login As Employee" textFill="#8e2a2a">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="LoginAsAdmin" layoutX="649.0" layoutY="388.0" mnemonicParsing="false" onAction="#switchToAdmin" style="-fx-background-color: #FFFFFF;" stylesheets="@st.css" text="Login As Admin" textFill="#8e2a2a">
+      <Button fx:id="LoginAsAdmin" alignment="CENTER" layoutX="467.0" layoutY="245.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#switchToAdmin" prefHeight="318.0" prefWidth="174.0" style="-fx-background-color: #FFFFFF;" stylesheets="@st.css" text="Login As Admin" textFill="#8e2a2a">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>

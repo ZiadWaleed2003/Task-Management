@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="935.0" style="-fx-background-color: #F1E5E5;" stylesheets="@st.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_pl2.AfterLoginAdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="935.0" style="-fx-background-color: #F1E5E5;" stylesheets="@st.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_pl2.Admin_DashboardController">
     <children>
         <Pane prefHeight="744.0" prefWidth="246.0" styleClass="backgroundAdmin" stylesheets="@st.css">
             <children>
@@ -31,17 +31,17 @@
                </font>
             </Label>
          </children></Pane>
-          <Button alignment="CENTER" layoutX="336.0" layoutY="178.0" mnemonicParsing="false" onAction="#switchToEmployees" prefHeight="79.0" prefWidth="223.0" styleClass="backgroundAdmin" stylesheets="@st.css" text="Employees" textFill="WHITE">
+          <Button alignment="CENTER" layoutX="260.0" layoutY="100.0" mnemonicParsing="false" onAction="#switchToEmployees" prefHeight="254.0" prefWidth="360.0" styleClass="backgroundAdmin" stylesheets="@st.css" text="Employees" textFill="WHITE">
               <font>
                   <Font name="Arial Black" size="24.0" />
               </font>
           </Button>
-          <Button layoutX="559.0" layoutY="301.0" mnemonicParsing="false" onAction="#switchToProjects" prefHeight="79.0" prefWidth="223.0" styleClass="backgroundAdmin" stylesheets="@st.css" text="Projects" textFill="WHITE">
+          <Button layoutX="630.0" layoutY="100.0" mnemonicParsing="false" onAction="#switchToProjects" prefHeight="254.0" prefWidth="290.0" styleClass="backgroundAdmin" stylesheets="@st.css" text="Projects" textFill="WHITE">
               <font>
                   <Font name="Arial Black" size="23.0" />
               </font>
           </Button>
-      <Button layoutX="336.0" layoutY="417.0" mnemonicParsing="false" onAction="#switchToRequests" prefHeight="79.0" prefWidth="223.0" styleClass="backgroundAdmin" stylesheets="@st.css" text="Requests" textFill="WHITE">
+      <Button layoutX="260.0" layoutY="372.0" mnemonicParsing="false" onAction="#switchToRequests" prefHeight="254.0" prefWidth="660.0" styleClass="backgroundAdmin" stylesheets="@st.css" text="Requests" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="23.0" />
          </font>

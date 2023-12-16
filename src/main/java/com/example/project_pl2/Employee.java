@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.util.Pair;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.Date;
 
@@ -217,7 +218,7 @@ public class Employee extends Person{
 
             ArrayList<Project> result = new ArrayList<Project>();
             String query = "SELECT * FROM plproject.project WHERE Assigned_To = ?";
-            Integer[] args = {getId()};
+            Integer[] args = {Utility.UserSingle.getInstance().emp.team_id.get()};
             try {
                 ResultSet res = CRUD2.readDbDynamic(query, args);
                 if (res.isBeforeFirst()) {
@@ -237,15 +238,16 @@ public class Employee extends Person{
 
 
 
-    public boolean addTask(int id, String name, String description, Utility.CompletionStatus status,
-                           int assigned_to, int project, String priority, String start_date, String due_date){
+    public boolean addTask(String name, String description, Utility.CompletionStatus status, int project,
+                           String priority, LocalDate start_date, LocalDate due_date) throws SQLException{
         if(this.emp_type.get().equals("LEADER")){
 
-            String addTaskQuery = "INSERT INTO task (Task_Id, Assigned_To, Due_date, Priority, Project_Id, Start_Date, " +
-                    "Task_Desc, Task_Name, Task_Status) VALUES (?, ?, ?, ? ,? ,? ,?, ?, ?);";
+            String addTaskQuery = "INSERT INTO task (Due_date, Priority, Project_Id, Start_Date, " +
+                    "Task_Desc, Task_Name, Task_Status) VALUES (?, ?, ?, ? ,? ,? ,?);";
 
 
-            Object[] args = { id , assigned_to , due_date , priority , project , start_date , description , name , status };
+            Object[] args = {due_date , priority , project , start_date , description , name ,
+                    status.ordinal() };
 
             Pair<Boolean, Integer> res = CRUD2.updateDbDynamic(addTaskQuery, args);
 
