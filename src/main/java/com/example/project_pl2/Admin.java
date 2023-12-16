@@ -131,12 +131,13 @@ public class Admin extends Person implements File{
 
 
 
-    public boolean createProject (int proj_id , int team_id ,String proj_desc , String proj_Title , String status ){
+    public boolean createProject (int proj_id , int team_id ,String proj_desc , String proj_Title ,
+                                  Utility.CompletionStatus status ){
 
         String query = "INSERT INTO Project (Project_Id , Assigned_To , Project_desc , Project_Title , Progress_status) " +
                 "VALUES (?,?,?,?,?)";
 
-        Object [] args = { proj_id ,team_id ,proj_desc,proj_Title,status};
+        Object [] args = { proj_id ,team_id ,proj_desc,proj_Title,status.ordinal()};
 
         Pair <Boolean , Integer> result = CRUD2.updateDbDynamic(query , args);
 

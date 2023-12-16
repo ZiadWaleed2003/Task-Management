@@ -58,16 +58,19 @@
             <TableColumn fx:id="status" prefWidth="229.60003662109375" text="Status" />
          </columns>
       </TableView>
-      <TextField fx:id="request_id" layoutX="319.0" layoutY="631.0" promptText="Request ID">
+      <TextField fx:id="request_id" layoutX="252.0" layoutY="582.0" promptText="Request ID">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="591.0" layoutY="642.0" mnemonicParsing="false" onAction="#acceptRequest" prefHeight="34.0" prefWidth="63.0" style="-fx-background-color: #00FD00;" text="Accept">
+      <Button layoutX="252.0" layoutY="617.0" mnemonicParsing="false" onAction="#acceptRequest" prefHeight="34.0" prefWidth="85.0" style="-fx-background-color: #00FD00;" text="Accept">
          <font>
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="700.0" layoutY="642.0" mnemonicParsing="false" onAction="#refuseRequest" prefHeight="34.0" prefWidth="63.0" style="-fx-background-color: #FF0000;" text="Reject" />
+      <Button layoutX="354.0" layoutY="617.0" mnemonicParsing="false" onAction="#refuseRequest" prefHeight="34.0" prefWidth="86.0" style="-fx-background-color: #FF0000;" text="Reject">
+         <font>
+            <Font name="Tahoma Bold" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>
