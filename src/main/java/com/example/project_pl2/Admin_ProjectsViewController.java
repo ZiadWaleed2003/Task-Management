@@ -18,12 +18,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.UnknownFormatConversionException;
 
 public class Admin_ProjectsViewController implements Initializable {
 
     public Button LogoutButton;
     // Use the ObservableList to store data
     ObservableList<Project> projectObservableList = FXCollections.observableArrayList();
+    @FXML
+    private ChoiceBox<Utility.CompletionStatus> statusChoiceBox;
 
     @FXML
     private TableView<Project> projectTableView;
@@ -48,20 +51,22 @@ public class Admin_ProjectsViewController implements Initializable {
     private TextField delete_project_id;
 
 
-    public Admin_ProjectsViewController() {
-
-        projectTableView = new TableView<Project>();
-        ID              = new TableColumn<Project , Integer>("project_id");
-        Title           = new TableColumn<Project , String>("project_title");
-        status          = new TableColumn<Project , String>("current_status");
-        Description = new TableColumn<Project , String>("project_description");
-        Assigned_to     = new TableColumn<Project , Integer>("team_id");
-        // ... other initialization code
-    }
+//    public Admin_ProjectsViewController() {
+//
+//        projectTableView = new TableView<Project>();
+//        ID              = new TableColumn<Project , Integer>("project_id");
+//        Title           = new TableColumn<Project , String>("project_title");
+//        status          = new TableColumn<Project , String>("current_status");
+//        Description = new TableColumn<Project , String>("project_description");
+//        Assigned_to     = new TableColumn<Project , Integer>("team_id");
+//        // ... other initialization code
+//    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        statusChoiceBox.setItems(FXCollections.observableArrayList(Utility.CompletionStatus.values()));
 
 
 
@@ -172,8 +177,8 @@ public class Admin_ProjectsViewController implements Initializable {
     @FXML
     private TextField IdTextField;
 
-    @FXML
-    private TextField StatusTextField;
+//    @FXML
+//    private TextField StatusTextField;
 
     @FXML
     private TextField TeamIdTextField;
@@ -188,7 +193,11 @@ public class Admin_ProjectsViewController implements Initializable {
         int team_id    = Integer.parseInt(TeamIdTextField.getText());
         String desc    = DescTextField.getText();
         String title   = TitleIdTextField.getText();
-        Utility.CompletionStatus status  = Utility.CompletionStatus.valueOf(StatusTextField.getText());
+//        Utility.CompletionStatus status  = Utility.CompletionStatus.valueOf(StatusTextField.getText());
+        Utility.CompletionStatus selectedStatus = statusChoiceBox.getSelectionModel().getSelectedItem();
+
+        String status = selectedStatus.name();
+
 
 
         try{

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -98,7 +99,7 @@
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="DescTextField" layoutX="252.0" layoutY="662.0" prefHeight="64.0" prefWidth="240.0" promptText="Description">
+      <TextField fx:id="DescTextField" layoutX="374.0" layoutY="666.0" prefHeight="64.0" prefWidth="240.0" promptText="Description">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
@@ -108,10 +109,11 @@
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="StatusTextField" layoutX="252.0" layoutY="627.0" prefHeight="28.0" prefWidth="240.0" promptText="Status">
+      <ChoiceBox fx:id="statusChoiceBox" layoutX="254.0" layoutY="642.0" prefHeight="26.0" prefWidth="118.0" />
+      <Label layoutX="254.0" layoutY="619.0" text="Status">
          <font>
-            <Font name="Tahoma Bold" size="14.0" />
+            <Font name="Tahoma Bold" size="16.0" />
          </font>
-      </TextField>
+      </Label>
    </children>
 </AnchorPane>
