@@ -57,7 +57,6 @@ public class Employee_RequestsController implements Initializable {
             requestObservableList.addAll(requests);
 
             ID.setCellValueFactory(new PropertyValueFactory<Request,Integer>("request_id"));
-//            by_ID.setCellValueFactory(new PropertyValueFactory<Request,Integer>("requested_by"));
             Type.setCellValueFactory(new PropertyValueFactory<Request,String>("request_type"));
             request_desc.setCellValueFactory(new PropertyValueFactory<Request,String>("request_description"));
             status.setCellValueFactory(new PropertyValueFactory<Request,Boolean>("request_status"));
@@ -66,7 +65,7 @@ public class Employee_RequestsController implements Initializable {
 
 
         } catch (Exception e){
-            System.out.println("A7A");
+            System.out.println();
         }
 
 

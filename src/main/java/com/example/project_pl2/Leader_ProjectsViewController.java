@@ -55,7 +55,7 @@ public class Leader_ProjectsViewController implements Initializable {
         status          = new TableColumn<Project , String>("current_status");
         Description = new TableColumn<Project , String>("project_description");
         Assigned_to     = new TableColumn<Project , Integer>("team_id");
-        // ... other initialization code
+
     }
 
 
@@ -77,15 +77,7 @@ public class Leader_ProjectsViewController implements Initializable {
 
             projectTableView.setItems(projectObservableList);
 
-            // Set the items in the table
 
-
-//            projectTableView.getColumns().addAll(ID, Title, status, Descreption, Assigned_to);
-
-
-            // Refresh the table view
-
-//            projectTableView.refresh();
 
         } catch (Exception e) {
             System.out.print("مصييييبة"); // Handle the exception appropriately

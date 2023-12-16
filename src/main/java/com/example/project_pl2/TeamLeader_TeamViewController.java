@@ -73,7 +73,7 @@ public class TeamLeader_TeamViewController implements Initializable {
                     TeamTableView.setItems(TeamObservableList);
                 }else{
 
-                    throw new Exception("A7a moshkla");
+                    throw new Exception();
                 }
 
             }catch (Exception e){

@@ -33,14 +33,6 @@ public class Employee extends Person{
 
     public Employee(){}
 
-    //[TODO 12]Change Contructor to variable have property or change in employee to take variable direct not from constructor
-
-//    public Employee(String name, String email, String password, int id, EmpType emp_type, int team_id, String role) {
-//        super(name, email, password, id);
-//        this.emp_type = emp_type;
-//        this.team_id = team_id;
-//        this.role = role;
-//    }
 
     public Employee(ResultSet set) throws SQLException{
 
@@ -162,7 +154,7 @@ public class Employee extends Person{
             Utility.UserSingle CurrentUser = Utility.UserSingle.getInstance();
             CurrentUser.emp = emp;
             return true;
-//          System.out.println("Email : " + this.email + "\nPassword is : " + this.password);
+
         }else{
             System.out.println("Error");
             return false;

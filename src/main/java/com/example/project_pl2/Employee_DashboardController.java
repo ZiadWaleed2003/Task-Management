@@ -20,8 +20,6 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class Employee_DashboardController implements Initializable {
-    //TODO implement a method that takes task id and changes its status
-    //this is the employees dashboard when they login
     private Scene scene;
     private Stage stage;
     private Parent root;
@@ -58,14 +56,14 @@ public class Employee_DashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("adsa");
+
         try {
             ArrayList<IndivTask> tasks = Utility.UserSingle.getInstance().emp.constructTasksList();
             taskObservableList.addAll(tasks);
 
 
 
-//            taskTableView = new TableView<>();
+
             ID.setCellValueFactory(new PropertyValueFactory<IndivTask, Integer>("id"));
             Name.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("name"));
             Description.setCellValueFactory(new PropertyValueFactory<IndivTask, String>("description"));
@@ -79,7 +77,7 @@ public class Employee_DashboardController implements Initializable {
             taskTableView.setItems(taskObservableList);
 
         } catch(Exception e){
-            System.out.println("moshkla");
+           //alert
         }
 
     }

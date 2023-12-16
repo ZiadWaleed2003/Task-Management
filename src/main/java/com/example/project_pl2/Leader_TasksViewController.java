@@ -93,7 +93,7 @@ public class Leader_TasksViewController implements Initializable {
                 TaskTableView.setItems(TasksObservableList);
 
             }else{
-                throw new Exception("A777aaa meeen");
+                throw new Exception();
             }
 
         }catch (Exception e){
