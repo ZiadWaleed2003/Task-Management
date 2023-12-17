@@ -28,10 +28,10 @@ public class Leader_ProjectsViewController implements Initializable {
         public Button ChangeStatus;
 
     @FXML
-            public TextField ProjectIDTextField;
-            public TextField StatusTextField;
+    public TextField ProjectIDTextField;
 
-    // Use the ObservableList to store data
+
+
     ObservableList<Project> projectObservableList = FXCollections.observableArrayList();
 
     @FXML
@@ -49,16 +49,6 @@ public class Leader_ProjectsViewController implements Initializable {
     @FXML
     private  ChoiceBox<Utility.CompletionStatus> statusChoiceBox;
 
-//    public Leader_ProjectsViewController() {
-//
-//        projectTableView = new TableView<Project>();
-//        ID              = new TableColumn<Project , Integer>("project_id");
-//        Title           = new TableColumn<Project , String>("project_title");
-//        status          = new TableColumn<Project , String>("current_status");
-//        Description = new TableColumn<Project , String>("project_description");
-//        Assigned_to     = new TableColumn<Project , Integer>("team_id");
-//
-//    }
 
 
     @Override
@@ -83,8 +73,8 @@ public class Leader_ProjectsViewController implements Initializable {
 
 
         } catch (Exception e) {
-            System.out.print("مصييييبة"); // Handle the exception appropriately
-        }}
+        }
+    }
 
 
 
@@ -112,29 +102,30 @@ public class Leader_ProjectsViewController implements Initializable {
     }
 
 
-    public void changeStatus(ActionEvent event){
+    public void changeStatus(ActionEvent event) throws IOException{
         int proj_id = Integer.parseInt(ProjectIDTextField.getText());
-//        int status = Utility.CompletionStatus.valueOf(StatusTextField.getText().toUpperCase()).ordinal();
         Utility.CompletionStatus selectedStatus = statusChoiceBox.getSelectionModel().getSelectedItem();
         int status = selectedStatus.ordinal();
 
-
-
         try {
-
-                if(Utility.UserSingle.getInstance().emp.updateProjStatus(proj_id, status)){
-
-                    System.out.println("Changed Status Successfully");
+                if(Utility.UserSingle.getInstance().emp.updateProjStatus(proj_id, status) && (proj_id != 0)){
 
                     switchScenes(event , "Leader_ProjectsView.fxml");
                 }else{
-                    throw new Exception("fe 5ara 7sl fe change status");
+                    throw new Exception();
                 }
 
 
         }catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("OPERATION FAILED");
+            alert.setContentText("PLEASE TRY AGAIN");
+            if (alert.showAndWait().get() == ButtonType.OK) {
 
-                System.out.println(e);
+                switchScenes(event, "Leader_ProjectsView.fxml");
+
+            }
         }
     }
 

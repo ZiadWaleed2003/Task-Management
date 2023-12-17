@@ -48,8 +48,6 @@ public class TeamLeader_TeamViewController implements Initializable {
     private TableView<Employee> TeamTableView;
 
 
-    @FXML
-    private Label Team_View;
 
 
     @Override
