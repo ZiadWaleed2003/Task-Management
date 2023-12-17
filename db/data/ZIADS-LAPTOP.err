@@ -890,3 +890,12 @@
 2023-12-08T20:24:43.857405Z 0 [System] [MY-010931] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe: ready for connections. Version: '8.0.35'  socket: ''  port: 3306  MySQL Community Server - GPL.
 2023-12-08T20:25:08.319524Z 9 [ERROR] [MY-011971] [InnoDB] Tablespace 'plproject/request' Page [page id: space=14, page number=4] log sequence number 22051447 is in the future! Current system log sequence number 22049334.
 2023-12-08T20:25:08.320040Z 9 [ERROR] [MY-011972] [InnoDB] Your database may be corrupt or you may have copied the InnoDB tablespace but not the InnoDB redo log files. Please refer to http://dev.mysql.com/doc/refman/8.0/en/forcing-innodb-recovery.html for information about forcing recovery.
+2023-12-17T01:53:34.409450Z 0 [System] [MY-010116] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe (mysqld 8.0.35) starting as process 8096
+2023-12-17T01:53:34.438562Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2023-12-17T01:53:34.903200Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2023-12-17T01:53:35.028601Z 0 [System] [MY-010229] [Server] Starting XA crash recovery...
+2023-12-17T01:53:35.032037Z 0 [System] [MY-010232] [Server] XA crash recovery finished.
+2023-12-17T01:53:35.093283Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2023-12-17T01:53:35.093517Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2023-12-17T01:53:35.122122Z 0 [System] [MY-010931] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe: ready for connections. Version: '8.0.35'  socket: ''  port: 3306  MySQL Community Server - GPL.
+2023-12-17T01:53:35.122135Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
