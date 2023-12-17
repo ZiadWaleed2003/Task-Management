@@ -50,18 +50,18 @@ public class Admin_ProjectsViewController implements Initializable {
     @FXML
     private TextField delete_project_id;
 
+    @FXML
+    private TextField DescTextField;
 
-//    public Admin_ProjectsViewController() {
-//
-//        projectTableView = new TableView<Project>();
-//        ID              = new TableColumn<Project , Integer>("project_id");
-//        Title           = new TableColumn<Project , String>("project_title");
-//        status          = new TableColumn<Project , String>("current_status");
-//        Description = new TableColumn<Project , String>("project_description");
-//        Assigned_to     = new TableColumn<Project , Integer>("team_id");
-//        // ... other initialization code
-//    }
+    @FXML
+    private TextField IdTextField;
 
+
+    @FXML
+    private TextField TeamIdTextField;
+
+    @FXML
+    private TextField TitleIdTextField;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -81,21 +81,12 @@ public class Admin_ProjectsViewController implements Initializable {
             Description.setCellValueFactory(new PropertyValueFactory<Project , String>("project_description"));
             Assigned_to.setCellValueFactory(new PropertyValueFactory<Project , Integer>("team_id"));
 
-
             projectTableView.setItems(projectObservableList);
 
-            // Set the items in the table
 
-
-//            projectTableView.getColumns().addAll(ID, Title, status, Descreption, Assigned_to);
-
-
-            // Refresh the table view
-
-//            projectTableView.refresh();
 
         } catch (Exception e) {
-            System.out.print("مصييييبة"); // Handle the exception appropriately
+            System.out.print("Project Not found"); // Handle the exception appropriately
         }
 
     }
@@ -112,15 +103,6 @@ public class Admin_ProjectsViewController implements Initializable {
 
                 switchScenes(event , "Admin_ProjectsView.fxml");
 
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Successful Operation");
-                alert.setHeaderText("Project with ID : " + project_id + " has been Deleted");
-                System.out.println(" Hell yeah !");
-
-
-
-
-
             }else{
                 throw new Exception("Operation failed");
             }
@@ -128,22 +110,21 @@ public class Admin_ProjectsViewController implements Initializable {
 
         }catch (Exception e){
 
-//            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//            alert.setTitle("Failed Operation");
-//            alert.setHeaderText(e + " please try again !");
-//            alert.setContentText("You Will Be Redirected To the Main Page");
-//            if (alert.showAndWait().get()== ButtonType.OK)
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("OPERATION FAILED");
+            alert.setContentText("PLEASE TRY AGAIN");
+            if (alert.showAndWait().get()== ButtonType.OK){
 
-
-            System.out.println("Failed tany ahhhhhhhh");
-            switchScenes(event , "Admin_ProjectsView.fxml");
+                switchScenes(event , "Admin_ProjectsView.fxml");
+            }
 
         }
 
 
     }
 
-    public void reAssignProject(ActionEvent event){
+    public void reAssignProject(ActionEvent event) throws IOException {
 
         int  proj_id = Integer.parseInt(update_project_id.getText());
         int  team_id = Integer.parseInt(update_team_id.getText());
@@ -155,36 +136,24 @@ public class Admin_ProjectsViewController implements Initializable {
 
                     switchScenes(event , "Admin_ProjectsView.fxml");
 
-//                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//                alert.setTitle("Successful Operation");
-//                alert.setHeaderText("Project with ID : " + proj_id + " has been Deleted");
-//                alert.setContentText("You Will Be Redirected To the Main Page");
-//                if (alert.showAndWait().get()== ButtonType.OK)
-
-
             }else{
-                throw new Exception("Error Happpened");
+                throw new Exception();
             }
 
         } catch (Exception e) {
-            System.out.println(e + " مصيييييبة ألحقووونا ");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("OPERATION FAILED");
+            alert.setContentText("PLEASE TRY AGAIN");
+            if (alert.showAndWait().get()== ButtonType.OK){
+
+                switchScenes(event , "Admin_ProjectsView.fxml");
+
         }
     }
+    }
 
-    @FXML
-    private TextField DescTextField;
 
-    @FXML
-    private TextField IdTextField;
-
-//    @FXML
-//    private TextField StatusTextField;
-
-    @FXML
-    private TextField TeamIdTextField;
-
-    @FXML
-    private TextField TitleIdTextField;
 
 
     public void addProject(ActionEvent event) throws IOException {
@@ -193,7 +162,6 @@ public class Admin_ProjectsViewController implements Initializable {
         int team_id    = Integer.parseInt(TeamIdTextField.getText());
         String desc    = DescTextField.getText();
         String title   = TitleIdTextField.getText();
-//        Utility.CompletionStatus status  = Utility.CompletionStatus.valueOf(StatusTextField.getText());
         Utility.CompletionStatus selectedStatus = statusChoiceBox.getSelectionModel().getSelectedItem();
 
         String status = selectedStatus.name();
@@ -206,34 +174,26 @@ public class Admin_ProjectsViewController implements Initializable {
 
                 switchScenes(event , "Admin_ProjectsView.fxml");
 
-//                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//                alert.setTitle("Successful Operation");
-//                alert.setHeaderText("Project with ID : " + project_id + " has been Deleted");
-//                System.out.println(" Hell yeah !");
-
-
-
-
 
             }else{
-                throw new Exception("Operation failed");
+                throw new Exception();
             }
 
 
         }catch (Exception e){
 
-//            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//            alert.setTitle("Failed Operation");
-//            alert.setHeaderText(e + " please try again !");
-//            alert.setContentText("You Will Be Redirected To the Main Page");
-//            if (alert.showAndWait().get()== ButtonType.OK)
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("OPERATION FAILED");
+            alert.setContentText("PLEASE TRY AGAIN");
+            if (alert.showAndWait().get()== ButtonType.OK){
 
+                switchScenes(event , "Admin_ProjectsView.fxml");
+            }
 
-            System.out.println("Failed tany ahhhhhhhh");
             switchScenes(event , "Admin_ProjectsView.fxml");
 
         }
-
 
     }
 
@@ -272,5 +232,7 @@ public class Admin_ProjectsViewController implements Initializable {
         stage.show();
 
     }
+
+
 }
 

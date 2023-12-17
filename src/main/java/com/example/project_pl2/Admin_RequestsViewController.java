@@ -50,11 +50,14 @@ public class Admin_RequestsViewController implements  Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        System.out.println("Ha5a");
+
         try {
+
+
             ArrayList<Request> requests = Utility.UserSingle.getInstance().admin.reviewRequests();
 
             requestObservableList.addAll(requests);
+
 
             ID.setCellValueFactory(new PropertyValueFactory<Request,Integer>("request_id"));
             by_ID.setCellValueFactory(new PropertyValueFactory<Request,Integer>("requested_by"));
@@ -66,14 +69,14 @@ public class Admin_RequestsViewController implements  Initializable{
 
 
         } catch (Exception e){
-            System.out.println("A7A");
+            System.out.println("No Requests Found");
         }
 
 
 
     }
 
-    public void acceptRequest(ActionEvent event){
+    public void acceptRequest(ActionEvent event) throws IOException {
 
         int req_id = Integer.parseInt(request_id.getText());
 
@@ -85,30 +88,47 @@ public class Admin_RequestsViewController implements  Initializable{
 
             }else{
 
+                throw new Exception();
             }
-        }catch (SQLException | IOException e) {
-            // alert hna
+        }catch (Exception e) {
 
-            System.out.println("A7aaaaa booobies");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("OPERATION FAILED");
+            alert.setContentText("PLEASE TRY AGAIN");
+            if (alert.showAndWait().get()== ButtonType.OK){
+
+                switchScenes(event , "Admin_RequestsView.fxml");
+            }
+
+
         }
 
     }
-    public void refuseRequest(ActionEvent event){
+    public void refuseRequest(ActionEvent event) throws IOException {
         int req_id = Integer.parseInt(request_id.getText());
         try{
-            Utility.UserSingle.getInstance().admin.requestResponse(req_id, 0);
-            switchScenes(event, "Admin_RequestsView.fxml");
-        }catch (SQLException | IOException e){
-            //enta brdo hena
 
-            System.out.println("a7aaa kol deh teez");
+            if(Utility.UserSingle.getInstance().admin.requestResponse(req_id, 0)){
+
+                switchScenes(event, "Admin_RequestsView.fxml");
+            }else{
+                throw new Exception();
+            }
+
+        }catch (Exception e){
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("OPERATION FAILED");
+            alert.setContentText("PLEASE TRY AGAIN");
+            if (alert.showAndWait().get()== ButtonType.OK){
+
+                switchScenes(event , "Admin_RequestsView.fxml");
+            }
         }
 
     }
-
-
-
-
 
 
             public void Logout(ActionEvent event)throws IOException{

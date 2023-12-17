@@ -38,13 +38,12 @@ public class Admin extends Person implements File{
     @Override
     public void setId(int id){this.id.set(id);}
 
-   // [TODO 12]Change Contructor to variable have property or change in employee to take variable direct not from constructor
     public Admin(String username , String password ){
         super.email     = new SimpleStringProperty(username);
         super.password  = new SimpleStringProperty(password);
     }
 
-    //Zeyad Tarek
+
     public static boolean login(String username, String password) throws IOException {
         String admin_username = getAdminUsername();
         String admin_password = getAdminPassword();
@@ -57,7 +56,6 @@ public class Admin extends Person implements File{
             Utility.UserSingle CurrentUser = Utility.UserSingle.getInstance();
             CurrentUser.admin = admin;
             return true;
-
         }
         else{
             return false;
@@ -73,13 +71,10 @@ public class Admin extends Person implements File{
         ArrayList<Project> project_list = new ArrayList<Project>();
 
         if(result.isBeforeFirst()){
-
-
             while(result.next()){
 
                 Project project = new Project(result);
                 project_list.add(project);
-
 
             }
 
@@ -89,8 +84,8 @@ public class Admin extends Person implements File{
         return project_list;
     }
 
-
     public boolean requestResponse  (int request_id , int response) throws SQLException{
+
             String query = "UPDATE plproject.request SET Request_Status = ? WHERE request_id = ?";
 
             Object[] args = {response, request_id};
@@ -103,14 +98,11 @@ public class Admin extends Person implements File{
 
     public ArrayList<Request> reviewRequests () throws SQLException {
 
-
         String query = "SELECT * from Request";
 
         ResultSet result = CRUD2.readDbDynamic(query);
 
         ArrayList<Request> Request_list = new ArrayList<Request>();
-
-
 
         if(result.isBeforeFirst()){
 
@@ -119,8 +111,6 @@ public class Admin extends Person implements File{
 
                 Request request = new Request(result);
                 Request_list.add(request);
-
-
             }
 
         }else{
@@ -129,11 +119,8 @@ public class Admin extends Person implements File{
         return Request_list;
     }
 
-
-
     public boolean createProject (int proj_id , int team_id ,String proj_desc , String proj_Title ,
                                   String status ){
-
         int stat;
 
         if(status.equals("PENDING")){
@@ -149,16 +136,12 @@ public class Admin extends Person implements File{
         String query = "INSERT INTO Project (Project_Id , Assigned_To , Project_desc , Project_Title , Progress_status) " +
                 "VALUES (?,?,?,?,?)";
 
-
-
         Object [] args = { proj_id ,team_id ,proj_desc,proj_Title,stat};
 
         Pair <Boolean , Integer> result = CRUD2.updateDbDynamic(query , args);
 
        return result.getKey();
-
     }
-
 
     public boolean deleteProject(int proj_id){
 
@@ -183,7 +166,6 @@ public class Admin extends Person implements File{
     }
 
 
-
     public ArrayList<Employee> ShowEmployees() throws SQLException {
 
         String query = "SELECT * FROM Employee INNER JOIN Team on Employee.Team_Id = Team.Team_Id";
@@ -199,8 +181,6 @@ public class Admin extends Person implements File{
                 Employees.add(emp);
 
             }
-
-
         }
 
         return Employees;
@@ -449,42 +429,3 @@ public class Admin extends Person implements File{
     }
     
 }
-
-
-
-//    Scanner scanner = new Scanner(System.in);
-//
-//    int option;
-//        do {
-//                System.out.println("Welcome to Admin Management!");
-//
-//                System.out.println("Select an option:");
-//                System.out.println("1. Add Admin");
-//                System.out.println("2. Delete Admin");
-//                System.out.println("3. List All Admins");
-//                System.out.println("0. Exit");
-//                option = scanner.nextInt();
-//
-//                switch (option) {
-//                case 1:
-//                System.out.println("Enter admin ID");
-//                int id = scanner.nextInt();
-//                System.out.println("Enter admin name");
-//                String name = scanner.next();
-//                Admin admin = new Admin();
-//                admin.write(id, name);
-//                System.out.println("Admin added successfully\n");
-//                break;
-//                case 2:
-//                System.out.println("Enter The Admin ID to be removed");
-//                int Id = scanner.nextInt();
-//                Admin dmin = new Admin();
-//                dmin.delete(Id);
-//                System.out.println("Admin OF ID " + Id + " Was deleted successfully.");
-//
-//
-//
-//
-//                }
-//                } while (option != 0);
-//A DEMO OF WHAT SHOULD BE IN MAIN ADMIN PAGE AFTER LOGIN
