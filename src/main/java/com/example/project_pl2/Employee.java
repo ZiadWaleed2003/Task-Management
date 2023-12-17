@@ -14,7 +14,6 @@ import java.util.Date;
 public class Employee extends Person{
 
 
-    // [TODO 12]Change Enum to variable have property and change result set , add setter and getter
     public enum EmpType {
         LEADER , MEMBER
     }
@@ -78,6 +77,8 @@ public class Employee extends Person{
     @Override
     public SimpleIntegerProperty idProperty(){return id;}
     @Override
+
+
     public void setId(int id){this.id.set(id);}
 
     public String getDepartment() {
@@ -188,6 +189,8 @@ public class Employee extends Person{
         }
         return result;
     }
+
+
     public ArrayList<Request> retrieveAllRequests() throws SQLException{
         ArrayList<Request> result =  new ArrayList<Request>();
 
@@ -207,6 +210,8 @@ public class Employee extends Person{
         }
         return result;
     }
+
+
     public ArrayList<Project> retrieveAllProjects() throws SQLException{
 
         if (Utility.UserSingle.getInstance().emp.emp_type.get().equals("LEADER")){

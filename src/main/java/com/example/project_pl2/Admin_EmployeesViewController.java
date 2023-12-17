@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -102,7 +103,7 @@ public class Admin_EmployeesViewController implements Initializable {
                 EmployeeTableView.setItems(EmployeeObservableList);
 
             }else{
-                throw new Exception("moseeeba el Employees msh mwgodeen");
+                throw new Exception("Employee not found");
             }
 
 
@@ -113,7 +114,7 @@ public class Admin_EmployeesViewController implements Initializable {
 
     }
 
-    public void addEmployee(ActionEvent event){
+    public void addEmployee(ActionEvent event) throws IOException {
 
         int Emp_Id          = Integer.parseInt(employee_id.getText());
         String Emp_Name     = emp_name.getText();
@@ -129,12 +130,20 @@ public class Admin_EmployeesViewController implements Initializable {
 
                 System.out.println("Employee has been Added Successfully");
                 switchScenes(event ,"Admin_EmployeesView.fxml");
+
             }else{
-                throw new Exception("el72oooona el Employee md5lsh ");
+                throw new Exception();
             }
         }catch (Exception e){
 
-            System.out.println(e);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("OPERATION FAILED");
+            alert.setContentText("PLEASE TRY AGAIN");
+            if (alert.showAndWait().get()== ButtonType.OK){
+
+                switchScenes(event , "Admin_EmployeesView.fxml");
+            }
         }
 
     }
@@ -173,27 +182,58 @@ public class Admin_EmployeesViewController implements Initializable {
 
         }
 
-    public void deleteEmployee(ActionEvent actionEvent) throws IOException {
-        try{
+        public void deleteEmployee(ActionEvent actionEvent) throws IOException {
+
             int emp_id = Integer.parseInt(IdTextFieldDel.getText());
-            Utility.UserSingle.getInstance().admin.deleteEmployee((emp_id));
-            switchScenes(actionEvent, "Admin_EmployeesView.fxml");
-        }catch(IOException e){
-            System.out.print("kosom 7ayty");
+
+
+        try{
+
+            if(Utility.UserSingle.getInstance().admin.deleteEmployee((emp_id))){
+
+                    switchScenes(actionEvent, "Admin_EmployeesView.fxml");
+            }else{
+                throw new Exception();
+            }
+
+        }catch(Exception e){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("OPERATION FAILED");
+            alert.setContentText("PLEASE TRY AGAIN");
+            if (alert.showAndWait().get()== ButtonType.OK){
+
+                switchScenes(actionEvent , "Admin_EmployeesView.fxml");
+            }
         }
 
     }
 
     public void updateEmployee(ActionEvent actionEvent) throws IOException {
-        try {
+
             int emp_id = Integer.parseInt(IdTextFieldUp.getText());
             String emp_type = IdTextFieldUp1.getText();
-            Utility.UserSingle.getInstance().admin.editEmployeeType(emp_id, emp_type);
-            switchScenes(actionEvent, "Admin_EmployeesView.fxml");
-        }catch(IOException e){
-            System.out.print("kosom 7ayty");
-        }
 
+        try {
+
+            if(Utility.UserSingle.getInstance().admin.editEmployeeType(emp_id, emp_type)){
+
+                switchScenes(actionEvent, "Admin_EmployeesView.fxml");
+            }else{
+                throw new Exception();
+            }
+
+        }catch(Exception e){
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("OPERATION FAILED");
+            alert.setContentText("PLEASE TRY AGAIN");
+            if (alert.showAndWait().get()== ButtonType.OK){
+
+                switchScenes(actionEvent , "Admin_EmployeesView.fxml");
+            }
+        }
     }
 
 }
