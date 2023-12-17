@@ -13,9 +13,6 @@ import java.io.IOException;
 
 public class Leader_DashboardController {
 
-        @FXML
-        private Button LogoutButton;
-
         private Scene scene;
         private Stage stage;
         private Parent root;
@@ -62,15 +59,6 @@ public class Leader_DashboardController {
 
     }
 
-
-//    public void getstat(ActionEvent event)throws IOException{
-//        String priority = (IndivTask.priority) priorityChoiceBox.getSelectionModel().getSelectedItem();
-//    }
-//    public void getprioority(ActionEvent event)throws IOException{
-//         Utility.CompletionStatus status = (Utility.CompletionStatus) completionStatusChoiceBox.getSelectionModel().getSelectedItem();
-//
-//
-//    }
 
 }
 
