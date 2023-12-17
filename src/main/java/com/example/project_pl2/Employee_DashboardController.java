@@ -115,16 +115,6 @@ public class Employee_DashboardController implements Initializable {
     }
 
 
-
-
-
-
-
-
-
-
-
-
     public void Logout(ActionEvent event)throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logout");
@@ -139,9 +129,6 @@ public class Employee_DashboardController implements Initializable {
         switchScenes(event,"MainPage.fxml");
 
     }
-
-
-
 
     public void switchToEmpRequests(ActionEvent event) throws IOException {
         switchScenes(event,"Employee_Requests.fxml");

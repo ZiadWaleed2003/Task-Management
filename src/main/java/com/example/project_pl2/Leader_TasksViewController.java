@@ -28,11 +28,8 @@ public class Leader_TasksViewController implements Initializable {
     private TextField TaskIdTextField;
     @FXML
     private Button reassignTaskButton;
-
     @FXML
     private Button createTaskButton;
-
-
     @FXML
     private TextField crTaskNameTextField;
     @FXML
@@ -74,8 +71,6 @@ public class Leader_TasksViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         statusChoiceBox.setItems(FXCollections.observableArrayList(Utility.CompletionStatus.values()));
 
-
-
         try{
 
             ArrayList<IndivTask> tasks = Utility.UserSingle.getInstance().emp.constructTasksList();
@@ -100,40 +95,43 @@ public class Leader_TasksViewController implements Initializable {
             }
 
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println("Task Not Found");
         }
     }
 
-    public void reAssignTask(ActionEvent event){
+    public void reAssignTask(ActionEvent event) throws IOException{
 
         int emp_id  = Integer.parseInt(EmpIdTextField.getText());
         int task_id = Integer.parseInt(TaskIdTextField.getText());
 
         try {
             if(Utility.UserSingle.getInstance().emp.reassignTask(task_id , emp_id)){
-
-                System.out.println("Task Reassigned Successfully");
                 switchScenes(event , "Leader_TasksView.fxml");
             }else{
-                throw new Exception("yalahwyyyy");
+                throw new Exception();
             }
         }catch (Exception e){
 
-            System.out.println(e);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("OPERATION FAILED");
+            alert.setContentText("PLEASE TRY AGAIN");
+            if (alert.showAndWait().get()== ButtonType.OK){
+
+                switchScenes(event , "Leader_TasksView.fxml");
+            }
         }
     }
 
     public void createTask(ActionEvent event) throws IOException {
         String name = crTaskNameTextField.getText();
         String description = crTaskDescTextField.getText();
-//        Utility.CompletionStatus status = Utility.CompletionStatus.valueOf(crTaskStatusTextField.getText());
         Utility.CompletionStatus selectedStatus = statusChoiceBox.getSelectionModel().getSelectedItem();
         String status = selectedStatus.name();
         int project = Integer.parseInt(crTaskProjectIDTextField.getText());
         String priority = crTaskPrioTextField.getText(); // TODO: Where the fuck is the enum?
         LocalDate start_date = crTaskStartField.getValue();
         LocalDate due_date = crTaskDueField.getValue();
-
 
 
         try {
@@ -159,6 +157,7 @@ public class Leader_TasksViewController implements Initializable {
             }
         }
     }
+
     public void Logout(ActionEvent event)throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logout");
@@ -183,6 +182,7 @@ public class Leader_TasksViewController implements Initializable {
     public void switchToTasks(ActionEvent event)throws IOException{
         switchScenes(event,"Leader_TasksView");
     }
+
     public void switchScenes(ActionEvent event , String fxml) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource(fxml));

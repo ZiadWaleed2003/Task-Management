@@ -104,7 +104,7 @@ public class Admin_ProjectsViewController implements Initializable {
                 switchScenes(event , "Admin_ProjectsView.fxml");
 
             }else{
-                throw new Exception("Operation failed");
+                throw new Exception();
             }
 
 
@@ -115,7 +115,6 @@ public class Admin_ProjectsViewController implements Initializable {
             alert.setHeaderText("OPERATION FAILED");
             alert.setContentText("PLEASE TRY AGAIN");
             if (alert.showAndWait().get()== ButtonType.OK){
-
                 switchScenes(event , "Admin_ProjectsView.fxml");
             }
 
