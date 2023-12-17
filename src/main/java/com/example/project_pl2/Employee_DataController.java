@@ -78,6 +78,9 @@ public class Employee_DataController implements Initializable {
     public void switchToRequests(ActionEvent event) throws IOException {
         switchScenes(event,"Employee_Requests.fxml");
     }
+    public void switchToTasks(ActionEvent event) throws IOException {
+        switchScenes(event,"Employee_Dashboard.fxml");
+    }
 
 
 
