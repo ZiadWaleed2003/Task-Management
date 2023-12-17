@@ -256,7 +256,7 @@ public class Employee extends Person{
         if(this.emp_type.get().equals("LEADER")){
 
             String addTaskQuery = "INSERT INTO task (Due_date, Priority, Project_Id, Start_Date, " +
-                    "Task_Desc, Task_Name, Task_Status) VALUES (?, ?, ?, ? ,? ,? ,?);";
+                    "Task_Desc, Task_Name, Task_Status) VALUES (?, ?, ?, ? ,? ,? ,?)";
 
 
             Object[] args = {due_date , priority , project , start_date , description , name ,
@@ -309,7 +309,7 @@ public class Employee extends Person{
     }
 
 
-    public boolean deleteTask(int required_task_id){
+    public Boolean deleteTask(int required_task_id){
 
         String deleteTaskQuery = "DELETE FROM task WHERE Task_Id = ?";
         Object [] args = {required_task_id};
