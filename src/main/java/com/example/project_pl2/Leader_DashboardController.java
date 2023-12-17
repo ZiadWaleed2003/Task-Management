@@ -47,6 +47,10 @@ public class Leader_DashboardController {
         public void switchToTeam(ActionEvent event) throws IOException {
             switchScenes(event,"Leader_TeamView.fxml");
         }
+        public void switchToProfile(ActionEvent event) throws IOException {
+            switchScenes(event,"Leader_Profile.fxml");
+        }
+
 
 
     public void switchScenes(ActionEvent event , String fxml) throws IOException {
