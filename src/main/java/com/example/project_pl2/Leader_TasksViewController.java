@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Leader_TasksViewController implements Initializable {
+    @FXML
+    private TextField deletetasktextfield;
 
     @FXML
     private TextField EmpIdTextField;
@@ -122,6 +124,36 @@ public class Leader_TasksViewController implements Initializable {
             }
         }
     }
+
+
+
+    public void deleteTask(ActionEvent event)throws IOException{
+        int task_id = Integer.parseInt(deletetasktextfield.getText());
+
+        try {
+           if (Utility.UserSingle.getInstance().emp.deleteTask(task_id)){
+               switchScenes(event,"Leader_TasksView.fxml");
+           }
+           else {
+               throw new Exception();
+           }
+        }catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("OPERATION FAILED");
+            alert.setContentText("PLEASE TRY AGAIN");
+            if (alert.showAndWait().get() == ButtonType.OK) {
+                switchScenes(event, "Leader_TasksView.fxml");
+
+            }
+        }
+
+
+
+
+    }
+
+
 
     public void createTask(ActionEvent event) throws IOException {
         String name = crTaskNameTextField.getText();
